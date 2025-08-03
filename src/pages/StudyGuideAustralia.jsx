@@ -16,6 +16,29 @@ const StudyGuideAustralia = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Handle anchor links when page loads
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const scrollToSection = () => {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+          return true;
+        }
+        return false;
+      };
+
+      // Try immediately
+      if (!scrollToSection()) {
+        // If not found, try after a delay
+        setTimeout(() => {
+          scrollToSection();
+        }, 300);
+      }
+    }
+  }, []);
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -32,7 +55,7 @@ const StudyGuideAustralia = () => {
   };
 
   const navigationItems = [
-    { href: '#why-choose', label: 'Why Choose' },
+    { href: '#why-choose', label: 'Why Choose Australia' },
     { href: '#education-system', label: 'Education System' },
     { href: '#financial', label: 'Financial' },
     { href: '#visa', label: 'Visa' },
@@ -56,45 +79,52 @@ const StudyGuideAustralia = () => {
       <div className="study-guide-header">
         <h1>Study in Australia – Your Complete Guide to a Brighter Future</h1>
         <p className="subtitle">Your Gateway to World-Class Education, Career Growth & a New Life Abroad</p>
-      </div>
-
-      {/* Hamburger Menu Navigation */}
-      <div className="guide-navigation">
-        <div className="hamburger-container">
-          <button 
-            className={`hamburger-menu ${isMenuOpen ? 'active' : ''}`}
-            onClick={toggleMenu}
-            aria-label="Toggle navigation menu"
-          >
-            <span className="hamburger-line"></span>
-            <span className="hamburger-line"></span>
-            <span className="hamburger-line"></span>
-          </button>
-          
-          <div className={`nav-menu ${isMenuOpen ? 'open' : ''}`}>
-            <div className="nav-menu-header">
-              <h3>Quick Navigation</h3>
-              <button 
-                className="close-menu-btn"
-                onClick={closeMenu}
-                aria-label="Close menu"
-              >
-                ×
-              </button>
-            </div>
-            <div className="nav-menu-items">
-              {navigationItems.map((item, index) => (
-                <a 
-                  key={index}
-                  href={item.href} 
-                  className="nav-menu-item"
+        
+        {/* Horizontal Navigation Bar */}
+        <div className="guide-navigation">
+          <div className="nav-container">
+            <button 
+              className={`hamburger-menu ${isMenuOpen ? 'active' : ''}`}
+              onClick={toggleMenu}
+              aria-label="Toggle navigation menu"
+            >
+              <span className="hamburger-line"></span>
+              <span className="hamburger-line"></span>
+              <span className="hamburger-line"></span>
+            </button>
+            
+            <div className={`nav-menu ${isMenuOpen ? 'open' : ''}`}>
+              <div className="nav-menu-header">
+                <h3>Quick Navigation</h3>
+                <button 
+                  className="close-menu-btn"
                   onClick={closeMenu}
+                  aria-label="Close menu"
                 >
-                  {item.label}
-                </a>
-              ))}
+                  ×
+                </button>
+              </div>
+              <div className="nav-menu-items">
+                {navigationItems.map((item, index) => (
+                  <a 
+                    key={index}
+                    href={item.href} 
+                    className="nav-menu-item"
+                    onClick={closeMenu}
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Australia Image Section */}
+      <div className="australia-image-section">
+        <div className="australia-image-container">
+          <img src="/australia.jpg" alt="Australia Study Destination" className="australia-image" />
         </div>
       </div>
 
@@ -123,10 +153,10 @@ const StudyGuideAustralia = () => {
           <h2>Understanding Australia's Education System</h2>
           <p>Australia's education system is modern and career-oriented. It has a flexible system with public and private universities, pathway colleges, and technical institutes. Many courses include internships and industry placements—so you get real-world experience before graduating.</p>
           <ul className="education-list">
-            <li><strong>🎓 Universities:</strong> Undergraduate, postgraduate, and research degrees under the Australian Qualifications Framework (AQF)</li>
-            <li><strong>🏛️ Private Colleges:</strong> Certificate, Diploma, Undergraduate, postgraduate courses</li>
-            <li><strong>🔧 TAFE & Vocational Courses:</strong> Short, skill-based programs in trades and technical fields with strong job demand</li>
-            <li><strong>📚 Pathway & English Programs:</strong> Great for students needing academic or language preparation</li>
+            <li><strong>Universities:</strong> Undergraduate, postgraduate, and research degrees under the Australian Qualifications Framework (AQF)</li>
+            <li><strong>Private Colleges:</strong> Certificate, Diploma, Undergraduate, postgraduate courses</li>
+            <li><strong>TAFE & Vocational Courses:</strong> Short, skill-based programs in trades and technical fields with strong job demand</li>
+            <li><strong>Pathway & English Programs:</strong> Great for students needing academic or language preparation</li>
           </ul>
           <p><strong>Intakes typically occur in:</strong></p>
           <ul>
@@ -280,7 +310,7 @@ const StudyGuideAustralia = () => {
           <p>We'll guide you on Resume and interview preparation and job search strategies after your visa approval!</p>
         </section>
 
-        <section className="guide-section">
+        <section id="pr" className="guide-section">
           <h2>Post-Study Work & PR Opportunities</h2>
           <p>Australia is one of the few countries offering clear pathways to Permanent Residency (PR) for international graduates.</p>
           
@@ -303,7 +333,7 @@ const StudyGuideAustralia = () => {
           </ul>
         </section>
 
-        <section className="guide-section">
+        <section id="life" className="guide-section">
           <h2>Life in Australia as an International Student</h2>
           <p>Living in Australia is exciting, safe, and full of new experiences.</p>
           <ul className="life-list">
@@ -314,7 +344,7 @@ const StudyGuideAustralia = () => {
           </ul>
         </section>
 
-        <section className="guide-section">
+        <section id="fit" className="guide-section">
           <h2>Is Australia the Right Fit for You?</h2>
           <p>If you're looking for:</p>
           <ul className="fit-list">
@@ -327,7 +357,7 @@ const StudyGuideAustralia = () => {
           <p>Then Australia might just be your perfect match.</p>
         </section>
 
-        <section className="guide-section">
+        <section id="get-started" className="guide-section">
           <h2>Let's Get Started – Your Journey Begins Here</h2>
           <p>At Titan Career Solutions, we don't just send you abroad—we walk with you through your entire journey:</p>
           <ul className="services-list">

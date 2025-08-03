@@ -9,12 +9,25 @@ const StudyDestinations = () => {
       title: 'Study in Australia',
       image: 'https://images.unsplash.com/photo-1507699622108-4be3abd695ad?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       description: 'World-class education in a safe, welcoming environment, with diverse cultural experiences and stunning natural landscapes.',
-      path: '/study/australia',
+      path: '/study-guide/australia',
       links: [
-        { text: 'Study Guide', href: '/study-guide/australia' },
-        { text: 'Colleges', href: '/colleges/australia' },
-        { text: 'Universities', href: '/universities/australia' },
-        { text: 'Eligibility Criteria', href: '/eligibility/australia' }
+        { text: 'Why Choose Australia', href: '/study-guide/australia#why-choose' },
+        { text: 'Education System', href: '/study-guide/australia#education-system' },
+        { text: 'Financial Requirements', href: '/study-guide/australia#financial' },
+        { text: 'Student Visa', href: '/study-guide/australia#visa' },
+        { text: 'Assessment', href: '/study-guide/australia#assessment' },
+        { text: 'Application Process', href: '/study-guide/australia#application' },
+        { text: 'Top Cities', href: '/study-guide/australia#cities' },
+        { text: 'Cost of Study', href: '/study-guide/australia#cost' },
+        { text: 'Work Opportunities', href: '/study-guide/australia#work' },
+        { text: 'PR Pathways', href: '/study-guide/australia#pr' },
+        { text: 'Life in Australia', href: '/study-guide/australia#life' },
+        { text: 'Right Fit', href: '/study-guide/australia#fit' },
+        { text: 'Get Started', href: '/study-guide/australia#get-started' },
+        { text: 'Universities', href: '/study-guide/australia#universities' },
+        { text: 'Colleges', href: '/study-guide/australia#colleges' },
+        { text: 'Eligibility', href: '/study-guide/australia#eligibility' },
+        { text: 'Resources', href: '/study-guide/australia#resources' }
       ]
     },
     {
@@ -25,9 +38,10 @@ const StudyDestinations = () => {
       path: '/study/japan',
       links: [
         { text: 'Study Guide', href: '/study-guide/japan' },
-        { text: 'Colleges', href: '/colleges/japan' },
-        { text: 'Universities', href: '/universities/japan' },
-        { text: 'Eligibility Criteria', href: '/eligibility/japan' }
+        { text: 'Universities', href: '/study-guide/japan#universities' },
+        { text: 'Colleges', href: '/study-guide/japan#colleges' },
+        { text: 'Eligibility', href: '/study-guide/japan#eligibility' },
+        { text: 'Resources', href: '/study-guide/japan#resources' }
       ]
     },
     {
@@ -38,9 +52,10 @@ const StudyDestinations = () => {
       path: '/study/uk',
       links: [
         { text: 'Study Guide', href: '/study-guide/uk' },
-        { text: 'Colleges', href: '/colleges/uk' },
-        { text: 'Universities', href: '/universities/uk' },
-        { text: 'Eligibility Criteria', href: '/eligibility/uk' }
+        { text: 'Universities', href: '/study-guide/uk#universities' },
+        { text: 'Colleges', href: '/study-guide/uk#colleges' },
+        { text: 'Eligibility', href: '/study-guide/uk#eligibility' },
+        { text: 'Resources', href: '/study-guide/uk#resources' }
       ]
     },
     {
@@ -51,9 +66,10 @@ const StudyDestinations = () => {
       path: '/study/new-zealand',
       links: [
         { text: 'Study Guide', href: '/study-guide/new-zealand' },
-        { text: 'Colleges', href: '/colleges/new-zealand' },
-        { text: 'Universities', href: '/universities/new-zealand' },
-        { text: 'Eligibility Criteria', href: '/eligibility/new-zealand' }
+        { text: 'Universities', href: '/study-guide/new-zealand#universities' },
+        { text: 'Colleges', href: '/study-guide/new-zealand#colleges' },
+        { text: 'Eligibility', href: '/study-guide/new-zealand#eligibility' },
+        { text: 'Resources', href: '/study-guide/new-zealand#resources' }
       ]
     },
     {
@@ -64,9 +80,10 @@ const StudyDestinations = () => {
       path: '/study/united-states',
       links: [
         { text: 'Study Guide', href: '/study-guide/united-states' },
-        { text: 'Colleges', href: '/colleges/united-states' },
-        { text: 'Universities', href: '/universities/united-states' },
-        { text: 'Eligibility Criteria', href: '/eligibility/united-states' }
+        { text: 'Universities', href: '/study-guide/united-states#universities' },
+        { text: 'Colleges', href: '/study-guide/united-states#colleges' },
+        { text: 'Eligibility', href: '/study-guide/united-states#eligibility' },
+        { text: 'Resources', href: '/study-guide/united-states#resources' }
       ]
     },
     {
@@ -77,9 +94,10 @@ const StudyDestinations = () => {
       path: '/study/canada',
       links: [
         { text: 'Study Guide', href: '/study-guide/canada' },
-        { text: 'Colleges', href: '/colleges/canada' },
-        { text: 'Universities', href: '/universities/canada' },
-        { text: 'Eligibility Criteria', href: '/eligibility/canada' }
+        { text: 'Universities', href: '/study-guide/canada#universities' },
+        { text: 'Colleges', href: '/study-guide/canada#colleges' },
+        { text: 'Eligibility', href: '/study-guide/canada#eligibility' },
+        { text: 'Resources', href: '/study-guide/canada#resources' }
       ]
     }
   ];
