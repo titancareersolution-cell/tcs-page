@@ -396,10 +396,10 @@ const StudyGuideAustralia = () => {
             
             <div className="university-card">
               <h3>English Language Requirements</h3>
-              <p><strong>IELTS:</strong> 6.0–7.0 overall (depending on program)</p>
-              <p><strong>TOEFL:</strong> 80–100 (depending on program)</p>
-              <p><strong>PTE Academic:</strong> 50–65 (depending on program)</p>
-              <p><strong>Cambridge English:</strong> 169–185 (depending on program)</p>
+              <p><strong>IELTS:</strong> 6.0–7.0 overall</p>
+              <p><strong>TOEFL:</strong> 80–100 </p>
+              <p><strong>PTE Academic:</strong> 50–65 </p>
+              <p><strong>Cambridge English:</strong> 169–185 </p>
             </div>
             
             <div className="university-card">
@@ -415,7 +415,7 @@ const StudyGuideAustralia = () => {
               <p><strong>Undergraduate:</strong> AUD 20,000–45,000/year</p>
               <p><strong>Postgraduate:</strong> AUD 22,000–50,000/year</p>
               <p><strong>PhD:</strong> AUD 25,000–55,000/year</p>
-              <p><strong>Scholarships:</strong> Available for high-achieving students</p>
+              <p><strong>Scholarships:</strong> Available for high score achieving students</p>
             </div>
             
             <div className="university-card">
