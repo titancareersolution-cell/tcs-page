@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './StudyDestinations.css';
 
@@ -31,17 +31,17 @@ const StudyDestinations = () => {
       ]
     },
     {
-      id: 'japan',
-      title: 'Study in Japan',
-      image: 'https://images.unsplash.com/photo-1542640244-7e672d6cef4e?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      description: 'Renowned for its blend of tradition and innovation, offering students a unique educational experience with top universities and advanced technology.',
-      path: '/study/japan',
+      id: 'canada',
+      title: 'Study in Canada',
+      image: 'https://images.unsplash.com/photo-1519832979-6fa011b87667?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      description: 'High-quality education in a multicultural environment with excellent opportunities for personal and professional growth.',
+      path: '/study/canada',
       links: [
-        { text: 'Study Guide', href: '/study-guide/japan' },
-        { text: 'Universities', href: '/study-guide/japan#universities' },
-        { text: 'Colleges', href: '/study-guide/japan#colleges' },
-        { text: 'Eligibility', href: '/study-guide/japan#eligibility' },
-        { text: 'Resources', href: '/study-guide/japan#resources' }
+        { text: 'Study Guide', href: '/study-guide/canada' },
+        { text: 'Universities', href: '/study-guide/canada#universities' },
+        { text: 'Colleges', href: '/study-guide/canada#colleges' },
+        { text: 'Eligibility', href: '/study-guide/canada#eligibility' },
+        { text: 'Resources', href: '/study-guide/canada#resources' }
       ]
     },
     {
@@ -56,6 +56,20 @@ const StudyDestinations = () => {
         { text: 'Colleges', href: '/study-guide/uk#colleges' },
         { text: 'Eligibility', href: '/study-guide/uk#eligibility' },
         { text: 'Resources', href: '/study-guide/uk#resources' }
+      ]
+    },
+    {
+      id: 'japan',
+      title: 'Study in Japan',
+      image: 'https://images.unsplash.com/photo-1542640244-7e672d6cef4e?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      description: 'Renowned for its blend of tradition and innovation, offering students a unique educational experience with top universities and advanced technology.',
+      path: '/study/japan',
+      links: [
+        { text: 'Study Guide', href: '/study-guide/japan' },
+        { text: 'Universities', href: '/study-guide/japan#universities' },
+        { text: 'Colleges', href: '/study-guide/japan#colleges' },
+        { text: 'Eligibility', href: '/study-guide/japan#eligibility' },
+        { text: 'Resources', href: '/study-guide/japan#resources' }
       ]
     },
     {
@@ -85,22 +99,74 @@ const StudyDestinations = () => {
         { text: 'Eligibility', href: '/study-guide/united-states#eligibility' },
         { text: 'Resources', href: '/study-guide/united-states#resources' }
       ]
-    },
-    {
-      id: 'canada',
-      title: 'Study in Canada',
-      image: 'https://images.unsplash.com/photo-1519832979-6fa011b87667?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      description: 'High-quality education in a multicultural environment with excellent opportunities for personal and professional growth.',
-      path: '/study/canada',
-      links: [
-        { text: 'Study Guide', href: '/study-guide/canada' },
-        { text: 'Universities', href: '/study-guide/canada#universities' },
-        { text: 'Colleges', href: '/study-guide/canada#colleges' },
-        { text: 'Eligibility', href: '/study-guide/canada#eligibility' },
-        { text: 'Resources', href: '/study-guide/canada#resources' }
-      ]
     }
   ];
+
+  const DestinationCard = ({ destination }) => {
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+    const toggleDropdown = () => {
+      setIsDropdownOpen(!isDropdownOpen);
+    };
+
+    return (
+      <div className="destination-card">
+        <div className="destination-image-container">
+          <img src={destination.image} alt={destination.title} className="destination-image" />
+        </div>
+        <div className="destination-content">
+          <div className="destination-header">
+            <Link to={destination.path} className="destination-title-link">
+              <h3 className="destination-title">{destination.title}</h3>
+            </Link>
+            
+            {/* Quick Links Dropdown */}
+            <div className="quick-links-container">
+              <button 
+                className={`quick-links-toggle ${isDropdownOpen ? 'open' : ''}`}
+                onClick={toggleDropdown}
+              >
+                <span>Quick Links</span>
+                <svg 
+                  className={`dropdown-arrow ${isDropdownOpen ? 'rotated' : ''}`}
+                  width="16" 
+                  height="16" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="2"
+                >
+                  <polyline points="6,9 12,15 18,9"></polyline>
+                </svg>
+              </button>
+              
+              <div className={`quick-links-dropdown ${isDropdownOpen ? 'open' : ''}`}>
+                {destination.links.map((link, index) => (
+                  <Link 
+                    key={index} 
+                    to={link.href} 
+                    className="quick-links-link"
+                    onClick={() => setIsDropdownOpen(false)}
+                  >
+                    {link.text}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+          
+          <p className="destination-description">{destination.description}</p>
+          <div className="destination-links">
+            {destination.links.map((link, index) => (
+              <Link key={index} to={link.href} className="destination-link">
+                {link.text}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className="study-destinations-section">
@@ -114,24 +180,7 @@ const StudyDestinations = () => {
       
       <div className="study-destinations-grid">
         {destinations.map((destination) => (
-          <div key={destination.id} className="destination-card">
-            <div className="destination-image-container">
-              <img src={destination.image} alt={destination.title} className="destination-image" />
-            </div>
-            <div className="destination-content">
-              <Link to={destination.path} className="destination-title-link">
-                <h3 className="destination-title">{destination.title}</h3>
-              </Link>
-              <p className="destination-description">{destination.description}</p>
-              <div className="destination-links">
-                {destination.links.map((link, index) => (
-                  <Link key={index} to={link.href} className="destination-link">
-                    {link.text}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
+          <DestinationCard key={destination.id} destination={destination} />
         ))}
       </div>
     </div>

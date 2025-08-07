@@ -88,8 +88,7 @@ const StudyGuideAustralia = () => {
               onClick={toggleMenu}
               aria-label="Toggle navigation menu"
             >
-              <span className="hamburger-line"></span>
-              <span className="hamburger-line"></span>
+              <span>Quick Navigation</span>
               <span className="hamburger-line"></span>
             </button>
             
@@ -372,168 +371,159 @@ const StudyGuideAustralia = () => {
           <p>Your dream is closer than you think—and we're here to guide every step.</p>
         </section>
 
-        {/* Universities Section */}
         <section id="universities" className="guide-section">
           <h2>🏛️ Universities in Australia</h2>
           <p>Explore world-class universities and research institutions for undergraduate and postgraduate studies.</p>
-          
-          <div className="universities-grid">
-            <div className="university-card">
-              <h3>University System Overview</h3>
-              <p><strong>Types:</strong> Public universities, private universities, international branch campuses</p>
-              <p><strong>Degrees Offered:</strong> Bachelor's, Master's, PhD, Graduate Certificates/Diplomas</p>
-              <p><strong>Duration:</strong> Bachelor's (3-4 years), Master's (1-2 years), PhD (3-4 years)</p>
-              <p><strong>Academic Year:</strong> February to November (2 semesters)</p>
-            </div>
-            
-            <div className="university-card">
-              <h3>Academic Requirements</h3>
-              <p><strong>Undergraduate:</strong> High school diploma with minimum GPA (varies by university)</p>
-              <p><strong>Postgraduate:</strong> Bachelor's degree with minimum GPA (usually 3.0/4.0)</p>
-              <p><strong>Research Programs:</strong> Strong academic background and research proposal</p>
-              <p><strong>Prerequisites:</strong> Subject-specific requirements for certain programs</p>
-            </div>
-            
-            <div className="university-card">
-              <h3>English Language Requirements</h3>
-              <p><strong>IELTS:</strong> 6.0–7.0 overall</p>
-              <p><strong>TOEFL:</strong> 80–100 </p>
-              <p><strong>PTE Academic:</strong> 50–65 </p>
-              <p><strong>Cambridge English:</strong> 169–185 </p>
-            </div>
-            
-            <div className="university-card">
-              <h3>Intake Periods</h3>
-              <p><strong>Semester 1:</strong> February/March start</p>
-              <p><strong>Semester 2:</strong> July/August start</p>
-              <p><strong>Summer Session:</strong> November/December (limited programs)</p>
-              <p><strong>Application Deadlines:</strong> 6-12 months before intake</p>
-            </div>
-            
-            <div className="university-card">
-              <h3>Tuition Fees</h3>
-              <p><strong>Undergraduate:</strong> AUD 20,000–45,000/year</p>
-              <p><strong>Postgraduate:</strong> AUD 22,000–50,000/year</p>
-              <p><strong>PhD:</strong> AUD 25,000–55,000/year</p>
-              <p><strong>Scholarships:</strong> Available for high score achieving students</p>
-            </div>
-            
-            <div className="university-card">
-              <h3>Popular Study Areas</h3>
-              <p><strong>Business:</strong> MBA, Finance, Marketing, International Business</p>
-              <p><strong>Engineering:</strong> Civil, Mechanical, Electrical, Software</p>
-              <p><strong>Healthcare:</strong> Medicine, Nursing, Public Health, Pharmacy</p>
-              <p><strong>Arts:</strong> Design, Media, Film, Creative Arts</p>
-            </div>
-          </div>
+
+          <h3>University System Overview</h3>
+          <ul>
+            <li><b>Types:</b> Public universities, private universities, international branch campuses</li>
+            <li><b>Degrees Offered:</b> Bachelor's, Master's, PhD, Graduate Certificates/Diplomas</li>
+            <li><b>Duration:</b> Bachelor's (3-4 years), Master's (1-2 years), PhD (3-4 years)</li>
+            <li><b>Academic Year:</b> February to November (2 semesters)</li>
+          </ul>
+
+          <h3>Academic Requirements</h3>
+          <ul>
+            <li><b>Undergraduate:</b> High school diploma with minimum GPA (varies by university)</li>
+            <li><b>Postgraduate:</b> Bachelor's degree with minimum GPA (usually 3.0/4.0)</li>
+            <li><b>Research Programs:</b> Strong academic background and research proposal</li>
+            <li><b>Prerequisites:</b> Subject-specific requirements for certain programs</li>
+          </ul>
+
+          <h3>English Language Requirements</h3>
+          <ul>
+            <li><b>IELTS:</b> 6.0–7.0 overall</li>
+            <li><b>TOEFL:</b> 80–100</li>
+            <li><b>PTE Academic:</b> 50–65</li>
+            <li><b>Cambridge English:</b> 169–185</li>
+          </ul>
+
+          <h3>Intake Periods</h3>
+          <ul>
+            <li><b>Semester 1:</b> February/March start</li>
+            <li><b>Semester 2:</b> July/August start</li>
+            <li><b>Summer Session:</b> November/December (limited programs)</li>
+            <li><b>Application Deadlines:</b> 6-12 months before intake</li>
+          </ul>
+
+          <h3>Tuition Fees</h3>
+          <ul>
+            <li><b>Undergraduate:</b> AUD 20,000–45,000/year</li>
+            <li><b>Postgraduate:</b> AUD 22,000–50,000/year</li>
+            <li><b>PhD:</b> AUD 25,000–55,000/year</li>
+            <li><b>Scholarships:</b> Available for high score achieving students</li>
+          </ul>
+
+          <h3>Popular Study Areas</h3>
+          <ul>
+            <li><b>Business:</b> MBA, Finance, Marketing, International Business</li>
+            <li><b>Engineering:</b> Civil, Mechanical, Electrical, Software</li>
+            <li><b>Healthcare:</b> Medicine, Nursing, Public Health, Pharmacy</li>
+            <li><b>Arts:</b> Design, Media, Film, Creative Arts</li>
+          </ul>
         </section>
 
-        {/* Colleges Section */}
         <section id="colleges" className="guide-section">
           <h2>🎓 Colleges in Australia</h2>
           <p>Discover TAFE institutions and vocational colleges offering practical, career-focused education.</p>
-          
-          <div className="colleges-grid">
-            <div className="college-card">
-              <h3>TAFE System Overview</h3>
-              <p><strong>Types:</strong> Technical and Further Education institutions</p>
-              <p><strong>Programs Offered:</strong> Certificates, Diplomas, Advanced Diplomas</p>
-              <p><strong>Duration:</strong> 6 months to 2 years</p>
-              <p><strong>Focus:</strong> Practical skills and industry training</p>
-            </div>
-            
-            <div className="college-card">
-              <h3>Academic Requirements</h3>
-              <p><strong>Certificate Programs:</strong> High school completion or equivalent</p>
-              <p><strong>Diploma Programs:</strong> High school diploma with basic skills</p>
-              <p><strong>Advanced Diplomas:</strong> Previous relevant study or work experience</p>
-              <p><strong>Prerequisites:</strong> Basic literacy and numeracy skills</p>
-            </div>
-            
-            <div className="college-card">
-              <h3>English Language Requirements</h3>
-              <p><strong>IELTS:</strong> 5.5–6.0 overall (depending on program)</p>
-              <p><strong>TOEFL:</strong> 60–80 (depending on program)</p>
-              <p><strong>PTE Academic:</strong> 42–50 (depending on program)</p>
-              <p><strong>Cambridge English:</strong> 154–169 (depending on program)</p>
-            </div>
-            
-            <div className="college-card">
-              <h3>Intake Periods</h3>
-              <p><strong>Semester 1:</strong> February start</p>
-              <p><strong>Semester 2:</strong> July start</p>
-              <p><strong>Rolling Intakes:</strong> Some programs offer multiple start dates</p>
-              <p><strong>Application Deadlines:</strong> 3-6 months before intake</p>
-            </div>
-            
-            <div className="college-card">
-              <h3>Tuition Fees</h3>
-              <p><strong>Certificate Programs:</strong> AUD 8,000–15,000/year</p>
-              <p><strong>Diploma Programs:</strong> AUD 10,000–20,000/year</p>
-              <p><strong>Advanced Diplomas:</strong> AUD 12,000–25,000/year</p>
-              <p><strong>Government Subsidies:</strong> Available for eligible students</p>
-            </div>
-            
-            <div className="college-card">
-              <h3>Popular Study Areas</h3>
-              <p><strong>Trades:</strong> Plumbing, Electrical, Carpentry, Automotive</p>
-              <p><strong>Business:</strong> Business Administration, Accounting, Marketing</p>
-              <p><strong>Healthcare:</strong> Nursing, Aged Care, Disability Support</p>
-              <p><strong>Technology:</strong> IT, Web Development, Digital Media</p>
-            </div>
-          </div>
+
+          <h3>TAFE System Overview</h3>
+          <ul>
+            <li><b>Types:</b> Technical and Further Education institutions</li>
+            <li><b>Programs Offered:</b> Certificates, Diplomas, Advanced Diplomas</li>
+            <li><b>Duration:</b> 6 months to 2 years</li>
+            <li><b>Focus:</b> Practical skills and industry training</li>
+          </ul>
+
+          <h3>Academic Requirements</h3>
+          <ul>
+            <li><b>Certificate Programs:</b> High school completion or equivalent</li>
+            <li><b>Diploma Programs:</b> High school diploma with basic skills</li>
+            <li><b>Advanced Diplomas:</b> Previous relevant study or work experience</li>
+            <li><b>Prerequisites:</b> Basic literacy and numeracy skills</li>
+          </ul>
+
+          <h3>English Language Requirements</h3>
+          <ul>
+            <li><b>IELTS:</b> 5.5–6.0 overall (depending on program)</li>
+            <li><b>TOEFL:</b> 60–80 (depending on program)</li>
+            <li><b>PTE Academic:</b> 42–50 (depending on program)</li>
+            <li><b>Cambridge English:</b> 154–169 (depending on program)</li>
+          </ul>
+
+          <h3>Intake Periods</h3>
+          <ul>
+            <li><b>Semester 1:</b> February start</li>
+            <li><b>Semester 2:</b> July start</li>
+            <li><b>Rolling Intakes:</b> Some programs offer multiple start dates</li>
+            <li><b>Application Deadlines:</b> 3-6 months before intake</li>
+          </ul>
+
+          <h3>Tuition Fees</h3>
+          <ul>
+            <li><b>Certificate Programs:</b> AUD 8,000–15,000/year</li>
+            <li><b>Diploma Programs:</b> AUD 10,000–20,000/year</li>
+            <li><b>Advanced Diplomas:</b> AUD 12,000–25,000/year</li>
+            <li><b>Government Subsidies:</b> Available for eligible students</li>
+          </ul>
+
+          <h3>Popular Study Areas</h3>
+          <ul>
+            <li><b>Trades:</b> Plumbing, Electrical, Carpentry, Automotive</li>
+            <li><b>Business:</b> Business Administration, Accounting, Marketing</li>
+            <li><b>Healthcare:</b> Nursing, Aged Care, Disability Support</li>
+            <li><b>Technology:</b> IT, Web Development, Digital Media</li>
+          </ul>
         </section>
 
-        {/* Eligibility Section */}
         <section id="eligibility" className="guide-section">
           <h2>📋 Eligibility Criteria</h2>
           <p>Learn about academic requirements, English language tests, and visa application processes.</p>
-          
-          <div className="eligibility-cards">
-            <div className="eligibility-card">
-              <h4>Academic Requirements</h4>
-              <p><strong>Undergraduate:</strong> High school diploma with minimum GPA requirements</p>
-              <p><strong>Postgraduate:</strong> Bachelor's degree with minimum GPA (usually 3.0/4.0)</p>
-              <p><strong>Research Programs:</strong> Strong academic background and research proposal</p>
-              <p><strong>Vocational Courses:</strong> High school completion or equivalent</p>
-              <p><strong>Prerequisites:</strong> Subject-specific requirements for certain programs</p>
-              <p><strong>Portfolio:</strong> Required for creative arts and design programs</p>
-            </div>
-            
-            <div className="eligibility-card">
-              <h4>English Language Requirements</h4>
-              <p><strong>IELTS:</strong> 6.0–7.0 overall (depending on program)</p>
-              <p><strong>TOEFL:</strong> 80–100 (depending on program)</p>
-              <p><strong>PTE Academic:</strong> 50–65 (depending on program)</p>
-              <p><strong>Cambridge English:</strong> 169–185 (depending on program)</p>
-              <p><strong>OET:</strong> Accepted for healthcare programs</p>
-              <p><strong>Test Validity:</strong> Results must be within 2 years of application</p>
-            </div>
-            
-            <div className="eligibility-card">
-              <h4>Visa Requirements</h4>
-              <p><strong>Student Visa (Subclass 500):</strong> Required for all international students</p>
-              <p><strong>Financial Evidence:</strong> Proof of sufficient funds for tuition and living expenses</p>
-              <p><strong>Health Insurance:</strong> Overseas Student Health Cover (OSHC) mandatory</p>
-              <p><strong>Health Requirements:</strong> Medical examination may be required</p>
-              <p><strong>Character Requirements:</strong> Police clearance certificate</p>
-              <p><strong>Genuine Temporary Entrant:</strong> Must demonstrate intention to return home</p>
-            </div>
-            
-            <div className="eligibility-card">
-              <h4>Required Documents</h4>
-              <p><strong>Academic:</strong> Transcripts and certificates (translated and certified)</p>
-              <p><strong>Language:</strong> English language test results</p>
-              <p><strong>Personal:</strong> Statement of Purpose (SOP)</p>
-              <p><strong>References:</strong> Letters of Recommendation (2-3)</p>
-              <p><strong>Professional:</strong> CV/Resume</p>
-              <p><strong>Financial:</strong> Bank statements, sponsorship letters</p>
-              <p><strong>Travel:</strong> Passport copy (valid for 6+ months)</p>
-              <p><strong>Insurance:</strong> Health insurance certificate</p>
-              <p><strong>Creative:</strong> Portfolio (for creative programs)</p>
-              <p><strong>Research:</strong> Research proposal (for research programs)</p>
-            </div>
-          </div>
+
+          <h3>Academic Requirements</h3>
+          <ul>
+            <li><b>Undergraduate:</b> High school diploma with minimum GPA requirements</li>
+            <li><b>Postgraduate:</b> Bachelor's degree with minimum GPA (usually 3.0/4.0)</li>
+            <li><b>Research Programs:</b> Strong academic background and research proposal</li>
+            <li><b>Vocational Courses:</b> High school completion or equivalent</li>
+            <li><b>Prerequisites:</b> Subject-specific requirements for certain programs</li>
+            <li><b>Portfolio:</b> Required for creative arts and design programs</li>
+          </ul>
+
+          <h3>English Language Requirements</h3>
+          <ul>
+            <li><b>IELTS:</b> 6.0–7.0 overall (depending on program)</li>
+            <li><b>TOEFL:</b> 80–100 (depending on program)</li>
+            <li><b>PTE Academic:</b> 50–65 (depending on program)</li>
+            <li><b>Cambridge English:</b> 169–185 (depending on program)</li>
+            <li><b>OET:</b> Accepted for healthcare programs</li>
+            <li><b>Test Validity:</b> Results must be within 2 years of application</li>
+          </ul>
+
+          <h3>Visa Requirements</h3>
+          <ul>
+            <li><b>Student Visa (Subclass 500):</b> Required for all international students</li>
+            <li><b>Financial Evidence:</b> Proof of sufficient funds for tuition and living expenses</li>
+            <li><b>Health Insurance:</b> Overseas Student Health Cover (OSHC) mandatory</li>
+            <li><b>Health Requirements:</b> Medical examination may be required</li>
+            <li><b>Character Requirements:</b> Police clearance certificate</li>
+            <li><b>Genuine Temporary Entrant:</b> Must demonstrate intention to return home</li>
+          </ul>
+
+          <h3>Required Documents</h3>
+          <ul>
+            <li><b>Academic:</b> Transcripts and certificates (translated and certified)</li>
+            <li><b>Language:</b> English language test results</li>
+            <li><b>Personal:</b> Statement of Purpose (SOP)</li>
+            <li><b>References:</b> Letters of Recommendation (2-3)</li>
+            <li><b>Professional:</b> CV/Resume</li>
+            <li><b>Financial:</b> Bank statements, sponsorship letters</li>
+            <li><b>Travel:</b> Passport copy (valid for 6+ months)</li>
+            <li><b>Insurance:</b> Health insurance certificate</li>
+            <li><b>Creative:</b> Portfolio (for creative programs)</li>
+            <li><b>Research:</b> Research proposal (for research programs)</li>
+          </ul>
         </section>
 
         {/* Useful Resources Section - Moved to Bottom */}

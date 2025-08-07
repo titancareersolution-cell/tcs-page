@@ -20,6 +20,9 @@ const icons = {
   cta: (
     <svg width="22" height="22" fill="none" stroke="#2196F3" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 10.5V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v4.5"/><path d="M3 10.5V18a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7.5"/><path d="M16 3v4M8 3v4"/></svg>
   ),
+  website: (
+    <svg width="20" height="20" fill="none" stroke="#2196F3" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20"/></svg>
+  ),
 };
 
 const Contact = () => (
@@ -52,7 +55,7 @@ const Contact = () => (
             <div className="contact-info-icon">{icons.phone}</div>
             <div className="contact-info-content">
               <h3>Phone</h3>
-              <a href="tel:+9779800000000">+977 9800000000</a>
+              <a href="tel:+9779851334607">+977 9851334607</a>
             </div>
           </div>
           
@@ -60,7 +63,7 @@ const Contact = () => (
             <div className="contact-info-icon">{icons.email}</div>
             <div className="contact-info-content">
               <h3>Email</h3>
-              <a href="mailto:info@titancareersolutions.com">info@titancareersolutions.com</a>
+              <a href="mailto:info@tcs.edu.np">info@tcs.edu.np</a>
             </div>
           </div>
           
@@ -79,8 +82,17 @@ const Contact = () => (
               <a href="https://www.instagram.com/titancareersolutions/" target="_blank" rel="noopener noreferrer">instagram.com/titancareersolutions</a>
             </div>
           </div>
+
+          <div className="contact-info-item">
+            <div className="contact-info-icon">{icons.website}</div>
+            <div className="contact-info-content">
+              <h3>Website</h3>
+              <a href="https://www.tcs.edu.np/" target="_blank" rel="noopener noreferrer">tcs.edu.np</a>
+            </div>
+          </div>
         </div>
       </section>
+      
 
       <section className="contact-section">
         <h2>Ready to Take the Next Step?</h2>

@@ -83,22 +83,118 @@
   padding: 2rem;
 }
 
+/* Destination Header with Quick Links */
+.destination-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: nowrap;
+}
+
 .destination-title-link {
   text-decoration: none;
   display: block;
+  flex-shrink: 0;
 }
 
 .destination-title {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: #e67e22;
-  margin-bottom: 1rem;
+  margin: 0;
   transition: color 0.3s ease;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .destination-title-link:hover .destination-title {
   color: #1976d2;
+}
+
+/* Quick Links Styles */
+.quick-links-container {
+  position: relative;
+  flex-shrink: 0;
+  margin-left: auto;
+  display: none;
+}
+
+.quick-links-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.quick-links-toggle:hover {
+  background: #1565c0;
+  transform: translateY(-2px);
+}
+
+.quick-links-toggle.open {
+  background: #1565c0;
+}
+
+.dropdown-arrow {
+  transition: transform 0.3s ease;
+  width: 14px;
+  height: 14px;
+}
+
+.dropdown-arrow.rotated {
+  transform: rotate(180deg);
+}
+
+.quick-links-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  min-width: 180px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  z-index: 1000;
+  margin-top: 0.5rem;
+}
+
+.quick-links-dropdown.open {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.quick-links-link {
+  display: block;
+  padding: 0.6rem 1rem;
+  color: #333;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-bottom: 1px solid #f0f0f0;
+  transition: all 0.3s ease;
+}
+
+.quick-links-link:hover {
+  background: #f8f9fa;
+  color: #1976d2;
+  padding-left: 1.5rem;
+}
+
+.quick-links-link:last-child {
+  border-bottom: none;
 }
 
 .destination-description {
@@ -111,96 +207,55 @@
 .destination-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.8rem;
+  gap: 0.5rem;
 }
 
 .destination-link {
   display: inline-block;
-  padding: 0.6rem 1.2rem;
-  background: transparent;
-  color: #e67e22;
+  padding: 0.4rem 0.8rem;
+  background: #f8f9fa;
+  color: #1976d2;
   text-decoration: none;
-  border: 2px solid #e67e22;
-  border-radius: 25px;
-  font-size: 0.9rem;
-  font-weight: 600;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
   transition: all 0.3s ease;
-  cursor: pointer;
+  border: 1px solid #e9ecef;
 }
 
 .destination-link:hover {
   background: #1976d2;
   color: white;
-  border-color: #1976d2;
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
 }
 
-/* Responsive Design */
-@media (max-width: 1200px) {
-  .study-destinations-grid {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-  }
-}
-
-@media (max-width: 900px) {
-  .study-destinations-section {
-    padding: 3rem 1.5rem;
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .destination-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
   }
   
-  .study-destinations-header h2 {
-    font-size: 2.5rem;
-  }
-  
-  .study-destinations-header p {
-    font-size: 1.1rem;
-  }
-  
-  .study-destinations-grid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.2rem;
-  }
-  
-  .destination-content {
-    padding: 1.5rem;
-  }
-  
-  .destination-title {
-    font-size: 1.6rem;
-  }
-}
-
-@media (max-width: 600px) {
-  .study-destinations-section {
-    padding: 2rem 1rem;
-  }
-  
-  .study-destinations-header h2 {
-    font-size: 2rem;
-  }
-  
-  .study-destinations-header p {
-    font-size: 1rem;
-  }
-  
-  .study-destinations-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  
-  .destination-content {
-    padding: 1.2rem;
-  }
-  
-  .destination-title {
-    font-size: 1.4rem;
+  .quick-links-container {
+    display: block;
+    align-self: center;
+    margin-left: 0;
   }
   
   .destination-links {
-    flex-direction: column;
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .quick-links-container {
+    display: none;
   }
   
-  .destination-link {
-    text-align: center;
+  .destination-links {
+    display: flex;
   }
 } 

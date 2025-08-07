@@ -10,12 +10,9 @@
 
 .navbar {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
   background: #ffffff;
   box-shadow: 0 4px 16px rgba(230,126,34,0.10), 0 1.5px 0 #e67e22;
-  padding: 0rem 1.2rem 0 1.2rem;
-  min-height: 60px;
   position: fixed;
   top: 0;
   left: 0;
@@ -38,15 +35,59 @@
   backdrop-filter: blur(20px);
 }
 
+/* Top Contact Bar */
+.navbar-contact-top {
+  background: #1976d2;
+  color: white;
+  padding: 0.5rem 1.2rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.contact-info {
+  display: flex;
+  gap: 2rem;
+  font-size: 0.9rem;
+}
+
+.contact-info span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contact-info strong {
+  color: #ffffff;
+}
+
+/* Main Navigation Bar */
+.navbar-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0rem 1.2rem 0 1.2rem;
+  min-height: 60px;
+  gap: 0;
+  width: 100%;
+}
+
+@media (max-width: 1400px) {
+  .navbar-main {
+    gap: 20rem;
+  }
+}
+
 .navbar-logo {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 50%;
+  flex-shrink: 0;
 }
 
 .navbar-logo img {
-  height: 120px;
+  height: 80px;
   margin-right: 0.3rem;
 }
 
@@ -57,6 +98,36 @@
   margin: 0;
   margin-bottom: 10px;
   padding: 0;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.navbar-appointment {
+  margin-left: 1.5rem;
+  margin-right: 0;
+  display: flex;
+  align-items: center;
+}
+
+.book-appointment-btn {
+  background: #1976d2;
+  color: white !important;
+  padding: 0.8rem 1.5rem !important;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600 !important;
+  font-size: 1.1rem !important;
+  transition: all 0.3s ease;
+  border: 2px solid #1976d2;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.book-appointment-btn:hover {
+  background: #1565c0 !important;
+  border-color: #1565c0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
 }
 
 .navbar-links li {
@@ -150,25 +221,37 @@
 }
 
 @media (max-width: 1200px) {
+  .navbar-main {
+    justify-content: space-between;
+    gap: 0;
+    width: 100%;
+  }
+  .navbar-appointment {
+    margin-left: 0.5rem;
+    margin-right: 0;
+  }
   .navbar-links {
     position: fixed;
-    top: 70px;
-    left: 0;
-    width: 100vw;
+    top: 130px;
+    right: 0;
+    left: auto;
+    width: 80vw;
+    max-width: 400px;
     background: #fff;
     flex-direction: column;
     align-items: flex-start;
     gap: 0;
     padding: 1.5rem 2rem 2rem 2rem;
     box-shadow: 0 8px 32px rgba(230,126,34,0.10);
-    transform: translateY(-120%);
+    transform: translateX(120%);
     opacity: 0;
     pointer-events: none;
     transition: all 0.3s cubic-bezier(.4,2,.6,1);
     z-index: 1050;
+    border-radius: 0 0 0 16px;
   }
   .navbar-links.open {
-    transform: translateY(0);
+    transform: translateX(0);
     opacity: 1;
     pointer-events: auto;
   }
@@ -182,6 +265,24 @@
     font-size: 1.2rem;
     padding: 1rem 0.5rem;
     border-radius: 6px;
+  }
+  .navbar-appointment-mobile .book-appointment-btn {
+    width: 100%;
+    display: block;
+    margin-top: 1rem;
+    background: #1976d2;
+    color: #fff !important;
+    text-align: center;
+    font-size: 1.1rem !important;
+    padding: 1rem 0 !important;
+    border-radius: 8px;
+    font-weight: 700;
+    border: 2px solid #1976d2;
+    transition: all 0.3s;
+  }
+  .navbar-appointment-mobile .book-appointment-btn:hover {
+    background: #1565c0 !important;
+    border-color: #1565c0;
   }
   .dropdown-menu {
     position: static;
@@ -204,13 +305,57 @@
 }
 
 @media (max-width: 600px) {
+  body {
+    padding-top: 110px;
+  }
   .navbar {
+    min-height: 110px;
+  }
+  .navbar-contact-top {
     padding: 0.5rem 0.5rem;
+    font-size: 0.9rem;
+  }
+  .contact-info {
+    gap: 0.3rem;
+    font-size: 0.8rem;
+    flex-direction: column;
+    align-items: flex-end;
+    word-break: break-word;
+    white-space: normal;
+    width: 100%;
+  }
+  .contact-info span {
+    word-break: break-word;
+    white-space: normal;
+    width: 100%;
+    display: block;
+    text-align: right;
+  }
+  .navbar-main {
+    padding: 0.5rem 0.5rem;
+    min-height: 56px;
+    flex-wrap: nowrap;
+    width: 100%;
   }
   .navbar-logo img {
-    height: 44px;
+    height: 40px;
   }
-  .navbar-title {
-    font-size: 1.2rem;
+  .navbar-appointment {
+    margin-left: 0.5rem;
+    margin-right: 0;
+  }
+  .book-appointment-btn {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.9rem !important;
+  }
+  .navbar-hamburger {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    z-index: 1101;
+  }
+  .navbar-links {
+    top: 110px;
+    flex-wrap: wrap;
+    width: auto;
   }
 } 

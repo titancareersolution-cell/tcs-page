@@ -6,58 +6,82 @@ import './Navbar.css';
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1200);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       setIsScrolled(scrollTop > 50);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 1200);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const handleMenuToggle = () => setMenuOpen((open) => !open);
   const handleLinkClick = () => setMenuOpen(false);
+  const handleScrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setMenuOpen(false);
+  };
 
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
-      <div className="navbar-logo">
-      <Link to="/" onClick={handleLinkClick}><img src={logo} alt="Titan Career Solutions Logo"  /></Link>
-        
+      {/* Top Contact Bar */}
+      <div className="navbar-contact-top">
+        <div className="contact-info">
+          <span><strong>Phone:</strong> (+977) 015919707, 9851334607</span>
+          <span><strong>Email:</strong> info@tcs.edu.np</span>
+        </div>
       </div>
-      <button className={`navbar-hamburger${menuOpen ? ' open' : ''}`} onClick={handleMenuToggle} aria-label="Toggle menu">
-        <span className="bar"></span>
-        <span className="bar"></span>
-        <span className="bar"></span>
-      </button>
-      <ul className={`navbar-links${menuOpen ? ' open' : ''}`}>
-        <li><Link to="/" onClick={handleLinkClick}>Home</Link></li>
-        <li><Link to="/services" onClick={handleLinkClick}>Services</Link></li>
-        <li className="dropdown">
-          <span>Destinations</span>
-          <ul className="dropdown-menu">
-            <li><Link to="/study-guide/australia" onClick={handleLinkClick}>Australia</Link></li>
-            <li><Link to="/study-guide/japan" onClick={handleLinkClick}>Japan</Link></li>
-            <li><Link to="/study-guide/uk" onClick={handleLinkClick}>UK</Link></li>
-            <li><Link to="/study-guide/new-zealand" onClick={handleLinkClick}>New Zealand</Link></li>
-            <li><Link to="/study-guide/united-states" onClick={handleLinkClick}>United States</Link></li>
-            <li><Link to="/study-guide/canada" onClick={handleLinkClick}>Canada</Link></li>
-          </ul>
-        </li>
-        <li><Link to="/success-stories" onClick={handleLinkClick}>Success Stories</Link></li>
-        <li><Link to="/about" onClick={handleLinkClick}>About Us</Link></li>
-        <li><Link to="/contact" onClick={handleLinkClick}>Contact Us</Link></li>
-        {/* <li><Link to="/blog" onClick={handleLinkClick}>Blog</Link></li> */}
-        {/* <li className="dropdown">
-          <span>Apply Now</span>
-          <ul className="dropdown-menu">
-            <li><Link to="/apply" onClick={handleLinkClick}>Apply Now</Link></li>
-            <li><Link to="/consultation" onClick={handleLinkClick}>Book a Consultation</Link></li>
-          </ul>
-        </li> */}
-        {/* <li><Link to="/guides" onClick={handleLinkClick}>Application Guides</Link></li> */}
-      </ul>
+      {/* Main Navigation Bar */}
+      <div className="navbar-main">
+        <div className="navbar-logo">
+          <Link to="/" onClick={handleScrollToTop}><img src={logo} alt="Titan Career Solutions Logo"  /></Link>
+        </div>
+        <ul className={`navbar-links${menuOpen ? ' open' : ''}`}>
+          <li><Link to="/" onClick={handleScrollToTop}>Home</Link></li>
+          <li><Link to="/services" onClick={handleScrollToTop}>Services</Link></li>
+          <li className="dropdown">
+            <span onClick={handleScrollToTop}>Destinations</span>
+            <ul className="dropdown-menu">
+              <li><Link to="/study-guide/australia" onClick={handleScrollToTop}>Australia</Link></li>
+              <li><Link to="/study-guide/japan" onClick={handleScrollToTop}>Japan</Link></li>
+              <li><Link to="/study-guide/uk" onClick={handleScrollToTop}>UK</Link></li>
+              <li><Link to="/study-guide/new-zealand" onClick={handleScrollToTop}>New Zealand</Link></li>
+              <li><Link to="/study-guide/united-states" onClick={handleScrollToTop}>United States</Link></li>
+              <li><Link to="/study-guide/canada" onClick={handleScrollToTop}>Canada</Link></li>
+            </ul>
+          </li>
+          <li><Link to="/success-stories" onClick={handleScrollToTop}>Success Stories</Link></li>
+          <li><Link to="/about" onClick={handleScrollToTop}>About Us</Link></li>
+          <li><Link to="/contact" onClick={handleScrollToTop}>Contact Us</Link></li>
+          {isMobile && (
+            <li className="navbar-appointment-mobile">
+              <a href="/#contact-form" className="book-appointment-btn" onClick={handleLinkClick}>
+                Book Appointment
+              </a>
+            </li>
+          )}
+        </ul>
+        {!isMobile && (
+          <div className="navbar-appointment">
+            <a href="/#contact-form" className="book-appointment-btn" onClick={handleLinkClick}>
+              Book Appointment
+            </a>
+          </div>
+        )}
+        <button className={`navbar-hamburger${menuOpen ? ' open' : ''}`} onClick={handleMenuToggle} aria-label="Toggle menu">
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
+        </button>
+      </div>
     </nav>
   );
 };
