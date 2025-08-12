@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './StudyDestinations.css';
 
@@ -51,9 +51,16 @@ const StudyDestinations = () => {
       description: 'Home to some of the world\'s oldest universities with prestigious academic traditions and innovative research opportunities.',
       path: '/study/uk',
       links: [
-        { text: 'Study Guide', href: '/study-guide/uk' },
-        { text: 'Universities', href: '/study-guide/uk#universities' },
-        { text: 'Colleges', href: '/study-guide/uk#colleges' },
+        { text: 'Why Choose the UK', href: '/study-guide/uk#why-choose' },
+        { text: 'Education System', href: '/study-guide/uk#education-system' },
+        { text: 'Top Cities', href: '/study-guide/uk#cities' },
+        { text: 'Cost of Study', href: '/study-guide/uk#cost' },
+        { text: 'Work While Studying', href: '/study-guide/uk#work' },
+        { text: 'Scholarships', href: '/study-guide/uk#scholarships' },
+        { text: 'Step-by-Step Journey', href: '/study-guide/uk#application' },
+        { text: 'Post-Study Work & PR', href: '/study-guide/uk#pr' },
+        { text: 'Life in the UK', href: '/study-guide/uk#life' },
+        { text: 'How TCS Helps', href: '/study-guide/uk#get-started' },
         { text: 'Eligibility', href: '/study-guide/uk#eligibility' },
         { text: 'Resources', href: '/study-guide/uk#resources' }
       ]
@@ -97,20 +104,41 @@ const StudyDestinations = () => {
         { text: 'Universities', href: '/study-guide/united-states#universities' },
         { text: 'Colleges', href: '/study-guide/united-states#colleges' },
         { text: 'Eligibility', href: '/study-guide/united-states#eligibility' },
-        { text: 'Resources', href: '/study-guide/united-states#resources' }
+        { text: 'Resources', href: '/study-guide/united-states#resources' },
       ]
     }
   ];
 
   const DestinationCard = ({ destination }) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const dropdownRef = useRef(null);
 
     const toggleDropdown = () => {
       setIsDropdownOpen(!isDropdownOpen);
     };
 
+    // Close dropdown when clicking outside
+    useEffect(() => {
+      const handleClickOutside = (event) => {
+        if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+          setIsDropdownOpen(false);
+        }
+      };
+
+      if (isDropdownOpen) {
+        document.addEventListener('mousedown', handleClickOutside);
+      }
+
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }, [isDropdownOpen]);
+
+    // Check if this destination should have lower z-index
+    const isLowerZIndex = ['japan', 'new-zealand', 'united-states'].includes(destination.id);
+
     return (
-      <div className="destination-card">
+      <div className={`destination-card ${isLowerZIndex ? 'lower-z-index' : ''}`}>
         <div className="destination-image-container">
           <img src={destination.image} alt={destination.title} className="destination-image" />
         </div>
@@ -120,11 +148,12 @@ const StudyDestinations = () => {
               <h3 className="destination-title">{destination.title}</h3>
             </Link>
             
-            {/* Quick Links Dropdown */}
-            <div className="quick-links-container">
+            {/* Quick Links Dropdown - Always Visible */}
+            <div className="quick-links-container" ref={dropdownRef}>
               <button 
                 className={`quick-links-toggle ${isDropdownOpen ? 'open' : ''}`}
                 onClick={toggleDropdown}
+                aria-label="Toggle quick links menu"
               >
                 <span>Quick Links</span>
                 <svg 
@@ -156,13 +185,6 @@ const StudyDestinations = () => {
           </div>
           
           <p className="destination-description">{destination.description}</p>
-          <div className="destination-links">
-            {destination.links.map((link, index) => (
-              <Link key={index} to={link.href} className="destination-link">
-                {link.text}
-              </Link>
-            ))}
-          </div>
         </div>
       </div>
     );
@@ -171,9 +193,10 @@ const StudyDestinations = () => {
   return (
     <div className="study-destinations-section">
       <div className="study-destinations-header">
-        <h2>Explore Global Study Opportunities With Top <span>Education Consultancy in Nepal</span></h2>
+        <h2>Welcome to Titan Career Solutions  
+        <span> – Nepal's trusted abroad education consultancy, where your international journey begins with clarity, confidence, and complete support.</span></h2>
         <p>
-          We provide comprehensive guidance for students aspiring to study abroad. Our expert consultants help you navigate through the complex process of international education, from course selection to visa applications.
+        Whether you're planning to study in Australia, Canada, USA, UK, Japan, or New Zealand, we're here to make your global education dream a reality. With over a decade of experience, we've helped thousands of students secure admissions, scholarships, and visas to top institutions around the world.
         </p>
         <p className="subtitle">Every country has a unique path. Let's find yours.</p>
       </div>

@@ -9,6 +9,7 @@ const destinations = [
   'UK',
   'New Zealand',
   'United States',
+  'Canada'
 ];
 
 const icons = {
@@ -49,9 +50,9 @@ const ContactForm = () => {
     <div className="contact-form-flex" id="contact-form">
       <div className="contact-form-section left large-text">
         <h3>Get in <span>Touch</span></h3>
-        <form className="contact-form" action="https://formsubmit.co/69a269a783ffc36c8efbbba1ff4b37b4" method="POST">
+        <form className="contact-form" action="https://formsubmit.co/4c1fd812ac5d08e61a0bc6c1fda628bf" method="POST">
           <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_next" value="http://localhost:5173?form=success" />
+          <input type="hidden" name="_next" value="http://tcs.edu.np?form=success" />
           <div className="input-icon-group">
             <span className="input-icon">{icons.user}</span>
             <input type="text" name="name" placeholder="Name" required />
@@ -66,7 +67,7 @@ const ContactForm = () => {
           </div>
           <div className="input-icon-group">
             <span className="input-icon">{icons.destination}</span>
-            <select name="destination" required>
+            <select className='select-destination' name="destination" required>
               <option value="">Preferred Study Destination</option>
               {destinations.map((d) => (
                 <option key={d} value={d}>{d}</option>

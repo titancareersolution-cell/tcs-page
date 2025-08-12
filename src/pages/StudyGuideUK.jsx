@@ -4,6 +4,7 @@ import './StudyGuide.css';
 
 const StudyGuideUK = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,426 +36,246 @@ const StudyGuideUK = () => {
     });
   };
 
+  const toggleMenu = () => setIsMenuOpen(open => !open);
+  const closeMenu = () => setIsMenuOpen(false);
+
+  const navigationItems = [
+    { href: '#why-choose', label: 'Why Choose the UK' },
+    { href: '#education-system', label: 'Education System' },
+    { href: '#cities', label: 'Top Cities' },
+    { href: '#cost', label: 'Cost of Study' },
+    { href: '#work', label: 'Work While Studying' },
+    { href: '#scholarships', label: 'Scholarships' },
+    { href: '#application', label: 'Step-by-Step Journey' },
+    { href: '#pr', label: 'Post-Study Work & PR' },
+    { href: '#life', label: 'Life in the UK' },
+    { href: '#get-started', label: 'How TCS Helps' },
+    { href: '#eligibility', label: 'Eligibility' },
+    { href: '#resources', label: 'Resources' }
+  ];
+
   return (
-    <div className="study-guide-page">
+    <div className="study-guide-page uk-flag">
       <div className="study-guide-header">
-        <h1>Study Guide - <span>United Kingdom</span></h1>
-        <p className="subtitle">Your Gateway to World-Class Education, Career Growth & a New Life Abroad</p>
+        <h1>Study in the UK – The Complete Guide for Nepalese Students</h1>
+        <p className="subtitle">Your Pathway to World-Class Education, Career Growth & a Bright Future Abroad</p>
+
+        {/* Quick Navigation (Hamburger style like Australia) */}
+        <div className="guide-navigation">
+          <div className="nav-container">
+            <button 
+              className={`hamburger-menu ${isMenuOpen ? 'active' : ''}`}
+              onClick={toggleMenu}
+              aria-label="Toggle navigation menu"
+            >
+              <span>Quick Navigation</span>
+              <span className="hamburger-line"></span>
+            </button>
+
+            <div className={`nav-menu ${isMenuOpen ? 'open' : ''}`}>
+              <div className="nav-menu-header">
+                <h3>Quick Navigation</h3>
+                <button 
+                  className="close-menu-btn"
+                  onClick={closeMenu}
+                  aria-label="Close menu"
+                >
+                  ×
+                </button>
+              </div>
+              <div className="nav-menu-items">
+                {navigationItems.map((item, index) => (
+                  <a 
+                    key={index}
+                    href={item.href} 
+                    className="nav-menu-item"
+                    onClick={closeMenu}
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* Navigation Buttons */}
-      <div className="guide-navigation">
-        <div className="nav-buttons">
-          <a href="#universities" className="nav-btn">Universities</a>
-          <a href="#colleges" className="nav-btn">Colleges</a>
-          <a href="#eligibility" className="nav-btn">Eligibility</a>
-          <a href="#resources" className="nav-btn">Resources</a>
+      {/* UK Image Section (reusing Australia image classes for styling consistency) */}
+      <div className="australia-image-section">
+        <div className="australia-image-container">
+          <img 
+            src="https://images.unsplash.com/photo-1562767332-ce0b1e2426bb?q=80&w=1470&auto=format&fit=crop" 
+            alt="United Kingdom Study Destination" 
+            className="australia-image" 
+          />
         </div>
       </div>
 
       <div className="study-guide-content">
-        <section className="guide-section">
-          <h2>Welcome to the United Kingdom</h2>
-          <p>At Titan Career Solutions, we believe studying in the UK is more than just earning a degree - it's a life-changing experience. Imagine learning in some of the world's oldest and most prestigious universities, living in a country with rich history and culture, gaining international work experience, and even having the chance to settle down permanently.</p>
-          <p>The UK isn't just about tea and Big Ben. It's one of the top choices for Nepalese and international students who want a future filled with opportunities, recognition, and success.</p>
-        </section>
-
-        <section className="guide-section">
-          <h2>Why Choose the UK for Your Studies?</h2>
-          <p>Here's why thousands of our students have chosen the UK—and why it might be the right choice for you too:</p>
+        {/* 1. Why Nepalese Students Choose the UK */}
+        <section id="why-choose" className="guide-section">
+          <h2>Why Nepalese Students Choose the UK</h2>
           <ul className="benefits-list">
-            <li><strong>🏆 Top-Ranked Universities:</strong> 4 of the world's top 10 universities are in the UK</li>
-            <li><strong>🛡️ Safe & Welcoming Environment:</strong> Over 500,000 international students feel at home here</li>
-            <li><strong>📋 Student-Friendly Policies:</strong> Policies supporting international students' interests</li>
-            <li><strong>💼 Part-Time Work While You Study:</strong> Gain experience and support your living expenses</li>
-            <li><strong>⏰ Post-Study Stay Options (2 years):</strong> A valuable head start to your international career</li>
-            <li><strong>🏠 PR Pathways & Skilled Migration:</strong> A real chance to call the UK your permanent home</li>
-            <li><strong>💰 Shorter Programs & Scholarships:</strong> 3-year degrees and generous funding opportunities</li>
+            <li><strong>Top-Ranked Universities</strong> – Four of the world’s top 10 universities are in the UK (<a href="https://www.topuniversities.com/university-rankings/world-university-rankings/2025" target="_blank" rel="noopener noreferrer">QS 2025</a>).</li>
+            <li><strong>Globally Recognised Degrees</strong> – UK qualifications are respected by employers worldwide.</li>
+            <li><strong>Shorter Duration</strong> – 3-year bachelor’s and 1-year master’s save time and living costs.</li>
+            <li><strong>Post-Study Work Visa</strong> – Graduate Route allows 2–3 years stay after graduation (<a href="https://www.gov.uk/graduate-visa" target="_blank" rel="noopener noreferrer">Official site</a>).</li>
+            <li><strong>Clear PR Pathways</strong> – Skilled Worker Visa options leading to permanent residency (<a href="https://www.gov.uk/skilled-worker-visa" target="_blank" rel="noopener noreferrer">Official site</a>).</li>
+            <li><strong>Multicultural & Safe Society</strong> – Over 600,000 international students call the UK home.</li>
+            <li><strong>English Language Immersion</strong> – Improve language and communication skills in an English-speaking environment.</li>
           </ul>
         </section>
 
-        <section className="guide-section">
-          <h2>Understanding the UK's Education System</h2>
-          <p>The UK's education system is flexible, modern, and career-oriented. Whether you're finishing high school, completing your bachelor's, or switching careers, there's a pathway for you.</p>
+        {/* 2. Understanding the UK Education System */}
+        <section id="education-system" className="guide-section">
+          <h2>Understanding the UK Education System</h2>
+          <p>The UK offers flexible, research-driven, and industry-focused education across multiple levels:</p>
           <ul className="education-list">
-            <li><strong>🎓 Universities:</strong> Undergraduate, postgraduate, and research degrees under the UK Qualifications Framework</li>
-            <li><strong>🔧 Colleges & Further Education:</strong> Short, skill-based programs in trades and technical fields with strong job demand</li>
-            <li><strong>📚 Pathway & English Programs:</strong> Great for students needing academic or language preparation</li>
+            <li><strong>Undergraduate (Bachelor’s)</strong> – 3 years (4 in Scotland)</li>
+            <li><strong>Postgraduate (Master’s, MBA)</strong> – Usually 1 year</li>
+            <li><strong>Doctorate (PhD)</strong> – 3–4 years</li>
+            <li><strong>Foundation & Pathway Programs</strong> – 6–12 months of academic/English preparation</li>
+            <li><strong>Vocational Qualifications (HNC/HND)</strong> – 1–2 years of industry-specific training</li>
           </ul>
-          <p><strong>Most courses include internships and industry placements—so you get real-world experience before graduating.</strong></p>
+          <h3>Applications</h3>
+          <ul>
+            <li><a href="https://www.ucas.com" target="_blank" rel="noopener noreferrer">UCAS</a> for most bachelor’s applications.</li>
+            <li>Direct university applications for master’s and PhD.</li>
+          </ul>
         </section>
 
-        <section className="guide-section">
-          <h2>Top Cities for International Students</h2>
-          <p>Each city has something special for students:</p>
-          
+        {/* 3. Top Student Cities & Their Advantages */}
+        <section id="cities" className="guide-section">
+          <h2>Top Student Cities & Their Advantages</h2>
           <ul className="cities-list">
-            <li><strong>🏙️ London – UK's Financial Powerhouse:</strong>
-              <ul>
-                <li>Largest and most iconic city in the UK</li>
-                <li>Financial and business hub with excellent job opportunities</li>
-                <li>Famous landmarks like Big Ben and Buckingham Palace</li>
-                <li>World-class universities like UCL, LSE, and Imperial College</li>
-                <li>Fast-paced, global, and full of energy</li>
+            <li><strong>London</strong> – Networking, internships, cultural life, career opportunities. Cons: Highest living costs.</li>
+            <li><strong>Manchester</strong> – Affordable, large student community, strong in media & tech.</li>
+            <li><strong>Birmingham</strong> – Central, diverse industries, strong transport links.</li>
+            <li><strong>Scotland (Edinburgh & Glasgow)</strong> – Academic excellence, scenic, lower living costs in Glasgow.</li>
               </ul>
-            </li>
-            
-            <li><strong>🎨 Manchester – Industrial Heritage & Innovation:</strong>
-              <ul>
-                <li>Often ranked as one of the UK's most livable cities</li>
-                <li>Creative arts scene, music culture, and diverse population</li>
-                <li>Top universities like University of Manchester and Manchester Metropolitan</li>
-                <li>Rich cultural and academic experience with festivals and sports events</li>
-              </ul>
-            </li>
-            
-            <li><strong>🏛️ Edinburgh – Historic Capital & Student Paradise:</strong>
-              <ul>
-                <li>Capital of Scotland with medieval charm and modern opportunities</li>
-                <li>Lower living costs compared to London</li>
-                <li>Growing sectors in finance, technology, and tourism</li>
-                <li>Institutions like University of Edinburgh and Heriot-Watt University</li>
-                <li>Famous Edinburgh Festival and rich cultural heritage</li>
-              </ul>
-            </li>
-            
-            <li><strong>🎓 Oxford – Academic Excellence & Tradition:</strong>
-              <ul>
-                <li>Home to the world's oldest university</li>
-                <li>Historic architecture and academic prestige</li>
-                <li>University of Oxford and Oxford Brookes University</li>
-                <li>Smaller, more intimate student experience</li>
-                <li>Rich academic and cultural heritage</li>
-              </ul>
-            </li>
-            
-            <li><strong>🎭 Cambridge – Innovation & Learning:</strong>
-              <ul>
-                <li>Historic university town with modern innovation</li>
-                <li>University of Cambridge and Anglia Ruskin University</li>
-                <li>Growing tech sector and research opportunities</li>
-                <li>Beautiful architecture and river setting</li>
-                <li>Close-knit academic community</li>
-              </ul>
-            </li>
+          <h3>City Guides</h3>
+          <ul>
+            <li><a href="https://www.visitlondon.com" target="_blank" rel="noopener noreferrer">Visit London</a></li>
+            <li><a href="https://www.visitmanchester.com" target="_blank" rel="noopener noreferrer">Visit Manchester</a></li>
+            <li><a href="https://visitbirmingham.com" target="_blank" rel="noopener noreferrer">Visit Birmingham</a></li>
+            <li><a href="https://www.visitscotland.com" target="_blank" rel="noopener noreferrer">Visit Scotland</a></li>
           </ul>
         </section>
 
-        <section className="guide-section">
+        {/* 4. Cost of Studying in the UK */}
+        <section id="cost" className="guide-section">
           <h2>Cost of Studying in the UK</h2>
-          <p>We'll help you plan your budget wisely.</p>
-          
+          <h3>Tuition Fees (per year)</h3>
           <ul className="cost-list">
-            <li><strong>Tuition Fees (Annual Averages):</strong>
-              <ul>
-                <li>Undergraduate: £10,000–38,000</li>
-                <li>Postgraduate: £12,000–45,000</li>
-                <li>College Programs: £6,000–15,000</li>
+            <li><strong>Bachelor’s:</strong> £10,000–£25,000</li>
+            <li><strong>Master’s:</strong> £12,000–£35,000</li>
+            <li><strong>MBA/Medical:</strong> £25,000–£50,000</li>
               </ul>
-            </li>
-            
-            <li><strong>Living Expenses (Monthly Averages):</strong>
+          <h3>Living Costs (per month) – UKVI minimum requirements</h3>
               <ul>
-                <li>Accommodation: £500–1,500</li>
-                <li>Food: £200–400</li>
-                <li>Other (transport, utilities): £100–300</li>
+            <li><strong>London:</strong> £1,334 (<a href="https://www.gov.uk/student-visa/money" target="_blank" rel="noopener noreferrer">Official source</a>)</li>
+            <li><strong>Outside London:</strong> £1,023</li>
               </ul>
-            </li>
-            
-            <li><strong>Visa Requirement:</strong>
+          <h3>Other Expenses</h3>
               <ul>
-                <li>You must show proof of £1,334/month in living expenses for your visa</li>
-              </ul>
-            </li>
+            <li><strong>Visa fee:</strong> £490 (<a href="https://www.gov.uk/student-visa" target="_blank" rel="noopener noreferrer">Official site</a>)</li>
+            <li><strong>Immigration Health Surcharge (IHS):</strong> £776/year</li>
           </ul>
         </section>
 
-        <section className="guide-section">
-          <h2>Work While You Study</h2>
-          <p>The UK allows international students to work up to 20 hours per week during academic sessions and unlimited hours during official breaks. This helps students support their living expenses, gain work experience, and improve soft skills.</p>
-          
+        {/* 5. Working While Studying */}
+        <section id="work" className="guide-section">
+          <h2>Working While Studying</h2>
           <ul className="work-list">
-            <li><strong>Common Part-Time Job Areas for Students:</strong>
-              <ul>
-                <li>🍽️ Cafés & Restaurants: Waitstaff, baristas, kitchen assistants, dishwashers</li>
-                <li>🛍️ Retail Stores: Cashiers, sales assistants, stockroom helpers</li>
-                <li>🚚 Delivery Services: Food or parcel delivery via platforms like Deliveroo, Uber Eats</li>
-                <li>📚 Tutoring & Academic Support: Peer tutoring, online tutoring, assignment help</li>
-                <li>🛒 Supermarkets: Shelf stacking, checkout, customer service</li>
-                <li>📞 Call Centers & Customer Service: Phone support, data entry, technical assistance</li>
-                <li>📦 Warehouse & Packaging Jobs: Order picking, labeling, packing</li>
-                <li>🧹 Cleaning & Housekeeping: Offices, hotels, homes, and commercial cleaning</li>
-                <li>👴 Aged Care & Disability Support: Support workers (especially for students in healthcare)</li>
-                <li>🎪 Event Staffing: Ushers, ticketing, set-up crew for concerts, conferences, and festivals</li>
-              </ul>
-            </li>
-            <li><strong>Average pay:</strong> £8–12/hour</li>
-            <li>We'll guide you on Resume and interview preparation and job search strategies after your visa approval!</li>
+            <li><strong>Work Limit:</strong> 20 hrs/week during term, full-time in vacations.</li>
+            <li><strong>Popular Jobs:</strong> Retail, cafes, delivery, events, campus assistant roles.</li>
+            <li><strong>Average Pay:</strong> £8–£12/hour (<a href="https://www.gov.uk/national-minimum-wage-rates" target="_blank" rel="noopener noreferrer">Gov.uk</a>)</li>
+            <li><strong>Restrictions:</strong> No self-employment, professional sports, or public funds.</li>
           </ul>
         </section>
 
-        <section className="guide-section">
-          <h2>Post-Study Work & PR Opportunities</h2>
-          <p>The UK is one of the few countries offering clear pathways to Permanent Residency (PR) for international graduates.</p>
-          
-          <ul className="pr-list">
-            <li><strong>Work & PR Options Include:</strong>
-              <ul>
-                <li>Graduate Visa (2 years)</li>
-                <li>Skilled Worker Visa</li>
-                <li>Global Talent Visa</li>
-              </ul>
-            </li>
-            <li>Extra PR points if you study in high-demand areas or complete internships</li>
-            
-            <li><strong>Popular PR-Friendly Courses:</strong>
-              <ul>
-                <li>🏥 Healthcare: Nursing, Public Health</li>
-                <li>💻 IT & Cybersecurity: Information Technology, Cybersecurity</li>
-                <li>⚙️ Engineering: Civil, Mechanical, Electrical</li>
-                <li>💰 Accounting & Finance: Accounting, Finance, Business</li>
-                <li>👨‍🏫 Teaching & Early Childhood Education: Education, Early Childhood</li>
-                <li>🔧 Vocational Trades: Plumbing, Carpentry, Mechanics</li>
-              </ul>
-            </li>
-          </ul>
-        </section>
-
-        <section className="guide-section">
-          <h2>Scholarships You Can Apply For</h2>
-          <p>You don't have to do it alone—the UK offers numerous scholarships, and we'll help you apply:</p>
+        {/* 6. Scholarships */}
+        <section id="scholarships" className="guide-section">
+          <h2>Scholarships for Nepalese Students</h2>
+          <p>We guide you through applications for:</p>
           <ul className="scholarship-list">
-            <li>Chevening Scholarships</li>
-            <li>Commonwealth Scholarships</li>
-            <li>University-Specific Awards (e.g., Oxford, Cambridge, Imperial)</li>
+            <li><a href="https://www.chevening.org" target="_blank" rel="noopener noreferrer">Chevening Scholarship</a></li>
+            <li><a href="https://cscuk.fcdo.gov.uk" target="_blank" rel="noopener noreferrer">Commonwealth Scholarship</a></li>
+            <li><a href="https://study-uk.britishcouncil.org/scholarships/great-scholarships" target="_blank" rel="noopener noreferrer">GREAT Scholarships</a></li>
+            <li>University-specific merit scholarships (up to 50% tuition)</li>
           </ul>
-          <p>Scholarships can cover 25%–100% of your tuition based on your academic profile.</p>
         </section>
 
-        <section className="guide-section">
-          <h2>Step-by-Step Application & Visa Process</h2>
-          <p>We'll walk with you through every step:</p>
-          <ul className="process-list">
-            <li><strong>Step 1:</strong> Choose the Right Course & University - Based on your goals and PR possibilities</li>
-            <li><strong>Step 2:</strong> Prepare Your Documents - Transcripts, IELTS/PTE scores, SOP, CV</li>
-            <li><strong>Step 3:</strong> Meet Entry Conditions - Academic/English requirements, interviews</li>
-            <li><strong>Step 4:</strong> Pay Tuition Fee & Get CAS - Confirmation of Acceptance for Studies</li>
-            <li><strong>Step 5:</strong> Buy Health Insurance - NHS surcharge or private coverage</li>
-            <li><strong>Step 6:</strong> Apply for Student Visa (Tier 4) - Includes biometrics & financial evidence</li>
-          </ul>
-          <p><strong>Visa processing time: Typically 3–6 weeks</strong></p>
+        {/* 7. Step-by-Step Journey */}
+        <section id="application" className="guide-section">
+          <h2>Step-by-Step Journey from Nepal to the UK</h2>
+          <ol className="process-list">
+            <li><strong>Research & Shortlist</strong> – Use UCAS or university websites.</li>
+            <li><strong>Prepare Academic Proof</strong> – SEE/NEB transcripts, bachelor’s certificates, IELTS/PTE.</li>
+            <li><strong>Apply & Get Offer</strong> – Conditional or unconditional.</li>
+            <li><strong>Pay Deposit & Get CAS</strong> – Confirmation of Acceptance for Studies.</li>
+            <li><strong>Prepare Finances</strong> – Bank statement/loan letter showing funds for 28 days.</li>
+            <li><strong>Apply for Student Visa</strong> – Online form, biometrics, TB test (<a href="https://visa.vfsglobal.com/npl/en/gbr" target="_blank" rel="noopener noreferrer">VFS Nepal</a>).</li>
+            <li><strong>Book Flights & Pre-Departure Prep</strong> – NOC from Nepal Government, packing, accommodation booking.</li>
+            <li><strong>Arrive & Register</strong> – Collect BRP, attend induction, open bank account.</li>
+          </ol>
         </section>
 
-        <section className="guide-section">
-          <h2>Life in the UK as an International Student</h2>
-          <p>Living in the UK is exciting, safe, and full of new experiences.</p>
+        {/* 8. Post-Study Work & PR Pathways */}
+        <section id="pr" className="guide-section">
+          <h2>Post-Study Work & PR Pathways</h2>
+          <h3>Graduate Route Visa</h3>
+          <ul className="pr-list">
+            <li>2 years for Bachelor’s/Master’s graduates</li>
+            <li>3 years for PhD graduates</li>
+          </ul>
+          <h3>Skilled Worker Visa</h3>
+          <ul>
+            <li>Switch from Graduate Route once you get a qualifying job.</li>
+            <li>Apply for ILR (Permanent Residency) after 5 years (<a href="https://www.gov.uk/settle-in-the-uk" target="_blank" rel="noopener noreferrer">Gov.uk</a>).</li>
+          </ul>
+          <p><strong>PR-Friendly Fields:</strong> Healthcare, engineering, IT, data science, teaching.</p>
+        </section>
+
+        {/* 9. Life in the UK */}
+        <section id="life" className="guide-section">
+          <h2>Life in the UK for Nepalese Students</h2>
           <ul className="life-list">
-            <li>Enjoy weekend trips to historic cities and countryside</li>
-            <li>Explore diverse cuisines and cultural festivals</li>
-            <li>Build a global network of friends</li>
-            <li>Access 24/7 student support services on-campus</li>
+            <li><strong>Healthcare:</strong> Access to NHS after IHS payment (<a href="https://www.nhs.uk/using-the-nhs/nhs-services/visiting-or-moving-to-england/" target="_blank" rel="noopener noreferrer">NHS</a>).</li>
+            <li><strong>Culture & Food:</strong> Nepalese communities in London, Manchester, Reading.</li>
+            <li><strong>Travel:</strong> Student discounts on rail/bus via 16–25 Railcard (<a href="https://www.16-25railcard.co.uk" target="_blank" rel="noopener noreferrer">Official site</a>).</li>
           </ul>
         </section>
 
-        <section className="guide-section">
-          <h2>Is the UK the Right Fit for You?</h2>
-          <p>If you're looking for:</p>
-          <ul className="fit-list">
-            <li>Globally respected education</li>
-            <li>Job-ready skills & work experience</li>
-            <li>Shorter, intensive programs</li>
-            <li>Post-study stay & PR opportunities</li>
-            <li>A multicultural, welcoming environment</li>
-          </ul>
-          <p>Then the UK might just be your perfect match.</p>
-        </section>
-
-        <section className="guide-section">
-          <h2>Let's Get Started – Your Journey Begins Here</h2>
-          <p>At Titan Career Solutions, we don't just send you abroad—we walk with you through your entire journey:</p>
+        {/* 10. How Titan Career Solutions Helps */}
+        <section id="get-started" className="guide-section">
+          <h2>How Titan Career Solutions Helps You</h2>
           <ul className="services-list">
-            <li>🎯 Personalized Institution & Course Selection</li>
-            <li>🚀 Future-Oriented Career Counseling</li>
-            <li>💸 Free Processing</li>
-            <li>📋 100% Visa Application Support</li>
-            <li>🏆 Help with Scholarship Applications</li>
-            <li>✈️ Pre-Departure & Settlement Support</li>
+            <li>University & course selection based on budget, career, and PR prospects.</li>
+            <li>Visa documentation & SOP guidance.</li>
+            <li>Scholarship application support.</li>
+            <li>Pre-departure briefing & NOC guidance.</li>
+            <li>Post-arrival settlement assistance.</li>
           </ul>
-          <p>Let's connect today and start planning your future in the UK.</p>
-          <p>Your dream is closer than you think—and we're here to guide every step.</p>
         </section>
 
-        {/* Universities Section */}
-        <section id="universities" className="guide-section">
-          <h2>🏛️ Universities in the UK</h2>
-          <p>Explore world-class universities and research institutions for undergraduate and postgraduate studies.</p>
-          
-          <div className="universities-grid">
-            <div className="university-card">
-              <h3>University System Overview</h3>
-              <p><strong>Types:</strong> Public universities, private universities, Russell Group institutions</p>
-              <p><strong>Degrees Offered:</strong> Bachelor's, Master's, PhD, Graduate Certificates/Diplomas</p>
-              <p><strong>Duration:</strong> Bachelor's (3 years), Master's (1 year), PhD (3-4 years)</p>
-              <p><strong>Academic Year:</strong> September to June (3 terms)</p>
-            </div>
-            
-            <div className="university-card">
-              <h3>Academic Requirements</h3>
-              <p><strong>Undergraduate:</strong> A-levels or equivalent with minimum grades</p>
-              <p><strong>Postgraduate:</strong> Bachelor's degree with minimum 2:1 classification</p>
-              <p><strong>Research Programs:</strong> Strong academic background and research proposal</p>
-              <p><strong>Prerequisites:</strong> Subject-specific requirements for certain programs</p>
-            </div>
-            
-            <div className="university-card">
-              <h3>English Language Requirements</h3>
-              <p><strong>IELTS:</strong> 6.0–7.5 overall (depending on program)</p>
-              <p><strong>TOEFL:</strong> 80–110 (depending on program)</p>
-              <p><strong>PTE Academic:</strong> 50–75 (depending on program)</p>
-              <p><strong>Cambridge English:</strong> 169–191 (depending on program)</p>
-            </div>
-            
-            <div className="university-card">
-              <h3>Intake Periods</h3>
-              <p><strong>Autumn Term:</strong> September start (main intake)</p>
-              <p><strong>Spring Term:</strong> January start (limited programs)</p>
-              <p><strong>Summer Term:</strong> April start (limited programs)</p>
-              <p><strong>Application Deadlines:</strong> 6-12 months before intake</p>
-            </div>
-            
-            <div className="university-card">
-              <h3>Tuition Fees</h3>
-              <p><strong>Undergraduate:</strong> £10,000–38,000/year</p>
-              <p><strong>Postgraduate:</strong> £12,000–45,000/year</p>
-              <p><strong>PhD:</strong> £15,000–50,000/year (often funded)</p>
-              <p><strong>Scholarships:</strong> Available for high-achieving students</p>
-            </div>
-            
-            <div className="university-card">
-              <h3>Popular Study Areas</h3>
-              <p><strong>Business:</strong> MBA, Finance, Marketing, International Business</p>
-              <p><strong>Engineering:</strong> Civil, Mechanical, Electrical, Software</p>
-              <p><strong>Healthcare:</strong> Medicine, Nursing, Public Health, Pharmacy</p>
-              <p><strong>Arts:</strong> Design, Media, Film, Creative Arts</p>
-            </div>
-          </div>
-        </section>
-
-        {/* Colleges Section */}
-        <section id="colleges" className="guide-section">
-          <h2>🎓 Colleges in the UK</h2>
-          <p>Discover further education colleges and vocational institutions offering practical, career-focused education.</p>
-          
-          <div className="colleges-grid">
-            <div className="college-card">
-              <h3>College System Overview</h3>
-              <p><strong>Types:</strong> Further education colleges, sixth form colleges, specialist colleges</p>
-              <p><strong>Programs Offered:</strong> A-levels, BTECs, NVQs, Foundation Degrees</p>
-              <p><strong>Duration:</strong> 1-3 years (depending on program)</p>
-              <p><strong>Focus:</strong> Vocational training and academic preparation</p>
-            </div>
-            
-            <div className="college-card">
-              <h3>Academic Requirements</h3>
-              <p><strong>A-level Programs:</strong> GCSEs with minimum grades (usually 5 GCSEs)</p>
-              <p><strong>BTEC Programs:</strong> GCSEs or equivalent qualifications</p>
-              <p><strong>Foundation Programs:</strong> High school completion or equivalent</p>
-              <p><strong>Prerequisites:</strong> Subject-specific requirements for certain programs</p>
-            </div>
-            
-            <div className="college-card">
-              <h3>English Language Requirements</h3>
-              <p><strong>IELTS:</strong> 5.5–6.0 overall (depending on program)</p>
-              <p><strong>TOEFL:</strong> 60–80 (depending on program)</p>
-              <p><strong>PTE Academic:</strong> 42–50 (depending on program)</p>
-              <p><strong>Cambridge English:</strong> 154–169 (depending on program)</p>
-            </div>
-            
-            <div className="college-card">
-              <h3>Intake Periods</h3>
-              <p><strong>Autumn Term:</strong> September start</p>
-              <p><strong>Spring Term:</strong> January start (limited programs)</p>
-              <p><strong>Rolling Intakes:</strong> Some programs offer multiple start dates</p>
-              <p><strong>Application Deadlines:</strong> 3-6 months before intake</p>
-            </div>
-            
-            <div className="college-card">
-              <h3>Tuition Fees</h3>
-              <p><strong>A-level Programs:</strong> £8,000–15,000/year</p>
-              <p><strong>BTEC Programs:</strong> £6,000–12,000/year</p>
-              <p><strong>Foundation Programs:</strong> £7,000–14,000/year</p>
-              <p><strong>Government Funding:</strong> Available for eligible students</p>
-            </div>
-            
-            <div className="college-card">
-              <h3>Popular Study Areas</h3>
-              <p><strong>Academic:</strong> A-levels in Sciences, Arts, Business</p>
-              <p><strong>Vocational:</strong> BTECs in Business, Technology, Health</p>
-              <p><strong>Creative:</strong> Art & Design, Media, Performing Arts</p>
-              <p><strong>Technical:</strong> Engineering, IT, Construction</p>
-            </div>
-          </div>
-        </section>
-
-        {/* Eligibility Section */}
         <section id="eligibility" className="guide-section">
           <h2>📋 Eligibility Criteria</h2>
-          <p>Learn about academic requirements, English language tests, and visa application processes.</p>
-          
-          <div className="eligibility-cards">
-            <div className="eligibility-card">
-              <h4>Academic Requirements</h4>
-              <p><strong>Undergraduate:</strong> A-levels or equivalent with minimum grades</p>
-              <p><strong>Postgraduate:</strong> Bachelor's degree with minimum 2:1 classification</p>
-              <p><strong>Research Programs:</strong> Strong academic background and research proposal</p>
-              <p><strong>Foundation Courses:</strong> High school completion or equivalent</p>
-              <p><strong>Prerequisites:</strong> Subject-specific requirements for certain programs</p>
-              <p><strong>Portfolio:</strong> Required for creative arts and design programs</p>
-            </div>
-            
-            <div className="eligibility-card">
-              <h4>English Language Requirements</h4>
-              <p><strong>IELTS:</strong> 6.0–7.5 overall (depending on program)</p>
-              <p><strong>TOEFL:</strong> 80–110 (depending on program)</p>
-              <p><strong>PTE Academic:</strong> 50–75 (depending on program)</p>
-              <p><strong>Cambridge English:</strong> 169–191 (depending on program)</p>
-              <p><strong>Test Validity:</strong> Results must be within 2 years of application</p>
-              <p><strong>UKVI IELTS:</strong> Required for visa applications</p>
-            </div>
-            
-            <div className="eligibility-card">
-              <h4>Visa Requirements</h4>
-              <p><strong>Student Visa (Tier 4):</strong> Required for all international students</p>
-              <p><strong>Financial Evidence:</strong> Proof of sufficient funds for tuition and living expenses</p>
-              <p><strong>Health Insurance:</strong> NHS surcharge or private insurance</p>
-              <p><strong>Health Requirements:</strong> Medical examination may be required</p>
-              <p><strong>Character Requirements:</strong> Police clearance certificate</p>
-              <p><strong>CAS Letter:</strong> Required from university</p>
-            </div>
-            
-            <div className="eligibility-card">
-              <h4>Required Documents</h4>
-              <p><strong>Academic:</strong> Transcripts and certificates (translated and certified)</p>
-              <p><strong>Language:</strong> English language test results</p>
-              <p><strong>Personal:</strong> Personal Statement</p>
-              <p><strong>References:</strong> Letters of Recommendation (2-3)</p>
-              <p><strong>Professional:</strong> CV/Resume</p>
-              <p><strong>Financial:</strong> Bank statements, sponsorship letters</p>
-              <p><strong>Travel:</strong> Passport copy (valid for 6+ months)</p>
-              <p><strong>University:</strong> CAS letter from university</p>
-              <p><strong>Creative:</strong> Portfolio (for creative programs)</p>
-              <p><strong>Research:</strong> Research proposal (for research programs)</p>
-            </div>
-          </div>
+          <ul className="eligibility-list">
+            <li><strong>Academic:</strong> SEE/NEB or Bachelor’s transcripts as applicable</li>
+            <li><strong>English:</strong> IELTS/PTE as required by course</li>
+            <li><strong>Financial:</strong> Funds for tuition + living costs (per UKVI)</li>
+            <li><strong>Visa:</strong> CAS, TB test, biometrics</li>
+          </ul>
         </section>
 
-        {/* Useful Resources Section - Moved to Bottom */}
         <section id="resources" className="guide-section">
           <h2>📚 Useful Resources</h2>
           <ul className="resources-list">
             <li><a href="https://www.gov.uk/student-visa" target="_blank" rel="noopener noreferrer">Official Student Visa Information</a></li>
-            <li><a href="https://study-uk.britishcouncil.org/" target="_blank" rel="noopener noreferrer">Study in the UK Official Website</a></li>
-            <li><a href="https://www.ukcisa.org.uk/" target="_blank" rel="noopener noreferrer">UK Council for International Student Affairs</a></li>
+            <li><a href="https://www.ucas.com" target="_blank" rel="noopener noreferrer">UCAS – Undergraduate Applications</a></li>
+            <li><a href="https://study-uk.britishcouncil.org" target="_blank" rel="noopener noreferrer">Study UK – British Council</a></li>
+            <li><a href="https://www.ukcisa.org.uk" target="_blank" rel="noopener noreferrer">UKCISA – Student Advice</a></li>
           </ul>
         </section>
       </div>

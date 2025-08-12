@@ -1,5 +1,6 @@
 import React from 'react';
 import './About.css';
+import { Link } from 'react-router-dom';
 
 const icons = {
   counseling: (
@@ -74,7 +75,7 @@ const About = () => (
         <h2>Ready to Start Your Journey?</h2>
         <p>Contact us for a free consultation and let <strong>Titan Career Solutions</strong> be your trusted partner in achieving your global education dreams.</p>
         <div className="cta-section">
-          <a href="/contact" className="cta-button">Contact Us</a>
+        <Link className="cta-button" to="/contact" >Contact Us</Link>
         </div>
       </section>
     </div>

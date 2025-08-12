@@ -42,7 +42,7 @@ const Carousel = () => {
   return (
     <div className="carousel">
       <div className="carousel-image-wrapper">
-        <img src={Image} alt={`Study in ${slides[current].country}`} className="carousel-image" />
+        <img src={Image} alt={`Study in ${slides[current].country}`} className="carousel-image1" />
         
       </div>
     </div>

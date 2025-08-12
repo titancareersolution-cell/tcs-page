@@ -3,7 +3,8 @@ import './CardCarousel.css';
 
 const CardCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isInstantTransition, setIsInstantTransition] = useState(false);
+  const [slidesPerView, setSlidesPerView] = useState(4);
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -11,43 +12,64 @@ const CardCarousel = () => {
   const [dragEnd, setDragEnd] = useState(null);
   const cardsWrapperRef = useRef(null);
 
-  const cards = [
-    { id: 1, title: "98% Visa Success Rate", description: "Trusted by students across Nepal for consistently delivering positive visa outcomes.", icon: "🎯" },
-    { id: 2, title: "95% Students Secured Scholarships", description: "We help students gain admission into their preferred institutions with scholarships.", icon: "🎓" },
-    { id: 3, title: "5-Star Student Satisfaction", description: "Verified reviews and a high referral rate reflect our commitment to quality service.", icon: "⭐" },
-    { id: 4, title: "Over a Decade of Industry Experience", description: "Proven expertise in abroad education consulting with deep institutional connections.", icon: "🏆" },
-    { id: 5, title: "High Success in Language Tests", description: "Our students consistently excel in IELTS, PTE, and TOEFL with tailored prep and support.", icon: "📚" },
-    { id: 6, title: "Direct Liaison with Key Stakeholders", description: "Smooth coordination with banks, engineers, notaries, and other third parties ensures faster, error-free processing.", icon: "🤝" },
-    { id: 7, title: "Official Partnerships with Top Colleges & Universities", description: "We work directly with trusted institutions worldwide.", icon: "🎓" },
-    { id: 8, title: "Comprehensive Online & Physical Support", description: "From initial counselling to final application, we assist students both in-office and remotely.", icon: "💻" },
-    { id: 9, title: "Strategic Visa & SOP Guidance", description: "Our experts craft compelling Statements of Purpose and prepare students for visa interviews.", icon: "📝" },
-    { id: 10, title: "Strong Post-Departure Support", description: "Orientation, housing guidance, and ongoing help even after students reach their destination.", icon: "✈️" }
-  ];
-
-  // Check if mobile on mount and resize
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 900);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+  // Load all images from assets/card-component using Vite's glob import
+  const imageUrls = React.useMemo(() => {
+    const entries = Object.entries(
+      import.meta.glob('../assets/card-component/*.{jpg,jpeg,png}', {
+        eager: true,
+        as: 'url',
+      })
+    );
+    // Sort alphanumerically so Image1, Image2, ... Image10
+    return entries
+      .sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }))
+      .map(([, url]) => url);
   }, []);
 
-  const cardsPerView = isMobile ? 1 : 2;
-  const maxIndex = cards.length - cardsPerView;
+  // Determine slides per view on mount and resize
+  useEffect(() => {
+    const updateSlidesPerView = () => {
+      const width = window.innerWidth;
+      if (width >= 1200) setSlidesPerView(4);
+      else if (width >= 900) setSlidesPerView(3);
+      else if (width >= 600) setSlidesPerView(2);
+      else setSlidesPerView(1);
+    };
+
+    updateSlidesPerView();
+    window.addEventListener('resize', updateSlidesPerView);
+    return () => window.removeEventListener('resize', updateSlidesPerView);
+  }, []);
+
+  const cardsPerView = slidesPerView;
+  const maxIndex = Math.max(0, imageUrls.length - cardsPerView);
+
+  // Build cloned slides for seamless infinite scrolling
+  const slides = React.useMemo(() => {
+    if (imageUrls.length === 0) return [];
+    const k = Math.max(1, cardsPerView);
+    const head = imageUrls.slice(0, k);
+    const tail = imageUrls.slice(-k);
+    return [...tail, ...imageUrls, ...head];
+  }, [imageUrls, cardsPerView]);
+
+  // Ensure we start at the first real slide group (after clones)
+  useEffect(() => {
+    if (imageUrls.length === 0) return;
+    setIsInstantTransition(true);
+    setCurrentIndex(cardsPerView);
+    const id = setTimeout(() => setIsInstantTransition(false), 0);
+    return () => clearTimeout(id);
+  }, [cardsPerView, imageUrls.length]);
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex >= maxIndex ? 0 : prevIndex + 1
-    );
+    setIsInstantTransition(false);
+    setCurrentIndex((prevIndex) => prevIndex + 1);
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? maxIndex : prevIndex - 1
-    );
+    setIsInstantTransition(false);
+    setCurrentIndex((prevIndex) => prevIndex - 1);
   };
 
   const goToSlide = (index) => {
@@ -128,18 +150,35 @@ const CardCarousel = () => {
   }, [isDragging]);
 
   useEffect(() => {
+    if (slides.length === 0) return undefined;
     const interval = setInterval(() => {
       nextSlide();
     }, 5000);
     return () => clearInterval(interval);
-  }, [currentIndex, maxIndex]);
+  }, [slides.length]);
+
+  // After transition ends, snap without animation if we're in a cloned region
+  const handleTransitionEnd = () => {
+    if (imageUrls.length === 0) return;
+    const k = cardsPerView;
+    const firstRealIndex = k;
+    const lastRealIndex = k + imageUrls.length - 1;
+
+    if (currentIndex > lastRealIndex) {
+      // Moved past the end into cloned head
+      setIsInstantTransition(true);
+      setCurrentIndex(firstRealIndex);
+      requestAnimationFrame(() => setIsInstantTransition(false));
+    } else if (currentIndex < firstRealIndex) {
+      // Moved before the start into cloned tail
+      setIsInstantTransition(true);
+      setCurrentIndex(lastRealIndex);
+      requestAnimationFrame(() => setIsInstantTransition(false));
+    }
+  };
 
   return (
     <div className="card-carousel-section">
-      <div className="card-carousel-header">
-        <h2>Why Choose <span>Titan Career Solutions?</span></h2>
-        <p>Discover what makes us the trusted choice for students across Nepal</p>
-      </div>
       <div className="card-carousel-container">
         <button className="carousel-arrow left" onClick={prevSlide}>‹</button>
         <div 
@@ -156,13 +195,15 @@ const CardCarousel = () => {
         >
           <div
             className="cards-track"
-            style={{ transform: `translateX(-${currentIndex * (100 / cardsPerView)}%)` }}
+            onTransitionEnd={handleTransitionEnd}
+            style={{
+              transform: `translateX(-${currentIndex * (100 / cardsPerView)}%)`,
+              transition: isInstantTransition ? 'none' : undefined,
+            }}
           >
-            {cards.map((card) => (
-              <div key={card.id} className="carousel-card">
-                <div className="card-icon">{card.icon}</div>
-                <h3 className="card-title">{card.title}</h3>
-                <p className="card-description">{card.description}</p>
+            {slides.map((src, index) => (
+              <div key={`${src}-${index}`} className="carousel-card image-card">
+                <img src={src} alt={`Carousel slide ${index + 1}`} className="carousel-image" />
               </div>
             ))}
           </div>

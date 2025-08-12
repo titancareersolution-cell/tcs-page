@@ -36,7 +36,7 @@ const Navbar = () => {
       <div className="navbar-contact-top">
         <div className="contact-info">
           <span><strong>Phone:</strong> (+977) 015919707, 9851334607</span>
-          <span><strong>Email:</strong> info@tcs.edu.np</span>
+          <span><strong> Email:</strong><a href="mailto:info@tcs.edu.np">info@tcs.edu.np</a></span>
         </div>
       </div>
       {/* Main Navigation Bar */}

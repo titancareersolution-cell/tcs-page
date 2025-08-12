@@ -4,6 +4,17 @@
   padding: 2rem 0;
 }
 
+/* UK-specific background with flag colors */
+.study-guide-page.uk-flag {
+  background: linear-gradient(135deg, 
+    rgba(200, 16, 46, 0.15) 0%, 
+    rgba(255, 255, 255, 0.25) 25%, 
+    rgba(1, 33, 105, 0.2) 50%, 
+    rgba(255, 255, 255, 0.25) 75%, 
+    rgba(200, 16, 46, 0.15) 100%
+  );
+}
+
 .study-guide-header {
   text-align: center;
   padding: 3rem 2rem;
@@ -1225,4 +1236,33 @@ html {
     height: 45px;
     font-size: 18px;
   }
+} 
+
+/* Inline link styles in guide sections */
+.guide-section a {
+  color: #1976d2;
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(25, 118, 210, 0.5);
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+  font-weight: 600;
+}
+
+.guide-section a:hover {
+  color: #e67e22;
+  border-bottom-color: rgba(230, 126, 34, 0.6);
+  background-color: rgba(230, 126, 34, 0.06);
+}
+
+.guide-section a:focus-visible {
+  outline: 2px solid #1976d2;
+  outline-offset: 2px;
+  border-bottom-color: transparent;
+}
+
+/* External link indicator */
+.guide-section a[target="_blank"]::after {
+  content: '↗';
+  font-size: 0.85em;
+  margin-left: 0.25rem;
+  color: currentColor;
 } 

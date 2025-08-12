@@ -57,6 +57,15 @@
   gap: 0.5rem;
 }
 
+.contact-info a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  color: #301e0e;
+}
+
 .contact-info strong {
   color: #ffffff;
 }
@@ -66,23 +75,31 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0rem 1.2rem 0 1.2rem;
-  min-height: 60px;
   gap: 0;
   width: 100%;
+  flex-wrap: nowrap;
+  min-width: 0;
+  padding: 0rem 1.2rem 0 1.2rem;
+  min-height: 60px;
 }
 
 @media (max-width: 1400px) {
   .navbar-main {
-    gap: 20rem;
+    gap: 1.5rem;
+  }
+  .navbar-links {
+    gap: 0.2rem;
+  }
+  .navbar-links a, .navbar-links span {
+    font-size: 1.05rem !important;
+    padding: 0.4rem 0.7rem;
+  }
+  .navbar-logo img {
+    height: 60px;
   }
 }
 
 .navbar-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 50%;
   flex-shrink: 0;
 }
 
@@ -98,8 +115,9 @@
   margin: 0;
   margin-bottom: 10px;
   padding: 0;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
+  min-width: 0;
 }
 
 .navbar-appointment {
@@ -222,13 +240,18 @@
 
 @media (max-width: 1200px) {
   .navbar-main {
-    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    min-height: 60px;
     gap: 0;
     width: 100%;
+    flex-wrap: nowrap;
+    min-width: 0;
+  }
+  .navbar-logo {
+    flex-shrink: 0;
   }
   .navbar-appointment {
-    margin-left: 0.5rem;
-    margin-right: 0;
+    display: none;
   }
   .navbar-links {
     position: fixed;
@@ -249,6 +272,7 @@
     transition: all 0.3s cubic-bezier(.4,2,.6,1);
     z-index: 1050;
     border-radius: 0 0 16px 16px;
+    min-width: 0;
   }
   .navbar-links.open {
     transform: translateY(0);
@@ -284,23 +308,11 @@
     background: #1565c0 !important;
     border-color: #1565c0;
   }
-  .dropdown-menu {
-    position: static;
-    box-shadow: none;
-    background: #f9f9f9;
-    border-radius: 0 0 8px 8px;
-    min-width: 100%;
-    margin-top: 0.2rem;
-  }
-  .dropdown:hover .dropdown-menu,
-  .dropdown:focus-within .dropdown-menu {
-    display: block;
-  }
   .navbar-hamburger {
     display: flex;
-  }
-  .navbar-links {
-    display: flex;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    z-index: 1101;
   }
 }
 
