@@ -77,7 +77,7 @@ const StudyGuideAustralia = () => {
   return (
     <div className="study-guide-page">
       <div className="study-guide-header">
-        <h1>Study in Australia – Your Complete Guide to a Brighter Future</h1>
+        <h1>Study in Australia – <span>Your Complete Guide to a Brighter Future</span> </h1>
         <p className="subtitle">Your Gateway to World-Class Education, Career Growth & a New Life Abroad</p>
         
         {/* Horizontal Navigation Bar */}

@@ -21,6 +21,12 @@ export default defineConfig({
     }
   },
   assetsInclude: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.svg'],
+  server: {
+    historyApiFallback: true
+  },
+  preview: {
+    historyApiFallback: true
+  }
   // Environment variables are automatically loaded from .env files
   // You can access them in your code using import.meta.env.VITE_*
 })
