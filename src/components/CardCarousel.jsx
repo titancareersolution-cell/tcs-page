@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import './CardCarousel.css';
+import React, { useState, useEffect, useRef } from "react";
+import "./CardCarousel.css";
 
 const CardCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -15,15 +15,17 @@ const CardCarousel = () => {
   // Load all images from assets/card-component using Vite's glob import
   const imageUrls = React.useMemo(() => {
     const entries = Object.entries(
-      import.meta.glob('../assets/card-component/*.{jpg,jpeg,png}', {
+      import.meta.glob("../assets/card-component/*.{jpg,jpeg,png}", {
         eager: true,
-        query: '?url',
-        import: 'default',
+        query: "?url",
+        import: "default",
       })
     );
     // Sort alphanumerically so Image1, Image2, ... Image10
     return entries
-      .sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }))
+      .sort(([a], [b]) =>
+        a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" })
+      )
       .map(([, url]) => url);
   }, []);
 
@@ -38,8 +40,8 @@ const CardCarousel = () => {
     };
 
     updateSlidesPerView();
-    window.addEventListener('resize', updateSlidesPerView);
-    return () => window.removeEventListener('resize', updateSlidesPerView);
+    window.addEventListener("resize", updateSlidesPerView);
+    return () => window.removeEventListener("resize", updateSlidesPerView);
   }, []);
 
   const cardsPerView = slidesPerView;
@@ -88,7 +90,7 @@ const CardCarousel = () => {
 
   const handleTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
-    
+
     const distance = touchStart - touchEnd;
     const isLeftSwipe = distance > 50;
     const isRightSwipe = distance < -50;
@@ -120,7 +122,7 @@ const CardCarousel = () => {
       setIsDragging(false);
       return;
     }
-    
+
     const distance = dragStart - dragEnd;
     const isLeftDrag = distance > 50;
     const isRightDrag = distance < -50;
@@ -140,13 +142,13 @@ const CardCarousel = () => {
   // Prevent text selection during drag
   useEffect(() => {
     if (isDragging) {
-      document.body.style.userSelect = 'none';
+      document.body.style.userSelect = "none";
     } else {
-      document.body.style.userSelect = 'auto';
+      document.body.style.userSelect = "auto";
     }
 
     return () => {
-      document.body.style.userSelect = 'auto';
+      document.body.style.userSelect = "auto";
     };
   }, [isDragging]);
 
@@ -181,8 +183,10 @@ const CardCarousel = () => {
   return (
     <div className="card-carousel-section">
       <div className="card-carousel-container">
-        <button className="carousel-arrow left" onClick={prevSlide}>‹</button>
-        <div 
+        <button className="carousel-arrow left" onClick={prevSlide}>
+          ‹
+        </button>
+        <div
           className="cards-wrapper"
           ref={cardsWrapperRef}
           onTouchStart={handleTouchStart}
@@ -192,27 +196,33 @@ const CardCarousel = () => {
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
           onMouseLeave={handleMouseUp}
-          style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
+          style={{ cursor: isDragging ? "grabbing" : "grab" }}
         >
           <div
             className="cards-track"
             onTransitionEnd={handleTransitionEnd}
             style={{
               transform: `translateX(-${currentIndex * (100 / cardsPerView)}%)`,
-              transition: isInstantTransition ? 'none' : undefined,
+              transition: isInstantTransition ? "none" : undefined,
             }}
           >
             {slides.map((src, index) => (
               <div key={`${src}-${index}`} className="carousel-card image-card">
-                <img src={src} alt={`Carousel slide ${index + 1}`} className="carousel-image" />
+                <img
+                  src={src}
+                  alt={`Carousel slide ${index + 1}`}
+                  className="carousel-image"
+                />
               </div>
             ))}
           </div>
         </div>
-        <button className="carousel-arrow right" onClick={nextSlide}>›</button>
+        <button className="carousel-arrow right" onClick={nextSlide}>
+          ›
+        </button>
       </div>
     </div>
   );
 };
 
-export default CardCarousel; 
+export default CardCarousel;

@@ -48,13 +48,14 @@
   color: #1976d2;
   font-weight: 500;
   margin-top: 1rem;
+  text-align: center;
 }
 
 .study-destinations-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem;
-  max-width: 1400px;
+  max-width: 1450px;
   margin: 0 auto;
   position: relative;
   z-index: 3;
