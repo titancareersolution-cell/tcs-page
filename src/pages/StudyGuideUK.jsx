@@ -138,13 +138,13 @@ const StudyGuideUK = () => {
           <h2>Why Choose the UK for Your Studies?</h2>
           <p>Here's why thousands of our students have chosen the UK—and why it might be the right choice for you too:</p>
           <ul className="benefits-list">
-            <li><strong>Top-Ranked Universities:</strong> Four of the world's top 10 universities are in the UK (<a href="https://www.topuniversities.com/world-university-rankings" target="_blank" rel="noopener noreferrer">QS 2025</a>).</li>
-            <li><strong>Globally Recognised Degrees:</strong> UK qualifications are respected by employers worldwide.</li>
-            <li><strong>Shorter Duration:</strong> 3-year bachelor's and 1-year master's save time and living costs.</li>
-            <li><strong>Post-Study Work Visa:</strong> Graduate Route allows 2–3 years stay after graduation (<a href="https://www.gov.uk/graduate-visa" target="_blank" rel="noopener noreferrer">Official site</a>).</li>
-            <li><strong>Clear PR Pathways:</strong> Skilled Worker Visa options leading to permanent residency (<a href="https://www.gov.uk/skilled-worker-visa" target="_blank" rel="noopener noreferrer">Official site</a>).</li>
-            <li><strong>Multicultural & Safe Society:</strong> Over 600,000 international students call the UK home.</li>
-            <li><strong>English Language Immersion:</strong> Improve language and communication skills in an English-speaking environment.</li>
+            <li><strong>Top-ranked universities</strong> – 4 of the world’s top 10 (<a href="https://www.topuniversities.com/world-university-rankings" target="_blank" rel="noopener noreferrer">QS 2025</a>).</li>
+            <li><strong>Globally recognised degrees</strong> – valued worldwide.</li>
+            <li><strong>Shorter degrees</strong> – 3-year bachelor’s, 1-year master’s.</li>
+            <li><strong>Post-study work</strong> – 2–3 years (<a href="https://www.gov.uk/graduate-visa" target="_blank" rel="noopener noreferrer">Graduate Route</a>).</li>
+            <li><strong>Clear PR pathways</strong> – <a href="https://www.gov.uk/skilled-worker-visa" target="_blank" rel="noopener noreferrer">Skilled Worker</a> route.</li>
+            <li><strong>Safe, multicultural society</strong> – 600k+ international students.</li>
+            <li><strong>English immersion</strong> – study in an English-speaking country.</li>
           </ul>
         </section>
 
@@ -162,11 +162,6 @@ const StudyGuideUK = () => {
           <ul>
             <li><strong>September/October:</strong> These are the major intakes where most programs are available</li>
             <li><strong>January/February:</strong> Spring intake, usually for Business, IT, and Engineering</li>
-          </ul>
-          <h3>Applications</h3>
-          <ul>
-            <li><a href="https://www.ucas.com" target="_blank" rel="noopener noreferrer">UCAS</a> for most bachelor's applications.</li>
-            <li>Direct university applications for master's and PhD.</li>
           </ul>
         </section>
 
@@ -237,7 +232,7 @@ const StudyGuideUK = () => {
             
             <li><strong>Other Expenses:</strong>
               <ul>
-                <li>Visa fee: £490 (<a href="https://www.gov.uk/student-visa" target="_blank" rel="noopener noreferrer">Official site</a>)</li>
+                <li>Visa fee: £524 (<a href="https://www.gov.uk/student-visa" target="_blank" rel="noopener noreferrer">Official site</a>)</li>
                 <li>Immigration Health Surcharge (IHS): £776/year</li>
               </ul>
             </li>
@@ -286,9 +281,9 @@ const StudyGuideUK = () => {
           <p>We'll walk with you through every step, but this is the application flow process:</p>
           <ul className="process-list">
             <li><strong>Step 1:</strong> Understand the UK - Set realistic expectations before making a life-changing decision</li>
-            <li><strong>Step 2:</strong> Choose the Right Course & University – Based on your goals and PR possibilities</li>
+            <li><strong>Step 2:</strong> Choose the Right Course & University – Based on your goals</li>
             <li><strong>Step 3:</strong> Prepare Your Documents – Transcripts, IELTS/PTE scores, SOP, CV</li>
-            <li><strong>Step 4:</strong> Organize Financial Documents - Bank statements (28 days), ITR (2-3 years), Education loan or Bank Balance statements</li>
+            <li><strong>Step 4:</strong> Organize Financial Documents - Bank statements (28 days), Education loan or Bank Balance statements</li>
             <li><strong>Step 5:</strong> Meet Entry Conditions – Academic/English requirements, interviews</li>
             <li><strong>Step 6:</strong> Pay Tuition Fee & Get CAS (Confirmation of Acceptance for Studies)</li>
             <li><strong>Step 7:</strong> Pay Immigration Health Surcharge (IHS)</li>
@@ -360,7 +355,7 @@ const StudyGuideUK = () => {
 
           <h3>Academic Requirements</h3>
           <ul>
-            <li><b>Undergraduate:</b> High school diploma with minimum GPA requirements</li>
+            <li><b>Undergraduate:</b> Depending on Direct bachelor programs or Foundation to Bachelor programs, <br></br> even students with 2 GPA are elibible.</li>
             <li><b>Postgraduate:</b> Bachelor's degree with minimum GPA (usually 2:1 or equivalent)</li>
             <li><b>Research Programs:</b> Strong academic background and research proposal</li>
             <li><b>Vocational Courses:</b> High school completion or equivalent</li>
@@ -407,7 +402,6 @@ const StudyGuideUK = () => {
           <h2>📚 Useful Resources</h2>
           <ul className="resources-list">
             <li><a href="https://www.gov.uk/student-visa" target="_blank" rel="noopener noreferrer">Official Student Visa Information</a></li>
-            <li><a href="https://www.ucas.com" target="_blank" rel="noopener noreferrer">UCAS – Undergraduate Applications</a></li>
             <li><a href="https://study-uk.britishcouncil.org" target="_blank" rel="noopener noreferrer">Study UK – British Council</a></li>
             <li><a href="https://www.ukcisa.org.uk" target="_blank" rel="noopener noreferrer">UKCISA – Student Advice</a></li>
           </ul>

@@ -35,7 +35,7 @@ const StudyDestinations = () => {
       title: 'Study in Canada',
       image: 'https://images.unsplash.com/photo-1519832979-6fa011b87667?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       description: 'High-quality education in a multicultural environment with excellent opportunities for personal and professional growth.',
-      path: '/study/canada',
+      path: '/study-guide/canada',
       links: [
         { text: 'Study Guide', href: '/study-guide/canada' },
         { text: 'Universities', href: '/study-guide/canada#universities' },
@@ -49,7 +49,7 @@ const StudyDestinations = () => {
       title: 'Study in UK',
       image: 'https://images.unsplash.com/photo-1562767332-ce0b1e2426bb?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       description: 'Home to some of the world\'s oldest universities with prestigious academic traditions and innovative research opportunities.',
-      path: '/study/uk',
+      path: '/study-guide/uk',
       links: [
         { text: 'Why Choose the UK', href: '/study-guide/uk#why-choose' },
         { text: 'Education System', href: '/study-guide/uk#education-system' },
@@ -70,7 +70,7 @@ const StudyDestinations = () => {
       title: 'Study in Japan',
       image: 'https://images.unsplash.com/photo-1542640244-7e672d6cef4e?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       description: 'Renowned for its blend of tradition and innovation, offering students a unique educational experience with top universities and advanced technology.',
-      path: '/study/japan',
+      path: '/study-guide/japan',
       links: [
         { text: 'Study Guide', href: '/study-guide/japan' },
         { text: 'Universities', href: '/study-guide/japan#universities' },
@@ -84,7 +84,7 @@ const StudyDestinations = () => {
       title: 'Study in New Zealand',
       image: 'https://images.unsplash.com/photo-1507699622108-4be3abd695ad?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       description: 'High-quality education in a beautiful, safe country with excellent work opportunities and a relaxed lifestyle.',
-      path: '/study/new-zealand',
+      path: '/study-guide/new-zealand',
       links: [
         { text: 'Study Guide', href: '/study-guide/new-zealand' },
         { text: 'Universities', href: '/study-guide/new-zealand#universities' },
@@ -98,7 +98,7 @@ const StudyDestinations = () => {
       title: 'Study in USA',
       image: 'https://images.unsplash.com/photo-1483653364400-eedcfb9f1f88?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       description: 'Offering diverse study options with cutting-edge research facilities and extensive networking opportunities.',
-      path: '/study/united-states',
+      path: '/study-guide/united-states',
       links: [
         { text: 'Study Guide', href: '/study-guide/united-states' },
         { text: 'Universities', href: '/study-guide/united-states#universities' },
@@ -155,7 +155,7 @@ const StudyDestinations = () => {
                 onClick={toggleDropdown}
                 aria-label="Toggle quick links menu"
               >
-                <span>Quick Links</span>
+                <span>Learn More</span>
                 <svg 
                   className={`dropdown-arrow ${isDropdownOpen ? 'rotated' : ''}`}
                   width="16" 
@@ -193,10 +193,12 @@ const StudyDestinations = () => {
   return (
     <div className="study-destinations-section">
       <div className="study-destinations-header">
-        <h2>Welcome to Titan Career Solutions  
-        <span> – Nepal's trusted abroad education consultancy, where your international journey begins with clarity, confidence, and complete support.</span></h2>
-        <p>
-        Whether you're planning to study in Australia, Canada, USA, UK, Japan, or New Zealand, we're here to make your global education dream a reality. With over a decade of experience, we've helped thousands of students secure admissions, scholarships, and visas to top institutions around the world.
+        <h2>Turn Your Study Abroad Dream into Reality  – With TCS </h2> 
+        <p className="paragraph" >
+        From choosing the right country and university to securing visas and scholarships — we guide you every step of the way, ensuring your international journey begins with clarity, confidence, and complete support.
+
+For over a decade, we’ve helped hundreds of Nepali students secure admissions to top universities, win scholarships, and successfully obtain visas. Whether you’re looking for academic excellence, global career opportunities, or a fresh cultural experience, we make it happen with personalized guidance, proven expertise, and unwavering support.
+
         </p>
         <p className="subtitle">Every country has a unique path. Let's find yours.</p>
       </div>

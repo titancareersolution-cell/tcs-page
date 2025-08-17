@@ -146,6 +146,7 @@
   border-color: #1565c0;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
+  cursor: pointer;
 }
 
 .navbar-links li {

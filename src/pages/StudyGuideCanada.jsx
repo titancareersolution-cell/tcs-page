@@ -4,6 +4,7 @@ import './StudyGuide.css';
 
 const StudyGuideCanada = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,12 +20,22 @@ const StudyGuideCanada = () => {
   useEffect(() => {
     const hash = window.location.hash;
     if (hash) {
-      setTimeout(() => {
+      const scrollToSection = () => {
         const element = document.querySelector(hash);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
+          return true;
         }
-      }, 100);
+        return false;
+      };
+
+      // Try immediately
+      if (!scrollToSection()) {
+        // If not found, try after a delay
+        setTimeout(() => {
+          scrollToSection();
+        }, 300);
+      }
     }
   }, []);
 
@@ -35,426 +46,216 @@ const StudyGuideCanada = () => {
     });
   };
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
+  const navigationItems = [
+    { href: '#why-choose', label: 'Why Choose Canada' },
+    { href: '#what-makes-special', label: 'What Makes Canada Special' },
+    { href: '#best-cities', label: 'Best Student Cities' },
+    { href: '#costs', label: 'Costs of Studying' },
+    { href: '#part-time-jobs', label: 'Part-Time Jobs' },
+    { href: '#post-graduation', label: 'Post-Graduation & PR' },
+    { href: '#in-demand-fields', label: 'In-Demand Fields' },
+    { href: '#scholarships', label: 'Scholarships' },
+    { href: '#step-by-step', label: 'Step-by-Step Support' },
+    { href: '#resources', label: 'Resources' }
+  ];
+
   return (
-    <div className="study-guide-page">
+    <div className="study-guide-page canada-flag">
       <div className="study-guide-header">
-        <h1>Study Guide - <span>Canada</span></h1>
-        <p className="subtitle">Your Gateway to World-Class Education, Career Growth & a New Life Abroad</p>
+        <h1>Study in Canada – <span>The Smartest Choice for Your Future</span></h1>
+        <p className="subtitle">Top-Tier Education | Work While You Learn | A Clear Path to your future</p>
+        
+        {/* Horizontal Navigation Bar */}
+        <div className="guide-navigation">
+          <div className="nav-container">
+            <button 
+              className={`hamburger-menu ${isMenuOpen ? 'active' : ''}`}
+              onClick={toggleMenu}
+              aria-label="Toggle navigation menu"
+            >
+              <span>Quick Navigation</span>
+              <span className="hamburger-line"></span>
+            </button>
+            
+            <div className={`nav-menu ${isMenuOpen ? 'open' : ''}`}>
+              <div className="nav-menu-header">
+                <h3>Quick Navigation</h3>
+                <button 
+                  className="close-menu-btn"
+                  onClick={closeMenu}
+                  aria-label="Close menu"
+                >
+                  ×
+                </button>
+              </div>
+              <div className="nav-menu-items">
+                {navigationItems.map((item, index) => (
+                  <a 
+                    key={index}
+                    href={item.href} 
+                    className="nav-menu-item"
+                    onClick={closeMenu}
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* Navigation Buttons */}
-      <div className="guide-navigation">
-        <div className="nav-buttons">
-          <a href="#universities" className="nav-btn">Universities</a>
-          <a href="#colleges" className="nav-btn">Colleges</a>
-          <a href="#eligibility" className="nav-btn">Eligibility</a>
-          <a href="#resources" className="nav-btn">Resources</a>
+      {/* Canada Image Section */}
+      <div className="australia-image-section">
+        <div className="australia-image-container">
+          <img src="https://images.unsplash.com/photo-1519832979-6fa011b87667?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+          alt="Canada Study Destination" 
+          className="australia-image" />
         </div>
       </div>
 
       <div className="study-guide-content">
-        <section className="guide-section">
-          <h2>Welcome to Canada</h2>
-          <p>At Titan Career Solutions, we believe studying in Canada is more than just earning a degree - it's a life-changing experience. Imagine learning in some of the world's best universities, living in one of the safest and most welcoming countries, gaining international work experience, and even having the chance to settle down permanently.</p>
-          <p>Canada isn't just about maple syrup and hockey. It's one of the top choices for Nepalese and international students who want a future filled with opportunities, recognition, and success.</p>
-        </section>
-
-        <section className="guide-section">
-          <h2>Why Choose Canada for Your Studies?</h2>
-          <p>Here's why thousands of our students have chosen Canada—and why it might be the right choice for you too:</p>
+        <section id="why-choose" className="guide-section">
+          <h2>Why Study in Canada?</h2>
+          <p>With a reputation for safety, high-quality education, post-study work rights, and some of the world's easiest PR pathways, Canada is the ideal destination for ambitious students who want more than just a degree. It is a place to study and a country that welcomes you to study, work, and settle with open arms. Canada is well-known to offer quality education at a very affordable cost compared to other developed nations.</p>
+          <p>At TCS, we guide you at every step—from shortlisting the right courses to securing your visa, applying for scholarships, and helping you settle with confidence. With thousands of Nepalese students choosing Canada every year, the path is clear—and we help make it simple, affordable, and successful.</p>
+          
           <ul className="benefits-list">
-            <li><strong>🏆 Top-Ranked Universities:</strong> 3 of the world's top 50 universities call Canada home</li>
-            <li><strong>🛡️ Safe & Welcoming Environment:</strong> Over 500,000 international students feel at home here</li>
-            <li><strong>📋 Student-Friendly Policies:</strong> Policies supporting international students' interests</li>
-            <li><strong>💼 Part-Time Work While You Study:</strong> Gain experience and support your living expenses</li>
-            <li><strong>⏰ Post-Study Stay Options (1–3 years):</strong> A valuable head start to your international career</li>
-            <li><strong>🏠 PR Pathways & Skilled Migration:</strong> A real chance to call Canada your permanent home</li>
-            <li><strong>💰 Cost-Effective & Scholarship-Friendly:</strong> Affordable education with generous scholarships</li>
+            <li><strong>Globally Respected Degrees:</strong> Recognised worldwide</li>
+            <li><strong>Post-Study Work (PGWP):</strong> Work up to 3 years</li>
+            <li><strong>Clear PR Pathways:</strong> Express Entry, PNPs, Rural Pilot</li>
+            <li><strong>Affordable Costs:</strong> Lower tuition and living</li>
+            <li><strong>Safe & Diverse:</strong> High safety, strong student support</li>
           </ul>
         </section>
 
-        <section className="guide-section">
-          <h2>Understanding Canada's Education System</h2>
-          <p>Canada's education system is flexible, modern, and career-oriented. Whether you're finishing high school, completing your bachelor's, or switching careers, there's a pathway for you.</p>
-          <ul className="education-list">
-            <li><strong>🎓 Universities:</strong> Undergraduate, postgraduate, and research degrees under the Canadian Qualifications Framework</li>
-            <li><strong>🔧 Colleges & Polytechnics:</strong> Short, skill-based programs in trades and technical fields with strong job demand</li>
-            <li><strong>📚 Pathway & English Programs:</strong> Great for students needing academic or language preparation</li>
+        <section id="what-makes-special" className="guide-section">
+          <h2>What Makes Canada Special for Nepalese Students?</h2>
+          <ul className="benefits-list">
+            <li><strong>Large Community:</strong> 600,000+ international students</li>
+            <li><strong>Flexible Work:</strong> 20 hrs/week during study, full-time in breaks</li>
+            <li><strong>High Demand:</strong> IT, Healthcare, Engineering, Business, Trades</li>
+            <li><strong>Family Options:</strong> Spouse open work permits, dependents</li>
+            <li><strong>Co-op Internships:</strong> Paid work experience while studying</li>
           </ul>
-          <p><strong>Most courses include co-op programs and industry placements—so you get real-world experience before graduating.</strong></p>
         </section>
 
-        <section className="guide-section">
-          <h2>Top Cities for International Students</h2>
-          <p>Each city has something special for students:</p>
-          
+        <section id="best-cities" className="guide-section">
+          <h2>Best Student Cities in Canada</h2>
           <ul className="cities-list">
-            <li><strong>🏙️ Toronto – Canada's Financial Powerhouse:</strong>
-              <ul>
-                <li>Largest and most diverse city in Canada</li>
-                <li>Financial and business hub with excellent job opportunities</li>
-                <li>Famous CN Tower and multicultural neighborhoods</li>
-                <li>World-class universities like University of Toronto and York University</li>
-                <li>Fast-paced, global, and full of energy</li>
-              </ul>
-            </li>
-            
-            <li><strong>🎨 Vancouver – West Coast Paradise:</strong>
-              <ul>
-                <li>Often ranked as one of the world's most livable cities</li>
-                <li>Beautiful mountains, ocean, and mild climate</li>
-                <li>Top universities like University of British Columbia and SFU</li>
-                <li>Rich cultural and outdoor experience with festivals and sports</li>
-              </ul>
-            </li>
-            
-            <li><strong>🏛️ Montreal – Cultural Capital & Student Paradise:</strong>
-              <ul>
-                <li>Bilingual city with European charm and North American opportunities</li>
-                <li>Lower living costs compared to Toronto or Vancouver</li>
-                <li>Growing sectors in tech, aerospace, and gaming</li>
-                <li>Institutions like McGill University and Concordia University</li>
-                <li>Rich cultural scene and festivals</li>
-              </ul>
-            </li>
-            
-            <li><strong>🌿 Calgary – Energy Hub & Outdoor Adventure:</strong>
-              <ul>
-                <li>Budget-friendly, clean, and ideal for outdoor enthusiasts</li>
-                <li>Strong economy driven by energy, technology, and finance</li>
-                <li>Close to Banff National Park and Rocky Mountains</li>
-                <li>Known for friendly people and high quality of life</li>
-                <li>Respected universities like University of Calgary</li>
-              </ul>
-            </li>
-            
-            <li><strong>🏖️ Ottawa – Government & Technology Hub:</strong>
-              <ul>
-                <li>Capital city with government and tech opportunities</li>
-                <li>Growing economy in cybersecurity, AI, and clean tech</li>
-                <li>Bilingual environment with French and English</li>
-                <li>Smaller class sizes and strong academic support</li>
-                <li>Close-knit student communities</li>
-              </ul>
-            </li>
+            <li><strong>Toronto</strong> – Home to UofT, York & Ryerson. Best for business, finance, tech, and arts.</li>
+            <li><strong>Vancouver</strong> – UBC & SFU. Ideal for IT, film, environment, and outdoor lifestyle.</li>
+            <li><strong>Montreal</strong> – McGill & Concordia. Affordable living, vibrant culture, and academic excellence.</li>
+            <li><strong>Calgary & Edmonton</strong> – Low cost of living, booming industries, and high PR success.</li>
+            <li><strong>Ottawa</strong> – Canada's capital. Great for public policy, research, and quality of life.</li>
+            <li><strong>Winnipeg, Halifax, and Regina</strong> – Regional cities with strong job markets and easier PR options.</li>
           </ul>
         </section>
 
-        <section className="guide-section">
-          <h2>Cost of Studying in Canada</h2>
-          <p>We'll help you plan your budget wisely.</p>
+        <section id="costs" className="guide-section">
+          <h2>Costs of Studying in Canada</h2>
           
+          <h3>Tuition Fees (Annual):</h3>
           <ul className="cost-list">
-            <li><strong>Tuition Fees (Annual Averages):</strong>
-              <ul>
-                <li>Undergraduate: CAD 20,000–35,000</li>
-                <li>Postgraduate: CAD 25,000–45,000</li>
-                <li>College Programs: CAD 15,000–25,000</li>
+            <li>Undergraduate: CAD 15,000 – 30,000</li>
+            <li>Postgraduate: CAD 18,000 – 35,000</li>
+            <li>Diplomas & Advanced Diplomas: CAD 8,000 – 20,000</li>
               </ul>
-            </li>
-            
-            <li><strong>Living Expenses (Monthly Averages):</strong>
-              <ul>
-                <li>Accommodation: CAD 800–1,800</li>
-                <li>Food: CAD 400–800</li>
-                <li>Other (transport, utilities): CAD 200–400</li>
-              </ul>
-            </li>
-            
-            <li><strong>Visa Requirement:</strong>
-              <ul>
-                <li>You must show proof of CAD 20,000/year in living expenses for your visa</li>
-              </ul>
-            </li>
+          
+          <h3>Living Expenses (Monthly):</h3>
+          <ul className="cost-list">
+            <li>Housing: CAD 600 – 1,200</li>
+            <li>Food & Utilities: CAD 300 – 500</li>
+            <li>Transport & Misc: CAD 100 – 200</li>
           </ul>
         </section>
 
-        <section className="guide-section">
-          <h2>Work While You Study</h2>
-          <p>Canada allows international students to work up to 20 hours per week during academic sessions and unlimited hours during official breaks. This helps students support their living expenses, gain work experience, and improve soft skills.</p>
-          
+        <section id="part-time-jobs" className="guide-section">
+          <h2>Part-Time Jobs While Studying</h2>
+          <p>Students can legally work 20 hours/week during semesters and full-time during breaks.</p>
           <ul className="work-list">
-            <li><strong>Common Part-Time Job Areas for Students:</strong>
-              <ul>
-                <li>🍽️ Cafés & Restaurants: Waitstaff, baristas, kitchen assistants, dishwashers</li>
-                <li>🛍️ Retail Stores: Cashiers, sales assistants, stockroom helpers</li>
-                <li>🚚 Delivery Services: Food or parcel delivery via platforms like Uber Eats, DoorDash</li>
-                <li>📚 Tutoring & Academic Support: Peer tutoring, online tutoring, assignment help</li>
-                <li>🛒 Supermarkets: Shelf stacking, checkout, customer service</li>
-                <li>📞 Call Centers & Customer Service: Phone support, data entry, technical assistance</li>
-                <li>📦 Warehouse & Packaging Jobs: Order picking, labeling, packing</li>
-                <li>🧹 Cleaning & Housekeeping: Offices, hotels, homes, and commercial cleaning</li>
-                <li>👴 Aged Care & Disability Support: Support workers (especially for students in healthcare)</li>
-                <li>🎪 Event Staffing: Ushers, ticketing, set-up crew for concerts, conferences, and festivals</li>
-              </ul>
-            </li>
-            <li><strong>Average pay:</strong> CAD 15–25/hour</li>
-            <li>We'll guide you on Resume and interview preparation and job search strategies after your visa approval!</li>
+            <li><strong>Hospitality & Food Service:</strong> Retail, cafes, restaurants, delivery</li>
+            <li><strong>Administrative & Academic:</strong> Admin roles, research, tutoring</li>
+            <li><strong>Logistics & Customer Service:</strong> Warehouses, call centres, support</li>
+            <li><strong>Flexible Opportunities:</strong> Freelancing, on-campus, remote</li>
           </ul>
+          <p><strong>Average pay:</strong> CAD 15–25/hour</p>
         </section>
 
-        <section className="guide-section">
-          <h2>Post-Study Work & PR Opportunities</h2>
-          <p>Canada is one of the few countries offering clear pathways to Permanent Residency (PR) for international graduates.</p>
-          
+        <section id="post-graduation" className="guide-section">
+          <h2>Post-Graduation & PR Pathways</h2>
           <ul className="pr-list">
-            <li><strong>Work & PR Options Include:</strong>
-              <ul>
-                <li>Post-Graduation Work Permit (PGWP)</li>
-                <li>Express Entry System</li>
-                <li>Provincial Nominee Program (PNP)</li>
-              </ul>
-            </li>
-            <li>Extra PR points if you study in high-demand areas or regional cities</li>
-            
-            <li><strong>Popular PR-Friendly Courses:</strong>
-              <ul>
-                <li>🏥 Healthcare: Nursing, Public Health</li>
-                <li>💻 IT & Cybersecurity: Information Technology, Cybersecurity</li>
-                <li>⚙️ Engineering: Civil, Mechanical, Electrical</li>
-                <li>💰 Accounting & Finance: Accounting, Finance, Business</li>
-                <li>👨‍🏫 Teaching & Early Childhood Education: Education, Early Childhood</li>
-                <li>🔧 Vocational Trades: Plumbing, Carpentry, Mechanics</li>
-              </ul>
-            </li>
+            <li><strong>PGWP:</strong> Work up to 3 years after study</li>
+            <li><strong>Express Entry (CEC):</strong> Fast PR after Canadian work</li>
+            <li><strong>PNP Programs:</strong> Provincial nomination for PR</li>
+            <li><strong>Rural & Atlantic Pilots:</strong> Easier PR in smaller cities</li>
           </ul>
         </section>
 
-        <section className="guide-section">
-          <h2>Scholarships You Can Apply For</h2>
-          <p>You don't have to do it alone—Canada offers numerous scholarships, and we'll help you apply:</p>
+        <section id="in-demand-fields" className="guide-section">
+          <h2>In-Demand PR-Oriented Fields</h2>
+          <ul className="fields-list">
+            <li><strong>Healthcare & Nursing:</strong> High demand roles</li>
+            <li><strong>Data Science & IT:</strong> Strong tech growth</li>
+            <li><strong>Engineering:</strong> Civil, Mechanical, Electrical</li>
+            <li><strong>Cybersecurity & AI:</strong> Future-proof careers</li>
+            <li><strong>Finance & Analytics:</strong> Banking and fintech</li>
+            <li><strong>Social Work & ECE:</strong> Community services</li>
+            <li><strong>Environmental Science:</strong> Sustainability & marine</li>
+            <li><strong>Skilled Trades:</strong> Welding, HVAC, Electricians</li>
+          </ul>
+        </section>
+
+        <section id="scholarships" className="guide-section">
+          <h2>Scholarships for International Students</h2>
+          <p>Canada offers both merit-based and needs-based scholarships:</p>
           <ul className="scholarship-list">
-            <li>Vanier Canada Graduate Scholarships</li>
-            <li>Banting Postdoctoral Fellowships</li>
-            <li>University-Specific Awards (e.g., U of T, UBC, McGill)</li>
+            <li><strong>Vanier Canada Graduate Scholarships:</strong> Doctoral awards</li>
+            <li><strong>Canada-ASEAN Scholarships:</strong> Regional programs</li>
+            <li><strong>Ontario Graduate Scholarship:</strong> Provincial funding</li>
+            <li><strong>University-Specific Awards:</strong> UBC, McGill, UofT, etc.</li>
           </ul>
-          <p>Scholarships can cover 25%–100% of your tuition based on your academic profile.</p>
+          <p>We help you find and apply for scholarships to reduce your financial burden.</p>
         </section>
 
-        <section className="guide-section">
-          <h2>Step-by-Step Application & Visa Process</h2>
-          <p>We'll walk with you through every step:</p>
-          <ul className="process-list">
-            <li><strong>Step 1:</strong> Choose the Right Course & University - Based on your goals and PR possibilities</li>
-            <li><strong>Step 2:</strong> Prepare Your Documents - Transcripts, IELTS/PTE scores, SOP, CV</li>
-            <li><strong>Step 3:</strong> Meet Entry Conditions - Academic/English requirements, interviews</li>
-            <li><strong>Step 4:</strong> Pay Tuition Fee & Get Letter of Acceptance</li>
-            <li><strong>Step 5:</strong> Buy Health Insurance - Provincial or private coverage</li>
-            <li><strong>Step 6:</strong> Apply for Study Permit - Includes biometrics & financial evidence</li>
-          </ul>
-          <p><strong>Visa processing time: Typically 4–8 weeks</strong></p>
-        </section>
-
-        <section className="guide-section">
-          <h2>Life in Canada as an International Student</h2>
-          <p>Living in Canada is exciting, safe, and full of new experiences.</p>
-          <ul className="life-list">
-            <li>Enjoy weekend getaways to national parks and mountains</li>
-            <li>Explore diverse cuisines and cultural festivals</li>
-            <li>Build a global network of friends</li>
-            <li>Access 24/7 student support services on-campus</li>
-          </ul>
-        </section>
-
-        <section className="guide-section">
-          <h2>Is Canada the Right Fit for You?</h2>
-          <p>If you're looking for:</p>
-          <ul className="fit-list">
-            <li>Globally respected education</li>
-            <li>Job-ready skills & work experience</li>
-            <li>Affordable and scholarship-friendly options</li>
-            <li>Post-study stay & PR opportunities</li>
-            <li>A multicultural, welcoming environment</li>
-          </ul>
-          <p>Then Canada might just be your perfect match.</p>
-        </section>
-
-        <section className="guide-section">
-          <h2>Let's Get Started – Your Journey Begins Here</h2>
-          <p>At Titan Career Solutions, we don't just send you abroad—we walk with you through your entire journey:</p>
+        <section id="step-by-step" className="guide-section">
+          <h2>Step-by-Step Support from Titan Career Solutions</h2>
           <ul className="services-list">
-            <li>🎯 Personalized Institution & Course Selection</li>
-            <li>🚀 Future-Oriented Career Counseling</li>
-            <li>💸 Free Processing</li>
-            <li>📋 100% Visa Application Support</li>
-            <li>🏆 Help with Scholarship Applications</li>
-            <li>✈️ Pre-Departure & Settlement Support</li>
+            <li><strong>Career Counseling & Course Selection</strong> – Personalized guidance for your academic path.</li>
+            <li><strong>University/College Application</strong> – Complete application support and documentation.</li>
+            <li><strong>Financial Planning</strong> – Budget planning and funding assistance.</li>
+            <li><strong>Study Permit Application</strong> – Visa application support and guidance.</li>
+            <li><strong>Pre-Departure Orientation</strong> – Essential information before you leave.</li>
+            <li><strong>Accommodation Support</strong> – Housing assistance in Canada.</li>
+            <li><strong>Career Planning</strong> – Long-term career guidance from day one.</li>
           </ul>
-          <p>Let's connect today and start planning your future in Canada.</p>
-          <p>Your dream is closer than you think—and we're here to guide every step.</p>
         </section>
 
-        {/* Universities Section */}
-        <section id="universities" className="guide-section">
-          <h2>🏛️ Universities in Canada</h2>
-          <p>Explore research-intensive universities offering undergraduate and graduate degrees with world-class facilities.</p>
-          
-          <div className="universities-grid">
-            <div className="university-card">
-              <h3>University System Overview</h3>
-              <p><strong>Types:</strong> Public universities, private universities, research institutions</p>
-              <p><strong>Degrees Offered:</strong> Bachelor's, Master's, PhD, Graduate Certificates/Diplomas</p>
-              <p><strong>Duration:</strong> Bachelor's (3-4 years), Master's (1-2 years), PhD (4-6 years)</p>
-              <p><strong>Academic Year:</strong> September to April (2 semesters)</p>
-            </div>
-            
-            <div className="university-card">
-              <h3>Academic Requirements</h3>
-              <p><strong>Undergraduate:</strong> High school diploma with minimum GPA (varies by university)</p>
-              <p><strong>Postgraduate:</strong> Bachelor's degree with minimum GPA (usually 3.0/4.0)</p>
-              <p><strong>Research Programs:</strong> Strong academic background and research proposal</p>
-              <p><strong>Prerequisites:</strong> Subject-specific requirements for certain programs</p>
-            </div>
-            
-            <div className="university-card">
-              <h3>English Language Requirements</h3>
-              <p><strong>IELTS:</strong> 6.0–7.0 overall (depending on program)</p>
-              <p><strong>TOEFL:</strong> 80–100 (depending on program)</p>
-              <p><strong>PTE Academic:</strong> 50–65 (depending on program)</p>
-              <p><strong>Cambridge English:</strong> 169–185 (depending on program)</p>
-            </div>
-            
-            <div className="university-card">
-              <h3>Intake Periods</h3>
-              <p><strong>Fall Semester:</strong> September start (main intake)</p>
-              <p><strong>Winter Semester:</strong> January start (limited programs)</p>
-              <p><strong>Summer Session:</strong> May/June (limited programs)</p>
-              <p><strong>Application Deadlines:</strong> 8-12 months before intake</p>
-            </div>
-            
-            <div className="university-card">
-              <h3>Tuition Fees</h3>
-              <p><strong>Undergraduate:</strong> CAD 20,000–35,000/year</p>
-              <p><strong>Postgraduate:</strong> CAD 25,000–45,000/year</p>
-              <p><strong>PhD:</strong> CAD 15,000–25,000/year (often funded)</p>
-              <p><strong>Scholarships:</strong> Available for high-achieving students</p>
-            </div>
-            
-            <div className="university-card">
-              <h3>Popular Study Areas</h3>
-              <p><strong>Business:</strong> MBA, Finance, Marketing, International Business</p>
-              <p><strong>Engineering:</strong> Civil, Mechanical, Electrical, Software</p>
-              <p><strong>Healthcare:</strong> Medicine, Nursing, Public Health, Pharmacy</p>
-              <p><strong>Arts:</strong> Design, Media, Film, Creative Arts</p>
-            </div>
-          </div>
+        <section id="get-started" className="guide-section">
+          <h2>Let's Start Your Journey</h2>
+          <p>Canada offers you more than a degree—it offers a future.</p>
+          <p>With Titan Career Solutions by your side, you don't just study abroad…</p>
+          <p>You build a life abroad.</p>
+          <p><strong>Book your free consultation today and take the first step toward your Canadian dream!</strong></p>
         </section>
 
-        {/* Colleges Section */}
-        <section id="colleges" className="guide-section">
-          <h2>🎓 Colleges in Canada</h2>
-          <p>Discover applied learning institutions offering diplomas, certificates, and career-focused education.</p>
-          
-          <div className="colleges-grid">
-            <div className="college-card">
-              <h3>College System Overview</h3>
-              <p><strong>Types:</strong> Community colleges, polytechnics, applied arts colleges</p>
-              <p><strong>Programs Offered:</strong> Certificates, Diplomas, Advanced Diplomas, Degrees</p>
-              <p><strong>Duration:</strong> 1-4 years (depending on program)</p>
-              <p><strong>Focus:</strong> Applied learning and industry connections</p>
-            </div>
-            
-            <div className="college-card">
-              <h3>Academic Requirements</h3>
-              <p><strong>Certificate Programs:</strong> High school completion or equivalent</p>
-              <p><strong>Diploma Programs:</strong> High school diploma with basic skills</p>
-              <p><strong>Advanced Diplomas:</strong> Previous relevant study or work experience</p>
-              <p><strong>Prerequisites:</strong> Basic literacy and numeracy skills</p>
-            </div>
-            
-            <div className="college-card">
-              <h3>English Language Requirements</h3>
-              <p><strong>IELTS:</strong> 5.5–6.0 overall (depending on program)</p>
-              <p><strong>TOEFL:</strong> 60–80 (depending on program)</p>
-              <p><strong>PTE Academic:</strong> 42–50 (depending on program)</p>
-              <p><strong>Cambridge English:</strong> 154–169 (depending on program)</p>
-            </div>
-            
-            <div className="college-card">
-              <h3>Intake Periods</h3>
-              <p><strong>Fall Semester:</strong> September start</p>
-              <p><strong>Winter Semester:</strong> January start</p>
-              <p><strong>Spring/Summer:</strong> May start (limited programs)</p>
-              <p><strong>Application Deadlines:</strong> 6-12 months before intake</p>
-            </div>
-            
-            <div className="college-card">
-              <h3>Tuition Fees</h3>
-              <p><strong>Certificate Programs:</strong> CAD 12,000–20,000/year</p>
-              <p><strong>Diploma Programs:</strong> CAD 15,000–25,000/year</p>
-              <p><strong>Advanced Diplomas:</strong> CAD 18,000–30,000/year</p>
-              <p><strong>Government Funding:</strong> Available for eligible students</p>
-            </div>
-            
-            <div className="college-card">
-              <h3>Popular Study Areas</h3>
-              <p><strong>Technology:</strong> IT, Software Development, Cybersecurity</p>
-              <p><strong>Business:</strong> Business Administration, Accounting, Marketing</p>
-              <p><strong>Healthcare:</strong> Nursing, Medical Technology, Health Sciences</p>
-              <p><strong>Creative Arts:</strong> Design, Media Production, Animation</p>
-            </div>
-          </div>
-        </section>
-
-        {/* Eligibility Section */}
-        <section id="eligibility" className="guide-section">
-          <h2>📋 Eligibility Criteria</h2>
-          <p>Learn about academic requirements, English/French language tests, and Study Permit application processes.</p>
-          
-          <div className="eligibility-cards">
-            <div className="eligibility-card">
-              <h4>Academic Requirements</h4>
-              <p><strong>Undergraduate:</strong> High school diploma with minimum GPA requirements</p>
-              <p><strong>Postgraduate:</strong> Bachelor's degree with minimum GPA (usually 3.0/4.0)</p>
-              <p><strong>Research Programs:</strong> Strong academic background and research proposal</p>
-              <p><strong>Vocational Courses:</strong> High school completion or equivalent</p>
-              <p><strong>Prerequisites:</strong> Subject-specific requirements for certain programs</p>
-              <p><strong>Portfolio:</strong> Required for creative arts and design programs</p>
-            </div>
-            
-            <div className="eligibility-card">
-              <h4>Language Requirements</h4>
-              <p><strong>English Programs:</strong> IELTS 6.0–7.0 or TOEFL 80–100</p>
-              <p><strong>French Programs:</strong> TEF, TCF, or DELF/DALF</p>
-              <p><strong>PTE Academic:</strong> 50–65 (for English programs)</p>
-              <p><strong>Cambridge English:</strong> 169–185 (for English programs)</p>
-              <p><strong>Test Validity:</strong> Results must be within 2 years of application</p>
-              <p><strong>Bilingual Programs:</strong> May require both English and French</p>
-            </div>
-            
-            <div className="eligibility-card">
-              <h4>Visa Requirements</h4>
-              <p><strong>Study Permit:</strong> Required for all international students</p>
-              <p><strong>Financial Evidence:</strong> Proof of sufficient funds for tuition and living expenses</p>
-              <p><strong>Health Insurance:</strong> Provincial health coverage or private insurance</p>
-              <p><strong>Health Requirements:</strong> Medical examination may be required</p>
-              <p><strong>Character Requirements:</strong> Police clearance certificate</p>
-              <p><strong>Letter of Acceptance:</strong> Required from designated learning institution</p>
-            </div>
-            
-            <div className="eligibility-card">
-              <h4>Required Documents</h4>
-              <p><strong>Academic:</strong> Transcripts and certificates (translated and certified)</p>
-              <p><strong>Language:</strong> Language test results (English/French)</p>
-              <p><strong>Personal:</strong> Statement of Purpose (SOP)</p>
-              <p><strong>References:</strong> Letters of Recommendation (2-3)</p>
-              <p><strong>Professional:</strong> CV/Resume</p>
-              <p><strong>Financial:</strong> Bank statements, sponsorship letters</p>
-              <p><strong>Travel:</strong> Passport copy (valid for 6+ months)</p>
-              <p><strong>Insurance:</strong> Health insurance certificate</p>
-              <p><strong>Creative:</strong> Portfolio (for creative programs)</p>
-              <p><strong>Research:</strong> Research proposal (for research programs)</p>
-            </div>
-          </div>
-        </section>
-
-        {/* Useful Resources Section - Moved to Bottom */}
+        {/* Useful Resources Section */}
         <section id="resources" className="guide-section">
           <h2>📚 Useful Resources</h2>
           <ul className="resources-list">
             <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada.html" target="_blank" rel="noopener noreferrer">Official Study Permit Information</a></li>
             <li><a href="https://www.educanada.ca/" target="_blank" rel="noopener noreferrer">Study in Canada Official Website</a></li>
             <li><a href="https://www.cicic.ca/" target="_blank" rel="noopener noreferrer">Canadian Information Centre for International Credentials</a></li>
+            <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work.html" target="_blank" rel="noopener noreferrer">Working While Studying in Canada</a></li>
+            <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html" target="_blank" rel="noopener noreferrer">Express Entry System</a></li>
           </ul>
         </section>
       </div>

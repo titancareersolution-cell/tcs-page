@@ -64,3 +64,18 @@ RewriteRule ^ index.html [L]
     Header always set X-Frame-Options DENY
     Header always set X-XSS-Protection "1; mode=block"
 </IfModule>
+
+# Force all routes to index.html for SPA
+<IfModule mod_rewrite.c>
+    # Alternative method - more aggressive
+    RewriteEngine On
+    RewriteBase /
+    
+    # Handle all non-file requests
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ /index.html [QSA,L]
+</IfModule>
+
+# Fallback for any remaining issues
+ErrorDocument 404 /index.html

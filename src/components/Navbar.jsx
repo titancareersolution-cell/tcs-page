@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import './Navbar.css';
 
@@ -7,6 +7,8 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 1200);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,6 +30,44 @@ const Navbar = () => {
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setMenuOpen(false);
+  };
+
+  const handleBookAppointment = () => {
+    setMenuOpen(false);
+    
+    // If we're not on the home page, navigate there first
+    if (location.pathname !== '/') {
+      navigate('/');
+      
+      // Wait for navigation to complete, then scroll to contact form
+      setTimeout(() => {
+        scrollToContactForm();
+      }, 200);
+    } else {
+      // If already on home page, just scroll to contact form
+      scrollToContactForm();
+    }
+  };
+
+  const scrollToContactForm = () => {
+    // Try multiple possible IDs for the contact form
+    const contactForm = document.getElementById('contact-form') || 
+                       document.getElementById('contact') ||
+                       document.querySelector('.contact-form') ||
+                       document.querySelector('[id*="contact"]');
+    
+    if (contactForm) {
+      contactForm.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    } else {
+      // Fallback: scroll to top if contact form not found
+      window.scrollTo({ 
+        top: 0, 
+        behavior: 'smooth' 
+      });
+    }
   };
 
   return (
@@ -63,17 +103,17 @@ const Navbar = () => {
           <li><Link to="/contact" onClick={handleScrollToTop}>Contact Us</Link></li>
           {isMobile && (
             <li className="navbar-appointment-mobile">
-              <a href="/#contact-form" className="book-appointment-btn" onClick={handleLinkClick}>
+              <button className="book-appointment-btn" onClick={handleBookAppointment}>
                 Book Appointment
-              </a>
+              </button>
             </li>
           )}
         </ul>
         {!isMobile && (
           <div className="navbar-appointment">
-            <a href="/#contact-form" className="book-appointment-btn" onClick={handleLinkClick}>
+            <button className="book-appointment-btn" onClick={handleBookAppointment}>
               Book Appointment
-            </a>
+            </button>
           </div>
         )}
         <button className={`navbar-hamburger${menuOpen ? ' open' : ''}`} onClick={handleMenuToggle} aria-label="Toggle menu">

@@ -96,9 +96,10 @@ const ContactForm = () => {
       </div>
       <div className="contact-form-section right large-text contact-form-bg-image" style={{ backgroundImage: `url(${personCallImg})` }}>
         <div className="contact-form-message-overlay">
-          <h2>Why TCS?</h2>
+          <h2>Why Students Trust TCS?</h2>
           <p>
-            Our expert counselors are here to guide you through every step of your study abroad journey. Whether you have questions about universities, visas, or scholarships, we're ready to help you succeed!
+          With 98% visa success, 95% scholarship approvals, and over a decade of expertise, we’re more than consultants — we’re your partners in success. 
+          Our counselors guide you through every step, from career counseling to arrival in your new country.
           </p>
         </div>
       </div>

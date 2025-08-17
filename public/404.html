@@ -28,8 +28,33 @@
 <body>
     <div id="root"></div>
     <script>
-        // Redirect to main app
-        window.location.href = '/';
+        // Enhanced SPA routing for cPanel
+        (function() {
+            // Get the current path
+            var path = window.location.pathname;
+            
+            // Check if this is a known route
+            var knownRoutes = [
+                '/study-guide/australia',
+                '/study-guide/canada',
+                '/study-guide/uk',
+                '/study-guide/japan',
+                '/study-guide/new-zealand',
+                '/study-guide/united-states',
+                '/services',
+                '/about',
+                '/contact',
+                '/success-stories'
+            ];
+            
+            // If it's a known route, redirect to home with hash
+            if (knownRoutes.includes(path)) {
+                window.location.href = '/' + '#' + path;
+            } else {
+                // Otherwise, just go to home
+                window.location.href = '/';
+            }
+        })();
     </script>
 </body>
 </html>

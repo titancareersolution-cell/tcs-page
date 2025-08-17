@@ -17,7 +17,8 @@ const CardCarousel = () => {
     const entries = Object.entries(
       import.meta.glob('../assets/card-component/*.{jpg,jpeg,png}', {
         eager: true,
-        as: 'url',
+        query: '?url',
+        import: 'default',
       })
     );
     // Sort alphanumerically so Image1, Image2, ... Image10

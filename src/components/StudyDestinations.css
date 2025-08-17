@@ -37,9 +37,16 @@
 }
 
 .study-destinations-header .subtitle {
+  font-size: 1.5rem;
+  color: #1976d2;
+  font-weight: 800;
+  margin-top: 1rem;
+}
+
+.study-destinations-header .paragraph {
   font-size: 1.2rem;
   color: #1976d2;
-  font-weight: 600;
+  font-weight: 500;
   margin-top: 1rem;
 }
 
