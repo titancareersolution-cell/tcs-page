@@ -9,6 +9,7 @@ const StudyDestinations = () => {
       title: "Study in Australia",
       image:
         "https://images.unsplash.com/photo-1507699622108-4be3abd695ad?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      href: "/study-guide/australia#why-choose",
       description:
         "World-class education in a safe, welcoming environment, with diverse cultural experiences and stunning natural landscapes.",
       path: "/study-guide/australia",

@@ -1,0 +1,238 @@
+.admin-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  padding: 2rem 0;
+}
+
+.admin-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem 2rem;
+}
+
+.admin-header {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: white;
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+}
+
+.admin-header h1 {
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: #e67e22;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.admin-header .subtitle {
+  font-size: 1.2rem;
+  color: #1976d2;
+  font-weight: 600;
+}
+
+.admin-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.admin-toolbar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+}
+
+.admin-input,
+.admin-textarea {
+  width: 100%;
+  padding: 0.9rem 1.2rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.admin-input:focus,
+.admin-textarea:focus {
+  border-color: #1976d2;
+  box-shadow: 0 0 0 4px rgba(25, 118, 210, 0.1);
+}
+
+.admin-textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.admin-card label {
+  font-size: 0.9rem;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Smaller buttons only within admin dashboard */
+.admin-content .btn-primary,
+.admin-content .cta-button {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+  min-width: 120px;
+}
+
+/* Modal */
+.admin-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.admin-modal {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.5rem;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+}
+
+.admin-modal h3 {
+  margin: 0 0 0.5rem;
+  color: #e67e22;
+}
+
+.admin-modal p {
+  margin: 0 0 1rem;
+  color: #555;
+}
+
+.admin-modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.btn-secondary {
+  background: #eee;
+  color: #333;
+  border-radius: 12px;
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  padding: 8px;
+}
+
+.admin-search {
+  padding: 0.6rem 0.8rem;
+  min-width: 240px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+}
+
+.admin-login-card {
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #e67e22;
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+    border-top-color 0.3s ease;
+}
+
+.admin-login-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+  border-top-color: #1976d2;
+}
+
+.admin-login-card .admin-input {
+  width: 100%;
+  padding: 0.9rem 1.2rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.admin-login-card .admin-input:focus {
+  border-color: #1976d2;
+  box-shadow: 0 0 0 4px rgba(25, 118, 210, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .admin-header h1 {
+    font-size: 2.4rem;
+  }
+  .admin-card {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-content {
+    padding: 0 1rem 1.5rem;
+  }
+  .admin-header {
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+  }
+  .admin-header h1 {
+    font-size: 2rem;
+  }
+  .admin-login-card {
+    padding: 2rem 1.5rem;
+  }
+  .admin-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .admin-actions {
+    gap: 8px;
+  }
+  .admin-actions .btn-primary,
+  .admin-actions .cta-button {
+    width: 100%;
+  }
+}
+
+/* Buttons: allow global .btn-primary/.cta-button to style without resets */
+.admin-actions button,
+.admin-login-card button {
+  cursor: pointer;
+  border: none;
+}
+
+/* Buttons now use global .btn-primary from index.css for consistent color */

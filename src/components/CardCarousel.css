@@ -7,7 +7,9 @@
   align-items: center;
 }
 
-.card-carousel-header { display: none; }
+.card-carousel-header {
+  display: none;
+}
 
 .card-carousel-header h2 {
   font-size: 3rem;
@@ -48,7 +50,7 @@
 
 .cards-track {
   display: flex;
-  transition: transform 0.5s ease-in-out ;
+  transition: transform 0.5s ease-in-out;
   gap: var(--carousel-gap);
   padding: 0 calc(var(--carousel-gap) / 2);
 }
@@ -71,7 +73,11 @@
   overflow: visible;
 }
 
-.carousel-card:hover { box-shadow: none; transform: none; border: none; }
+.carousel-card:hover {
+  box-shadow: none;
+  transform: none;
+  border: none;
+}
 
 .card-icon {
   font-size: 3rem;
@@ -82,11 +88,17 @@
   transition: transform 0.2s;
 }
 
-.carousel-card:hover .card-icon { transform: scale(1.1); }
+.carousel-card:hover .card-icon {
+  transform: scale(1.1);
+}
 
-.card-title { display:none; }
+.card-title {
+  display: none;
+}
 
-.card-description { display:none; }
+.card-description {
+  display: none;
+}
 
 /* Image specific styles */
 .image-card {
@@ -120,7 +132,7 @@
   width: 50px;
   height: 50px;
   font-size: 2rem;
-  color: #1976d2;
+  color: var(--color-blue);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -132,10 +144,10 @@
 }
 
 .carousel-arrow:hover {
-  background: #1976d2;
+  background: var(--color-blue);
   color: white;
- transform: translateY(10px);
-  box-shadow: 0 6px 20px rgba(25, 118, 210, 0.3);
+  transform: translateY(20px);
+  box-shadow: 0 6px 20px rgba(25, 118, 210, 0.7);
 }
 
 .carousel-arrow.left {
@@ -164,12 +176,12 @@
 }
 
 .carousel-dot.active {
-  background: #1976d2;
+  background: var(--color-blue);
   transform: scale(1.2);
 }
 
 .carousel-dot:hover {
-  background: #1976d2;
+  background: var(--color-blue);
   transform: scale(1.1);
 }
 
@@ -179,16 +191,16 @@
     flex: 0 0 calc((100% - (var(--carousel-gap) * 2)) / 3);
     margin: 0;
   }
-  
+
   .card-icon {
     font-size: 2.5rem;
     margin-bottom: 1rem;
   }
-  
+
   .card-title {
     font-size: 1.3rem;
   }
-  
+
   .cards-track {
     padding: 0 calc(var(--carousel-gap) / 2);
   }
@@ -198,35 +210,35 @@
   .card-carousel-section {
     padding: 2rem 1.5rem;
   }
-  
+
   .card-carousel-header h2 {
     font-size: 2.5rem;
   }
-  
+
   .card-carousel-header p {
     font-size: 1.1rem;
   }
-  
+
   .carousel-card {
     flex: 0 0 calc((100% - var(--carousel-gap)) / 2);
     margin: 0;
   }
-  
+
   .card-icon {
     font-size: 2.5rem;
     margin-bottom: 1rem;
   }
-  
+
   .card-title {
     font-size: 1.4rem;
   }
-  
+
   .carousel-arrow {
     width: 40px;
     height: 40px;
     font-size: 1.5rem;
   }
-  
+
   .cards-track {
     padding: 0 calc(var(--carousel-gap) / 2);
   }
@@ -352,4 +364,4 @@
   .carousel-dots {
     margin-top: 1rem;
   }
-} 
+}

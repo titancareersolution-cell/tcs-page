@@ -1,7 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap");
 
-html, body, #root {
-  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+:root {
+  --color-black: #000000;
+  --color-orange: #e67e22;
+  --color-blue: #1976d2;
+}
+
+html,
+body,
+#root {
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
   font-size: 16px;
   overflow-x: hidden !important;
   width: 100vw;
@@ -19,55 +27,134 @@ body {
   padding: 0;
 }
 
+/* Global CTA button style to match other pages */
+.cta-button {
+  display: inline-block;
+  background: linear-gradient(135deg, #e67e22, #1976d2);
+  color: white;
+  padding: 0.8rem 1.6rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(230, 126, 34, 0.3);
+  color: white;
+  text-decoration: none;
+}
+
+.cta-button:hover::before {
+  left: 100%;
+}
+
+.cta-button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+}
+
+/* Primary button style matching Contact Us button */
+.btn-primary {
+  background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 16px rgba(230, 126, 34, 0.3);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  min-width: 140px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(230, 126, 34, 0.4);
+  background: linear-gradient(135deg, #d35400 0%, #e67e22 100%);
+  color: #fff;
+}
+
 @media (max-width: 900px) {
-  html, body, #root {
+  html,
+  body,
+  #root {
     font-size: 15px;
   }
 }
 
 @media (max-width: 600px) {
-  html, body, #root {
+  html,
+  body,
+  #root {
     font-size: 14px;
   }
 }
-  
-  .snap-container {
-    height: 100vh;
-    width: 100vw;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-  }
-  
-  .snap-section {
-    height: 100vh;
-    width: 100vw;
-    scroll-snap-align: start;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .page {
-    padding: 0 0 2rem 0;
-    min-height: 60vh;
-    margin: 0 0 10px 0;
-  }
-  
-  .page h2 {
-    font-size: 2.8rem;
-    font-weight: 800;
-    color: #e67e22;
-    text-align: center;
-    margin-bottom: 2rem;
-    letter-spacing: 1px;
-    text-shadow: 0 4px 24px rgba(230,126,34,0.18), 0 1px 0 #fff;
-  }
-  
-  .testimonials-title {
-    font-size: 2.2rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: #e67e22;
-  }
-  
+
+.snap-container {
+  height: 100vh;
+  width: 100vw;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+.snap-section {
+  height: 100vh;
+  width: 100vw;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.page {
+  padding: 0 0 2rem 0;
+  min-height: 60vh;
+  margin: 0 0 10px 0;
+}
+
+.page h2 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--color-orange);
+  text-align: center;
+  margin-bottom: 2rem;
+  letter-spacing: 1px;
+  text-shadow: 0 4px 24px rgba(230, 126, 34, 0.18), 0 1px 0 #fff;
+}
+
+.testimonials-title {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #e67e22;
+}

@@ -5,10 +5,10 @@
   gap: 2rem;
   margin: 2.5rem 0;
   flex-wrap: wrap;
-  background: linear-gradient(90deg, #f8fafc 0%, #f3e8ff 100%);
+  background: linear-gradient(90deg, #ffffff 0%, #f0f8ff 100%);
   border-radius: 2rem;
   padding: 2.5rem 1rem;
-  box-shadow: 0 4px 32px rgba(80, 36, 180, 0.07);
+  box-shadow: 0 4px 32px rgba(25, 118, 210, 0.08);
 }
 
 .stat-card {
@@ -22,16 +22,16 @@
   align-items: center;
   justify-content: center;
   padding: 2.2rem 1.5rem 1.7rem 1.5rem;
-  box-shadow: 0 2px 16px rgba(80,36,180,0.08);
-  border: 2.5px solid #ede9fe;
+  box-shadow: 0 2px 16px rgba(25, 118, 210, 0.08);
+  border: 2.5px solid #e9f2fd;
   transition: box-shadow 0.2s, transform 0.2s, border 0.2s;
   position: relative;
 }
 
 .stat-card:hover {
-  box-shadow: 0 8px 32px rgba(80,36,180,0.15);
+  box-shadow: 0 8px 32px rgba(25, 118, 210, 0.15);
   transform: translateY(-8px) scale(1.03);
-  border: 2.5px solid #a78bfa;
+  border: 2.5px solid var(--color-blue);
 }
 
 .stat-icon {
@@ -46,21 +46,21 @@
 .stat-card:hover .stat-icon svg path,
 .stat-card:hover .stat-icon svg circle,
 .stat-card:hover .stat-icon svg rect {
-  stroke: #7c3aed !important;
+  stroke: var(--color-blue) !important;
 }
 
 .stat-value {
   font-size: 2.8rem;
   font-weight: 900;
   margin-bottom: 0.5rem;
-  color: #111;
-  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  color: var(--color-black);
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
   letter-spacing: 1px;
 }
 
 .stat-label {
   font-size: 1.05rem;
-  color: #222;
+  color: #333;
   font-weight: 600;
   letter-spacing: 1.5px;
   text-align: center;
@@ -98,4 +98,4 @@
   .stat-value {
     font-size: 1.5rem;
   }
-} 
+}

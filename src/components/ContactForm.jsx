@@ -155,7 +155,7 @@ const ContactForm = () => {
               name="name"
               id="name"
               placeholder="Name"
-              autocomplete="name"
+              autoComplete="name"
               required
             />
           </div>
@@ -166,7 +166,7 @@ const ContactForm = () => {
               name="email"
               id="email"
               placeholder="Email"
-              autocomplete="email"
+              autoComplete="email"
               required
             />
           </div>
@@ -177,7 +177,7 @@ const ContactForm = () => {
               name="phone"
               id="phone"
               placeholder="Phone Number"
-              autocomplete="tel"
+              autoComplete="tel"
               required
             />
           </div>
@@ -187,7 +187,7 @@ const ContactForm = () => {
               className="select-destination"
               name="destination"
               id="destination"
-              autocomplete="country"
+              autoComplete="country"
               required
             >
               <option value="">Preferred Study Destination</option>
@@ -205,7 +205,7 @@ const ContactForm = () => {
               name="achievement"
               id="achievement"
               placeholder="Latest Academic Achievement"
-              autocomplete="organization"
+              autoComplete="organization"
               required
             />
           </div>
@@ -216,7 +216,7 @@ const ContactForm = () => {
               name="gpa"
               id="gpa"
               placeholder="GPA (e.g., 3.5/4.0)"
-              autocomplete="off"
+              autoComplete="off"
               required
             />
           </div>
@@ -227,7 +227,7 @@ const ContactForm = () => {
               name="faculty"
               id="faculty"
               placeholder="Faculty/Subject (e.g., Computer Science)"
-              autocomplete="organization"
+              autoComplete="organization"
               required
             />
           </div>
@@ -238,7 +238,7 @@ const ContactForm = () => {
               name="year"
               id="year"
               placeholder="Completed Year"
-              autocomplete="off"
+              autoComplete="off"
               required
             />
           </div>

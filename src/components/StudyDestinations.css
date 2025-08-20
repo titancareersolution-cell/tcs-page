@@ -15,20 +15,20 @@
 }
 
 .study-destinations-header h2 span {
-  color: #1976d2;
+  color: var(--color-blue);
 }
 
 .study-destinations-header h2 {
   font-size: 1.9rem;
   font-weight: 800;
-  color: #e67e22;
+  color: var(--color-orange);
   margin-bottom: 1.5rem;
   line-height: 1.2;
 }
 
 .study-destinations-header p {
   font-size: 1.2rem;
-  color: #333;
+  color: var(--color-black);
   margin-bottom: 1rem;
   line-height: 1.6;
   max-width: 800px;
@@ -38,14 +38,14 @@
 
 .study-destinations-header .subtitle {
   font-size: 1.5rem;
-  color: #1976d2;
+  color: var(--color-blue);
   font-weight: 800;
   margin-top: 1rem;
 }
 
 .study-destinations-header .paragraph {
   font-size: 1.2rem;
-  color: #1976d2;
+  color: var(--color-blue);
   font-weight: 500;
   margin-top: 1rem;
   text-align: center;
@@ -67,7 +67,7 @@
   overflow: visible;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-top: 4px solid #e67e22;
+  border-top: 4px solid var(--color-orange);
   position: relative;
   z-index: 10;
 }
@@ -79,7 +79,7 @@
 .destination-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
-  border-top: 4px solid #1976d2;
+  border-top: 4px solid var(--color-blue);
 }
 
 .destination-image-container {
@@ -125,7 +125,7 @@
 .destination-title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #e67e22;
+  color: var(--color-orange);
   margin: 0;
   transition: color 0.3s ease;
   cursor: pointer;
@@ -133,7 +133,7 @@
 }
 
 .destination-title-link:hover .destination-title {
-  color: #1976d2;
+  color: var(--color-blue);
 }
 
 /* Quick Links Styles - Always Visible */
@@ -148,7 +148,7 @@
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  background: #1976d2;
+  background: var(--color-blue);
   color: white;
   border: none;
   border-radius: 8px;
@@ -207,7 +207,7 @@
 .quick-links-link {
   display: block;
   padding: 0.8rem 1.2rem;
-  color: #333;
+  color: var(--color-black);
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 500;
@@ -217,7 +217,7 @@
 
 .quick-links-link:hover {
   background: #f8f9fa;
-  color: #1976d2;
+  color: var(--color-blue);
   padding-left: 1.8rem;
   font-weight: 600;
 }
@@ -258,7 +258,7 @@
   display: inline-block;
   padding: 0.4rem 0.8rem;
   background: #f8f9fa;
-  color: #1976d2;
+  color: var(--color-blue);
   text-decoration: none;
   border-radius: 6px;
   font-size: 0.85rem;
@@ -268,7 +268,7 @@
 }
 
 .destination-link:hover {
-  background: #1976d2;
+  background: var(--color-blue);
   color: white;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
@@ -281,16 +281,16 @@
     align-items: flex-start;
     gap: 1rem;
   }
-  
+
   .quick-links-container {
     align-self: flex-end;
   }
-  
+
   .quick-links-dropdown {
     right: 0;
     min-width: 200px;
   }
-  
+
   .destination-links {
     opacity: 0.5;
   }
@@ -300,12 +300,12 @@
   .study-destinations-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .destination-card {
     margin: 0 0.5rem;
   }
-  
+
   .quick-links-dropdown {
     min-width: 180px;
   }
-} 
+}
