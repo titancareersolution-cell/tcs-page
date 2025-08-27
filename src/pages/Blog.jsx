@@ -47,7 +47,29 @@ const Blog = () => {
               onChange={(e) => setQuery(e.target.value)}
             />
             {user && (
-              <Link className="cta-button" to="/admin">
+              <Link
+                className="cta-button"
+                to="/admin"
+                style={{
+                  marginLeft: "10px",
+                  padding: "0.6rem 1.2rem",
+                  fontSize: "0.95rem",
+                  textDecoration: "none",
+                  borderRadius: "5px",
+                  cursor: "pointer",
+                  transition: "all 0.3s ease",
+                  backgroundColor: "#e67e22",
+                  color: "white",
+                  border: "none",
+                  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                  hover: {
+                    backgroundColor: "#e67e22",
+                    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                    color: "white",
+                    border: "none",
+                  },
+                }}
+              >
                 Go to Admin
               </Link>
             )}
@@ -96,7 +118,35 @@ const Blog = () => {
                       </div>
                     )}
                     <div className="blog-card-footer">
-                      <Link className="cta-button" to={`/blog/${post.slug}`}>
+                      <Link
+                        className="cta-button"
+                        to={`/blog/${post.slug}`}
+                        style={{
+                          marginTop: "20px",
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          marginLeft: "0",
+                          marginRight: "10px",
+                          marginBottom: "10px",
+                          padding: "0.6rem 1.2rem",
+                          fontSize: "0.95rem",
+                          textDecoration: "none",
+                          borderRadius: "5px",
+                          cursor: "pointer",
+                          transition: "all 0.3s ease",
+                          backgroundColor: "#e67e22",
+                          color: "white",
+                          border: "none",
+                          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                          hover: {
+                            backgroundColor: "#e67e22",
+                            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                            color: "white",
+                            border: "none",
+                          },
+                        }}
+                      >
                         Read More
                       </Link>
                     </div>

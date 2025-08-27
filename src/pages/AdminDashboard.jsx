@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { deletePostApi, listPosts, upsertPostApi } from "../services/blogApi";
 import useAuth from "../hooks/useAuth";
+import RichTextEditor from "../components/RichTextEditor";
 import "./Admin.css";
 import { supabase } from "../lib/supabaseClient";
 
@@ -17,6 +18,7 @@ const AdminDashboard = () => {
   });
   const [editingSlug, setEditingSlug] = useState("");
   const [query, setQuery] = useState("");
+  const [errors, setErrors] = useState({});
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [pendingDeleteSlug, setPendingDeleteSlug] = useState("");
 
@@ -68,6 +70,29 @@ const AdminDashboard = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Validate required fields
+    const newErrors = {};
+    const title = (form.title || "").trim();
+    const description = (form.description || "").trim();
+    const image = (form.image || "").trim();
+    const tagsInput = (form.tags || "").trim();
+    const contentHtml = form.content || "";
+    const contentText = contentHtml
+      .replace(/<[^>]*>/g, " ")
+      .replace(/&nbsp;/g, " ")
+      .trim();
+
+    if (!title) newErrors.title = "Title is required";
+    if (!description) newErrors.description = "Description is required";
+    if (!contentText) newErrors.content = "Content is required";
+    if (!image) newErrors.image = "Image URL is required";
+    if (!tagsInput) newErrors.tags = "At least one tag is required";
+
+    setErrors(newErrors);
+    if (Object.keys(newErrors).length > 0) {
+      return;
+    }
+
     (async () => {
       const tags = form.tags
         .split(",")
@@ -76,12 +101,14 @@ const AdminDashboard = () => {
       const payload = {
         slug:
           editingSlug ||
-          form.title
-            .toLowerCase()
-            .trim()
-            .replace(/[^a-z0-9\s-]/g, "")
-            .replace(/\s+/g, "-")
-            .replace(/-+/g, "-"),
+          (form.title && form.title.trim()
+            ? form.title
+                .toLowerCase()
+                .trim()
+                .replace(/[^a-z0-9\s-]/g, "")
+                .replace(/\s+/g, "-")
+                .replace(/-+/g, "-")
+            : `post-${Date.now()}`),
         title: form.title,
         description: form.description,
         content: form.content,
@@ -92,6 +119,8 @@ const AdminDashboard = () => {
       const rows = await listPosts();
       setPosts(rows);
       setEditingSlug(saved.slug);
+      // Reload admin page after successful create/update
+      window.location.reload();
     })();
   };
 
@@ -101,7 +130,8 @@ const AdminDashboard = () => {
   };
 
   const confirmDelete = async () => {
-    if (!pendingDeleteSlug) return;
+    // Allow empty-string slugs; only guard null/undefined
+    if (pendingDeleteSlug === null || pendingDeleteSlug === undefined) return;
     await deletePostApi(pendingDeleteSlug);
     const rows = await listPosts();
     setPosts(rows);
@@ -156,6 +186,7 @@ const AdminDashboard = () => {
                 }
                 required
               />
+              {errors.title && <div className="error-text">{errors.title}</div>}
             </label>
             <label>
               <div>Description</div>
@@ -166,6 +197,9 @@ const AdminDashboard = () => {
                   setForm((f) => ({ ...f, description: e.target.value }))
                 }
               />
+              {errors.description && (
+                <div className="error-text">{errors.description}</div>
+              )}
             </label>
             <label>
               <div>Image URL</div>
@@ -177,6 +211,7 @@ const AdminDashboard = () => {
                 }
                 placeholder="https://..."
               />
+              {errors.image && <div className="error-text">{errors.image}</div>}
             </label>
             <label>
               <div>Tags (comma separated)</div>
@@ -188,17 +223,18 @@ const AdminDashboard = () => {
                 }
                 placeholder="guide, tips"
               />
+              {errors.tags && <div className="error-text">{errors.tags}</div>}
             </label>
             <label>
               <div>Content</div>
-              <textarea
-                className="admin-textarea"
-                rows={8}
+              <RichTextEditor
                 value={form.content}
-                onChange={(e) =>
-                  setForm((f) => ({ ...f, content: e.target.value }))
-                }
+                onChange={(content) => setForm((f) => ({ ...f, content }))}
+                placeholder="Write your blog content here..."
               />
+              {errors.content && (
+                <div className="error-text">{errors.content}</div>
+              )}
             </label>
             <div className="admin-actions">
               <button
@@ -244,7 +280,7 @@ const AdminDashboard = () => {
               </thead>
               <tbody>
                 {filtered.map((p) => (
-                  <tr key={p.slug}>
+                  <tr key={p.slug || p.id || p.created_at}>
                     <td>{p.title}</td>
                     <td>{p.slug}</td>
                     <td>

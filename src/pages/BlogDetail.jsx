@@ -48,9 +48,11 @@ const BlogDetail = () => {
             />
           )}
           <p style={{ color: "#555" }}>{post.description}</p>
-          <div style={{ whiteSpace: "pre-wrap", lineHeight: 1.7 }}>
-            {post.content}
-          </div>
+          <div
+            className="blog-content"
+            style={{ lineHeight: 1.7 }}
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
           {post.tags?.length > 0 && (
             <div className="blog-tags" style={{ marginTop: 12 }}>
               {post.tags.map((t) => (

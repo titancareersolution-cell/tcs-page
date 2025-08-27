@@ -1,0 +1,323 @@
+.rich-text-editor {
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 100vw;
+  min-width: 300px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.rich-text-editor:focus-within {
+  border-color: #1976d2;
+  box-shadow: 0 0 0 4px rgba(25, 118, 210, 0.1);
+}
+
+/* Prevent any automatic styling on focus */
+.editor-content:focus {
+  outline: none;
+}
+
+.editor-toolbar {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  background: #f8f9fa;
+  border-bottom: 2px solid #e0e0e0;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.toolbar-group {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.toolbar-group:not(:last-child)::after {
+  content: "";
+  width: 2px;
+  height: 24px;
+  background: #e0e0e0;
+  margin-left: 8px;
+  border-radius: 1px;
+}
+
+.toolbar-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  background: #fff;
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+.toolbar-btn:hover {
+  background: #f0f0f0;
+  border-color: #ccc;
+}
+
+.toolbar-btn.active {
+  background: #1976d2;
+  color: #fff;
+  border-color: #1976d2;
+}
+
+.toolbar-btn:active {
+  transform: translateY(1px);
+}
+
+.toolbar-btn strong {
+  font-weight: 700;
+}
+
+.toolbar-btn em {
+  font-style: italic;
+}
+
+.toolbar-btn u {
+  text-decoration: underline;
+}
+
+/* Ensure button text styling only applies when button is active */
+.toolbar-btn:not(.active) strong {
+  font-weight: 500;
+}
+
+.toolbar-btn:not(.active) em {
+  font-style: normal;
+}
+
+.toolbar-btn:not(.active) u {
+  text-decoration: none;
+}
+
+.toolbar-select {
+  min-width: 120px;
+  height: 36px;
+  padding: 0 8px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  background: #fff;
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.toolbar-select:hover {
+  border-color: #ccc;
+}
+
+.toolbar-select:focus {
+  outline: none;
+  border-color: #1976d2;
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.1);
+}
+
+.editor-content {
+  min-height: 300px;
+  padding: 16px;
+  outline: none;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  overflow-y: auto;
+  max-height: 600px;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  width: 100%;
+  box-sizing: border-box;
+  cursor: text;
+  position: relative;
+  z-index: 1;
+  margin-top: 0;
+  border-top: 2px solid #e0e0e0;
+  background: #fff;
+  flex: 1;
+}
+
+/* Inline link popover */
+.rte-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.link-popover {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 12px;
+  width: 92%;
+  max-width: 360px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.link-input {
+  width: 100%;
+  height: 36px;
+  padding: 6px 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  outline: none;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.link-input:focus {
+  border-color: #1976d2;
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.1);
+}
+
+.link-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  justify-content: flex-end;
+}
+
+/* Make popover buttons bigger without affecting toolbar buttons */
+.link-popover .toolbar-btn {
+  width: auto;
+  min-width: 100px;
+  height: 40px;
+  padding: 0 14px;
+  font-size: 14px;
+  background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 12px rgba(230, 126, 34, 0.25);
+}
+
+.link-popover .toolbar-btn:hover {
+  background: linear-gradient(135deg, #d35400 0%, #e67e22 100%);
+  color: #fff;
+}
+
+.editor-content:empty::before {
+  content: attr(placeholder);
+  color: #999;
+  pointer-events: none;
+}
+
+.editor-content.focused {
+  background: #fff;
+}
+
+.editor-content p {
+  margin: 0 0 12px 0;
+}
+
+.editor-content p:last-child {
+  margin-bottom: 0;
+}
+
+.editor-content ul,
+.editor-content ol {
+  margin: 12px 0;
+  padding-left: 24px;
+}
+
+.editor-content li {
+  margin: 4px 0;
+}
+
+.editor-content a {
+  color: #1976d2;
+  text-decoration: underline;
+}
+
+.editor-content a:hover {
+  color: #1565c0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .editor-toolbar {
+    padding: 8px;
+    gap: 4px;
+  }
+
+  .toolbar-group {
+    gap: 2px;
+  }
+
+  .toolbar-group:not(:last-child)::after {
+    margin-left: 4px;
+  }
+
+  .toolbar-btn {
+    min-width: 32px;
+    height: 32px;
+    padding: 0 6px;
+    font-size: 12px;
+  }
+
+  .toolbar-select {
+    min-width: 100px;
+    height: 32px;
+    font-size: 12px;
+  }
+
+  .editor-content {
+    padding: 12px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .editor-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .toolbar-group {
+    justify-content: center;
+  }
+
+  .toolbar-group:not(:last-child)::after {
+    display: none;
+  }
+}

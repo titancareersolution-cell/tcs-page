@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { courseAreas, renderIcon } from "./courseAreas";
 import "./Services.css";
 
 const services = [
@@ -146,106 +149,193 @@ const services = [
   },
 ];
 
-const Services = () => (
-  <div className="services-page">
-    <div className="services-header">
-      <h1>
-        Our <span>Services</span>
-      </h1>
-      <p className="subtitle">
-        Comprehensive Support for Your Study Abroad Journey
-      </p>
-    </div>
+const Services = () => {
+  const location = useLocation();
 
-    <div className="services-content">
-      <section className="services-section">
-        <h2>Your Trusted Partner Throughout the Journey</h2>
-        <p>
-          At <strong>Titan Career Solutions</strong>, we are committed to being
-          your trusted partner throughout your entire study abroad journey. We
-          offer a comprehensive range of services designed to support and guide
-          you every step of the way. Whether you are just beginning to explore
-          international education options or are ready to board your flight, our
-          expert team is here to assist you with care.
-        </p>
-        <p>
-          Our experienced and knowledgeable counselors provide personalized,
-          one-on-one guidance tailored to your academic background, career
-          aspirations, and financial considerations. From helping you choose the
-          right course and university that align with your goals, to navigating
-          complex application procedures, visa processes, and scholarship
-          opportunities, we ensure you are well-informed and confident at every
-          stage.
-        </p>
-      </section>
+  useEffect(() => {
+    if (location.hash === "#course-areas") {
+      const el = document.getElementById("course-areas");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  }, [location]);
 
-      <div>
-        <section className="services-section-card">
-          <h2>Our Comprehensive Services</h2>
+  return (
+    <div className="services-page">
+      <div className="services-header">
+        <h1>
+          Our <span>Services</span>
+        </h1>
+        <p className="subtitle">
+          Comprehensive Support for Your Study Abroad Journey
+        </p>
+      </div>
+
+      <div className="services-content">
+        <section className="services-section">
+          <h2>Your Trusted Partner Throughout the Journey</h2>
+          <p>
+            At <strong>Titan Career Solutions</strong>, we are committed to
+            being your trusted partner throughout your entire study abroad
+            journey. We offer a comprehensive range of services designed to
+            support and guide you every step of the way. Whether you are just
+            beginning to explore international education options or are ready to
+            board your flight, our expert team is here to assist you with care.
+          </p>
+          <p>
+            Our experienced and knowledgeable counselors provide personalized,
+            one-on-one guidance tailored to your academic background, career
+            aspirations, and financial considerations. From helping you choose
+            the right course and university that align with your goals, to
+            navigating complex application procedures, visa processes, and
+            scholarship opportunities, we ensure you are well-informed and
+            confident at every stage.
+          </p>
+        </section>
+
+        <div>
+          <section className="services-section-card">
+            <h2>Our Comprehensive Services</h2>
+            <div className="services-grid">
+              {services.map((service, idx) => (
+                <div className="service-card" key={idx}>
+                  <div className="service-card-icon">{service.icon}</div>
+                  <h3 className="service-card-title">{service.title}</h3>
+                  <p className="service-card-content">{service.content}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        </div>
+
+        {/* Popular course areas grid */}
+        <section className="services-section" id="course-areas">
+          <h2>Popular Course Areas</h2>
           <div className="services-grid">
-            {services.map((service, idx) => (
-              <div className="service-card" key={idx}>
-                <div className="service-card-icon">{service.icon}</div>
-                <h3 className="service-card-title">{service.title}</h3>
-                <p className="service-card-content">{service.content}</p>
-              </div>
+            {courseAreas.map((area) => (
+              <Link
+                to={`/courses/${area.slug}`}
+                className="service-card"
+                key={area.slug}
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <div className="service-card-icon">{renderIcon(area.icon)}</div>
+                <h3
+                  className="service-card-title"
+                  style={{ textAlign: "center" }}
+                >
+                  {area.title}
+                </h3>
+              </Link>
             ))}
           </div>
         </section>
+
+        {/* Pre-Departure Checklist Section */}
+        <section className="services-section">
+          <h2>Pre-Departure Checklists</h2>
+          <div className="services-grid">
+            <a
+              href="/pre-departure"
+              className="service-card"
+              style={{ textDecoration: "none", color: "inherit" }}
+              rel="noopener noreferrer"
+            >
+              <div className="service-card-icon">{renderIcon("leaf")}</div>
+              <h3
+                className="service-card-title"
+                style={{ textAlign: "center" }}
+              >
+                Students Departure Checklist
+              </h3>
+              <p
+                className="service-card-content"
+                style={{ textAlign: "center" }}
+              >
+                A destination‑neutral, detailed guide for students traveling
+                abroad.
+              </p>
+            </a>
+
+            <a
+              href="/parent-checklist"
+              className="service-card"
+              style={{ textDecoration: "none", color: "inherit" }}
+              rel="noopener noreferrer"
+            >
+              <div className="service-card-icon">{renderIcon("leaf")}</div>
+              <h3
+                className="service-card-title"
+                style={{ textAlign: "center" }}
+              >
+                Parents Pre-Departure Checklist
+              </h3>
+              <p
+                className="service-card-content"
+                style={{ textAlign: "center" }}
+              >
+                A guide for parents to prepare their child and themselves for
+                the study abroad journey.
+              </p>
+            </a>
+          </div>
+        </section>
+
+        <section className="services-section">
+          <h2>Why Choose Our Services?</h2>
+          <ul className="benefits-list">
+            <li>
+              <p>
+                <strong>Personalized:</strong> Every student is unique, and we
+                tailor our services to their needs and goals.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <strong>Expert Guidance:</strong> Our experienced counselors
+                provide up-to-date information and honest advice.
+              </p>
+            </li>
+            <li>
+              <p>
+                <strong>Comprehensive Support:</strong> From initial
+                consultation to post-arrival assistance, we're with you every
+                step.
+              </p>
+            </li>
+            <li>
+              <p>
+                <strong>Proven Success:</strong> Hundreds of students have
+                achieved their dreams with our help.
+              </p>
+            </li>
+            <li>
+              <p>
+                <strong>Strong Partnerships:</strong> We collaborate with top
+                universities and institutions worldwide.
+              </p>
+            </li>
+          </ul>
+        </section>
+
+        <section className="services-section">
+          <h2>Ready to Start Your Journey?</h2>
+          <p>
+            Contact us for a free consultation and let{" "}
+            <strong>Titan Career Solutions</strong> guide you toward your global
+            education dreams.
+          </p>
+          <div className="cta-section">
+            <a href="/contact" className="cta-button">
+              Contact Us
+            </a>
+          </div>
+        </section>
       </div>
-
-      <section className="services-section">
-        <h2>Why Choose Our Services?</h2>
-        <ul className="benefits-list">
-          <li>
-            <p>
-              <strong>Personalized:</strong> Every student is unique, and we
-              tailor our services to their needs and goals.
-            </p>
-          </li>
-
-          <li>
-            <p>
-              <strong>Expert Guidance:</strong> Our experienced counselors
-              provide up-to-date information and honest advice.
-            </p>
-          </li>
-          <li>
-            <p>
-              <strong>Comprehensive Support:</strong> From initial consultation
-              to post-arrival assistance, we're with you every step.
-            </p>
-          </li>
-          <li>
-            <p>
-              <strong>Proven Success:</strong> Hundreds of students have
-              achieved their dreams with our help.
-            </p>
-          </li>
-          <li>
-            <p>
-              <strong>Strong Partnerships:</strong> We collaborate with top
-              universities and institutions worldwide.
-            </p>
-          </li>
-        </ul>
-      </section>
-
-      <section className="services-section">
-        <h2>Ready to Start Your Journey?</h2>
-        <p>
-          Contact us for a free consultation and let{" "}
-          <strong>Titan Career Solutions</strong> guide you toward your global
-          education dreams.
-        </p>
-        <div className="cta-section">
-          <a href="/contact" className="cta-button">
-            Contact Us
-          </a>
-        </div>
-      </section>
     </div>
-  </div>
-);
+  );
+};
 
 export default Services;

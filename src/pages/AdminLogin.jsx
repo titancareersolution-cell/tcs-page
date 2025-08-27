@@ -29,11 +29,11 @@ const AdminLogin = () => {
   return (
     <div className="admin-page">
       <div className="admin-content">
-        <div className="admin-header">
-          <h1 style={{ margin: 0 }}>Admin Login</h1>
-          <div className="subtitle">Sign in to manage blog posts</div>
-        </div>
         <div className="admin-login-card">
+          <div className="admin-login-title">Welcome Back</div>
+          <div className="admin-login-subtitle">
+            Sign in to access your workspace
+          </div>
           <form onSubmit={handleSubmit} style={{ display: "grid", gap: 12 }}>
             <label>
               <div>Email</div>
@@ -56,8 +56,12 @@ const AdminLogin = () => {
               />
             </label>
             {error && <div style={{ color: "crimson" }}>{error}</div>}
-            <button className="btn-primary" type="submit" disabled={loading}>
-              {loading ? "Signing in..." : "Login"}
+            <button
+              className="admin-login-submit"
+              type="submit"
+              disabled={loading}
+            >
+              {loading ? "Signing in..." : "Log in"}
             </button>
           </form>
         </div>

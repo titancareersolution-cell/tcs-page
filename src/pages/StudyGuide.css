@@ -1,27 +1,34 @@
 .study-guide-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, rgba(204, 4, 21, 0.2) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(1, 33, 105, 0.3) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(204, 4, 21, 0.2) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(1, 33, 105, 0.3) 100%
+  );
   padding: 2rem 0;
 }
 
 /* UK-specific background with flag colors */
 .study-guide-page.uk-flag {
-  background: linear-gradient(135deg, 
-    rgba(200, 16, 46, 0.15) 0%, 
-    rgba(255, 255, 255, 0.25) 25%, 
-    rgba(1, 33, 105, 0.2) 50%, 
-    rgba(255, 255, 255, 0.25) 75%, 
+  background: linear-gradient(
+    135deg,
+    rgba(200, 16, 46, 0.15) 0%,
+    rgba(255, 255, 255, 0.25) 25%,
+    rgba(1, 33, 105, 0.2) 50%,
+    rgba(255, 255, 255, 0.25) 75%,
     rgba(200, 16, 46, 0.15) 100%
   );
 }
 
 /* Canada-specific background with flag colors (red and white) */
 .study-guide-page.canada-flag {
-  background: linear-gradient(135deg, 
-    rgba(255, 0, 0, 0.15) 0%, 
-    rgba(255, 255, 255, 0.25) 25%, 
-    rgba(255, 0, 0, 0.15) 50%, 
-    rgba(255, 255, 255, 0.25) 75%, 
+  background: linear-gradient(
+    135deg,
+    rgba(255, 0, 0, 0.15) 0%,
+    rgba(255, 255, 255, 0.25) 25%,
+    rgba(255, 0, 0, 0.15) 50%,
+    rgba(255, 255, 255, 0.25) 75%,
     rgba(255, 0, 0, 0.15) 100%
   );
 }
@@ -29,165 +36,153 @@
 /* Additional responsive improvements for UK flag version */
 @media (max-width: 900px) {
   .study-guide-page.uk-flag {
-    background: linear-gradient(135deg, 
-      rgba(200, 16, 46, 0.12) 0%, 
-      rgba(255, 255, 255, 0.2) 25%, 
-      rgba(1, 33, 105, 0.15) 50%, 
-      rgba(255, 255, 255, 0.2) 75%, 
+    background: linear-gradient(
+      135deg,
+      rgba(200, 16, 46, 0.12) 0%,
+      rgba(255, 255, 255, 0.2) 25%,
+      rgba(1, 33, 105, 0.15) 50%,
+      rgba(255, 255, 255, 0.2) 75%,
       rgba(200, 16, 46, 0.12) 100%
     );
   }
-  
+
   .study-guide-page.canada-flag {
-    background: linear-gradient(135deg, 
-      rgba(255, 0, 0, 0.12) 0%, 
-      rgba(255, 255, 255, 0.2) 25%, 
-      rgba(255, 0, 0, 0.12) 50%, 
-      rgba(255, 255, 255, 0.2) 75%, 
+    background: linear-gradient(
+      135deg,
+      rgba(255, 0, 0, 0.12) 0%,
+      rgba(255, 255, 255, 0.2) 25%,
+      rgba(255, 0, 0, 0.12) 50%,
+      rgba(255, 255, 255, 0.2) 75%,
       rgba(255, 0, 0, 0.12) 100%
     );
-  }
-  
-  .canada-image-container {
-    padding: 0 1.5rem;
-  }
-  
-  .canada-image {
-    height: 350px;
   }
 }
 
 @media (max-width: 600px) {
   .study-guide-page.uk-flag {
-    background: linear-gradient(135deg, 
-      rgba(200, 16, 46, 0.1) 0%, 
-      rgba(255, 255, 255, 0.18) 25%, 
-      rgba(1, 33, 105, 0.12) 50%, 
-      rgba(255, 255, 255, 0.18) 75%, 
+    background: linear-gradient(
+      135deg,
+      rgba(200, 16, 46, 0.1) 0%,
+      rgba(255, 255, 255, 0.18) 25%,
+      rgba(1, 33, 105, 0.12) 50%,
+      rgba(255, 255, 255, 0.18) 75%,
       rgba(200, 16, 46, 0.1) 100%
     );
   }
-  
+
   .study-guide-page.canada-flag {
-    background: linear-gradient(135deg, 
-      rgba(255, 0, 0, 0.1) 0%, 
-      rgba(255, 255, 255, 0.18) 25%, 
-      rgba(255, 0, 0, 0.1) 50%, 
-      rgba(255, 255, 255, 0.18) 75%, 
+    background: linear-gradient(
+      135deg,
+      rgba(255, 0, 0, 0.1) 0%,
+      rgba(255, 255, 255, 0.18) 25%,
+      rgba(255, 0, 0, 0.1) 50%,
+      rgba(255, 255, 255, 0.18) 75%,
       rgba(255, 0, 0, 0.1) 100%
     );
-  }
-  
-  .canada-image-container {
-    padding: 0 1rem;
-  }
-  
-  .canada-image {
-    height: 300px;
-    border-radius: 15px;
   }
 }
 
 @media (max-width: 480px) {
   .study-guide-page.uk-flag {
-    background: linear-gradient(135deg, 
-      rgba(200, 16, 46, 0.08) 0%, 
-      rgba(255, 255, 255, 0.15) 25%, 
-      rgba(1, 33, 105, 0.1) 50%, 
-      rgba(255, 255, 255, 0.15) 75%, 
+    background: linear-gradient(
+      135deg,
+      rgba(200, 16, 46, 0.08) 0%,
+      rgba(255, 255, 255, 0.15) 25%,
+      rgba(1, 33, 105, 0.1) 50%,
+      rgba(255, 255, 255, 0.15) 75%,
       rgba(200, 16, 46, 0.08) 100%
     );
   }
-  
+
   .study-guide-page.canada-flag {
-    background: linear-gradient(135deg, 
-      rgba(255, 0, 0, 0.08) 0%, 
-      rgba(255, 255, 255, 0.15) 25%, 
-      rgba(255, 0, 0, 0.08) 50%, 
-      rgba(255, 255, 255, 0.15) 75%, 
+    background: linear-gradient(
+      135deg,
+      rgba(255, 0, 0, 0.08) 0%,
+      rgba(255, 255, 255, 0.15) 25%,
+      rgba(255, 0, 0, 0.08) 50%,
+      rgba(255, 255, 255, 0.15) 75%,
       rgba(255, 0, 0, 0.08) 100%
     );
   }
-  
+
   .canada-image-container {
     padding: 0 0.8rem;
   }
-  
+
   .canada-image {
     height: 250px;
     border-radius: 12px;
   }
-  
+
   .study-guide-header h1 {
     font-size: 1.9rem;
     padding: 0 0.5rem;
   }
 
-  
   .study-guide-header .subtitle {
     font-size: 1.1rem;
     padding: 0 0.5rem;
   }
-  
+
   .guide-section {
     padding: 1rem;
     margin-bottom: 1.5rem;
   }
-  
+
   .guide-section h2 {
     font-size: 1.6rem;
     padding: 0 0.5rem;
   }
-  
+
   .guide-section h3 {
     font-size: 1rem;
   }
-  
+
   .guide-section p {
     font-size: 0.95rem;
     line-height: 1.5;
   }
-  
+
   .resources-list a {
     font-size: 0.9rem;
     padding: 0.8rem 1rem;
   }
-  
+
   .nav-link-card {
     padding: 1.5rem;
   }
-  
+
   .nav-link-card h3 {
     font-size: 1.2rem;
   }
-  
+
   .nav-link-card p {
     font-size: 0.95rem;
   }
-  
+
   .nav-link-button {
     padding: 0.8rem 1.5rem;
     font-size: 0.95rem;
   }
-  
+
   .guide-navigation {
     padding: 1rem;
   }
-  
+
   .nav-buttons {
     gap: 1rem;
   }
-  
+
   .nav-btn {
     padding: 0.7rem 1.2rem;
     font-size: 0.9rem;
   }
-  
+
   .universities-grid,
   .colleges-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .eligibility-content {
     grid-template-columns: 1fr;
   }
@@ -199,26 +194,26 @@
     padding: 0.4rem 0.6rem;
     bottom: -12px;
   }
-  
+
   .nav-menu {
     min-width: 200px;
     max-width: 75vw;
     padding: 0.4rem;
   }
-  
+
   .hamburger-menu {
     padding: 0.4rem 0.6rem;
     font-size: 0.8rem;
   }
-  
+
   .nav-menu-header h3 {
     font-size: 0.8rem;
   }
-  
+
   .nav-menu-items {
     max-height: 180px;
   }
-  
+
   .nav-menu-item {
     padding: 0.35rem 0.6rem;
     font-size: 0.7rem;
@@ -838,13 +833,18 @@
 }
 
 .resources-list a::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(230, 126, 34, 0.1), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(230, 126, 34, 0.1),
+    transparent
+  );
   transition: left 0.5s ease;
 }
 
@@ -878,13 +878,13 @@
   border-radius: 15px;
   border: 2px solid transparent;
   transition: all 0.3s ease;
-    text-align: center;
+  text-align: center;
   position: relative;
   overflow: hidden;
 }
 
 .nav-link-card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -917,7 +917,7 @@
   font-size: 1.05rem;
   line-height: 1.6;
   color: #555;
-    margin-bottom: 2rem;
+  margin-bottom: 2rem;
   text-align: center;
 }
 
@@ -937,13 +937,18 @@
 }
 
 .nav-link-button::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
   transition: left 0.5s ease;
 }
 
@@ -1235,7 +1240,8 @@
   color: #1976d2;
   text-decoration: none;
   border-bottom: 1px dashed rgba(25, 118, 210, 0.5);
-  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+  transition: color 0.2s ease, border-color 0.2s ease,
+    background-color 0.2s ease;
   font-weight: 600;
 }
 
@@ -1253,7 +1259,7 @@
 
 /* External link indicator */
 .guide-section a[target="_blank"]::after {
-  content: '↗';
+  content: "↗";
   font-size: 0.85em;
   margin-left: 0.25rem;
   color: currentColor;
@@ -1269,19 +1275,19 @@ html {
   .study-guide-header h1 {
     font-size: 2.8rem;
   }
-  
+
   .guide-section {
     padding: 2rem;
   }
-  
+
   .guide-section h2 {
     font-size: 2rem;
   }
-  
+
   .step {
     flex-direction: column;
-  text-align: center;
-}
+    text-align: center;
+  }
 
   .step-number {
     align-self: center;
@@ -1292,29 +1298,29 @@ html {
   .resources-list {
     gap: 1rem;
   }
-  
+
   .resources-list a {
     padding: 1.2rem 1.5rem;
     font-size: 1rem;
   }
-  
+
   .navigation-links {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  
+
   .nav-link-card {
     padding: 2rem;
   }
-  
+
   .nav-link-card h3 {
     font-size: 1.3rem;
   }
-  
+
   .nav-link-card p {
     font-size: 1rem;
   }
-  
+
   .nav-link-button {
     padding: 0.9rem 1.8rem;
     font-size: 1rem;
@@ -1325,43 +1331,44 @@ html {
   .study-guide-page {
     padding: 1rem 0;
   }
-  
+
   .study-guide-page.uk-flag {
-    background: linear-gradient(135deg, 
-      rgba(200, 16, 46, 0.1) 0%, 
-      rgba(255, 255, 255, 0.18) 25%, 
-      rgba(1, 33, 105, 0.12) 50%, 
-      rgba(255, 255, 255, 0.18) 75%, 
+    background: linear-gradient(
+      135deg,
+      rgba(200, 16, 46, 0.1) 0%,
+      rgba(255, 255, 255, 0.18) 25%,
+      rgba(1, 33, 105, 0.12) 50%,
+      rgba(255, 255, 255, 0.18) 75%,
       rgba(200, 16, 46, 0.1) 100%
     );
   }
-  
+
   .study-guide-header {
     padding: 2rem 1rem;
   }
-  
+
   .study-guide-header h1 {
     font-size: 2.2rem;
     word-wrap: break-word;
     overflow-wrap: break-word;
     hyphens: auto;
   }
-  
+
   .study-guide-content {
     padding: 0 1rem;
   }
-  
+
   .guide-section {
     padding: 1.5rem;
     margin-bottom: 2rem;
   }
-  
+
   .guide-section h2 {
     font-size: 1.8rem;
     word-wrap: break-word;
     overflow-wrap: break-word;
   }
-  
+
   .guide-section p {
     font-size: 1rem;
     line-height: 1.6;
@@ -1369,7 +1376,7 @@ html {
     word-wrap: break-word;
     overflow-wrap: break-word;
   }
-  
+
   .benefits-list li,
   .education-list li,
   .fields-list li,
@@ -1390,13 +1397,13 @@ html {
     word-wrap: break-word;
     overflow-wrap: break-word;
   }
-  
+
   .cities-list li p {
     font-size: 0.95rem;
     line-height: 1.6;
     margin-top: 0.5rem;
   }
-  
+
   .benefits-grid,
   .education-levels,
   .cities-grid,
@@ -1408,7 +1415,7 @@ html {
   .tips-list {
     grid-template-columns: 1fr;
   }
-  
+
   .guide-navigation {
     position: absolute;
     bottom: -15px;
@@ -1416,43 +1423,43 @@ html {
     transform: translateX(-50%);
     padding: 0.6rem 0.8rem;
   }
-  
+
   .nav-menu {
     min-width: 250px;
     max-width: 85vw;
     right: 0;
     padding: 0.6rem;
   }
-  
+
   .hamburger-menu {
     padding: 0.6rem 0.8rem;
     font-size: 0.9rem;
   }
-  
+
   .hamburger-line {
     width: 18px;
     height: 2px;
   }
-  
+
   .nav-menu-header {
     padding: 0 0 0.6rem 0;
     margin-bottom: 0.6rem;
   }
-  
+
   .nav-menu-header h3 {
     font-size: 0.9rem;
   }
-  
+
   .nav-menu-items {
     gap: 0.4rem;
     max-height: 250px;
   }
-  
+
   .nav-menu-item {
     padding: 0.5rem 0.8rem;
     font-size: 0.8rem;
   }
-  
+
   .scroll-to-top {
     bottom: 20px;
     right: 20px;
@@ -1467,67 +1474,67 @@ html {
     font-size: 0.9rem;
     padding: 0.8rem 1rem;
   }
-  
+
   .nav-link-card {
     padding: 1.5rem;
   }
-  
+
   .nav-link-card h3 {
     font-size: 1.2rem;
   }
-  
+
   .nav-link-card p {
     font-size: 0.95rem;
   }
-  
+
   .nav-link-button {
     padding: 0.8rem 1.5rem;
     font-size: 0.95rem;
   }
-  
+
   .guide-navigation {
     padding: 0.5rem 0.7rem;
   }
-  
+
   .nav-menu {
     min-width: 220px;
     max-width: 80vw;
     padding: 0.5rem;
   }
-  
+
   .hamburger-menu {
     padding: 0.5rem 0.7rem;
     font-size: 0.85rem;
   }
-  
+
   .nav-menu-header h3 {
     font-size: 0.85rem;
   }
-  
+
   .nav-menu-items {
     max-height: 200px;
   }
-  
+
   .nav-menu-item {
     padding: 0.4rem 0.7rem;
     font-size: 0.75rem;
   }
-  
+
   .nav-buttons {
     gap: 1rem;
   }
-  
+
   .nav-btn {
     padding: 0.7rem 1.2rem;
     font-size: 0.9rem;
   }
-  
+
   .universities-grid,
   .colleges-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .eligibility-content {
     grid-template-columns: 1fr;
   }
-} 
+}

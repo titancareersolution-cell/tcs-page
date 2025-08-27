@@ -21,6 +21,9 @@ import Blog from "./pages/Blog";
 import BlogDetail from "./pages/BlogDetail";
 import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
+import CourseDetail from "./pages/CourseDetail";
+import PreDeparture from "./pages/PreDeparture";
+import ParentChecklist from "./pages/ParentChecklist";
 
 function App() {
   return (
@@ -43,6 +46,9 @@ function App() {
           />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/courses/:slug" element={<CourseDetail />} />
+          <Route path="/pre-departure" element={<PreDeparture />} />
+          <Route path="/parent-checklist" element={<ParentChecklist />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/success-stories" element={<SuccessStories />} />
           <Route path="/blog" element={<Blog />} />
